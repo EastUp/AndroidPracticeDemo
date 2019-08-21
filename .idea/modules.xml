@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MyPractice.iml" filepath="$PROJECT_DIR$/MyPractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/architecture_components/architecture_components.iml" filepath="$PROJECT_DIR$/architecture_components/architecture_components.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arouterpractice/arouterpractice.iml" filepath="$PROJECT_DIR$/arouterpractice/arouterpractice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/arouterpractice2/arouterpractice2.iml" filepath="$PROJECT_DIR$/arouterpractice2/arouterpractice2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/databinding/databinding.iml" filepath="$PROJECT_DIR$/databinding/databinding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spannableString/spannableString.iml" filepath="$PROJECT_DIR$/spannableString/spannableString.iml" />
+    </modules>
+  </component>
+</project>

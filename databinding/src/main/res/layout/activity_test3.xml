@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="androidx.databinding.ObservableList"/>
+        <import type="androidx.databinding.ObservableMap"/>
+        <variable name="list" type="ObservableList&lt;String&gt;"/>
+        <variable name="map" type="ObservableMap&lt;String,String&gt;"/>
+        <variable name="key" type="String"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".Test3Activity">
+
+        <TextView
+                android:id="@+id/tv_list"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="@{list[0],default=娃哈哈}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/tv_map"
+                app:layout_constraintTop_toBottomOf="@id/tv_list"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="@{map[key],default=儿童饮料}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <Button
+                app:layout_constraintTop_toBottomOf="@id/tv_map"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="修改"
+                android:onClick="change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

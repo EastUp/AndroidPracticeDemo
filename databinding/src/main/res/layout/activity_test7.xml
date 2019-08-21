@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.east.databinding.bean.User"/>
+        <import type="android.view.View"/>
+        <variable name="user" type="User"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".Test7Activity">
+
+        <!--空合并运算符 ?? 会取第一个不为 null 的值作为返回值-->
+        <TextView
+                android:id="@+id/tv_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="@{user.password??user.username}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <!--属性控制-->
+        <TextView
+                android:id="@+id/tv_male"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="@{String.valueOf(user.male)}"
+                android:visibility="@{user.male ? View.VISIBLE : View.GONE}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <!--避免空指针异常  如果 "@{userInfo.password}" 中 userInfo 为 null 的话，userInfo.password 会被赋值为默认值 null，而不会抛出空指针异常-->
+        <TextView
+                android:id="@+id/tv_password"
+                app:layout_constraintTop_toBottomOf="@id/tv_male"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="@{user.password}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

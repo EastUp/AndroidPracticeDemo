@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <import type="com.east.databinding.entity.Goods"/>
+        <variable name="goods" type="Goods"/>
+        <variable name="goodsHandler" type="com.east.databinding.TestActivity.GoodsHandler"/>
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".TestActivity">
+
+        <TextView
+                android:id="@+id/tv_name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="@{goods.name,default=娃哈哈}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/tv_detail"
+                app:layout_constraintTop_toBottomOf="@id/tv_name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="@{goods.details,default=儿童饮料}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <TextView
+                android:id="@+id/tv_price"
+                app:layout_constraintTop_toBottomOf="@id/tv_detail"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="@{String.valueOf(goods.price),default=20}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <Button
+                android:id="@+id/btn_changename"
+                app:layout_constraintTop_toBottomOf="@id/tv_price"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="改变name和price"
+                android:onClick="@{()->goodsHandler.changeGoodsName()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <Button
+                app:layout_constraintTop_toBottomOf="@id/btn_changename"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:text="改变details和price"
+                android:onClick="@{()->goodsHandler.changeGoodsDetail()}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
