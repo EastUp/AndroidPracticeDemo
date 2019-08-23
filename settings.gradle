@@ -1,1 +1,1 @@
-include ':spannableString', ':arouterpractice', ':arouterpractice2', ':databinding', ':architecture_components'
+include ':spannableString', ':arouterpractice', ':arouterpractice2', ':databinding', ':architecture_components', ':navigation'

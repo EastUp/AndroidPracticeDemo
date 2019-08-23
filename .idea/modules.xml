@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/arouterpractice/arouterpractice.iml" filepath="$PROJECT_DIR$/arouterpractice/arouterpractice.iml" />
       <module fileurl="file://$PROJECT_DIR$/arouterpractice2/arouterpractice2.iml" filepath="$PROJECT_DIR$/arouterpractice2/arouterpractice2.iml" />
       <module fileurl="file://$PROJECT_DIR$/databinding/databinding.iml" filepath="$PROJECT_DIR$/databinding/databinding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/navigation/navigation.iml" filepath="$PROJECT_DIR$/navigation/navigation.iml" />
       <module fileurl="file://$PROJECT_DIR$/spannableString/spannableString.iml" filepath="$PROJECT_DIR$/spannableString/spannableString.iml" />
     </modules>
   </component>
