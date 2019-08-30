@@ -8,6 +8,11 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
+                  <entry key="action_global_blankFragment3">
+                    <value>
+                      <LayoutPositions />
+                    </value>
+                  </entry>
                   <entry key="blankFragment3">
                     <value>
                       <LayoutPositions>
@@ -20,6 +25,11 @@
                         <option name="myPositions">
                           <map>
                             <entry key="action_blankFragment3_to_blankFragment">
+                              <value>
+                                <LayoutPositions />
+                              </value>
+                            </entry>
+                            <entry key="deepLink">
                               <value>
                                 <LayoutPositions />
                               </value>

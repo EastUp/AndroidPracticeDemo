@@ -7,32 +7,80 @@
 
     <fragment
         android:id="@+id/blankFragment3"
-        android:name="com.east.navigation.BlankFragment3"
+        android:name="com.east.navigation.basic.BlankFragment3"
         android:label="fragment_blank_fragment3"
         tools:layout="@layout/fragment_blank_fragment3">
+
+        <argument
+            android:name="height"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="height"/>
+
         <action
             android:id="@+id/action_blankFragment3_to_blankFragment"
-            app:destination="@id/navigation" />
+            app:destination="@id/navigation"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <deepLink
+            android:id="@+id/deepLink"
+            app:uri="www.east.com/navigation/{username}" />
     </fragment>
     <navigation
         android:id="@+id/navigation"
-        app:startDestination="@id/blankFragment">
+        app:startDestination="@+id/blankFragment">
         <fragment
             android:id="@+id/blankFragment"
-            android:name="com.east.navigation.BlankFragment"
+            android:name="com.east.navigation.basic.BlankFragment"
             android:label="fragment_blank"
             tools:layout="@layout/fragment_blank">
+
+            <!-- 接受到的参数 destination级别的参数-->
+            <argument
+                android:name="name"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="sdada" />
             <action
                 android:id="@+id/action_blankFragment_to_blankFragment2"
-                app:destination="@+id/blankFragment2" />
+                app:destination="@+id/blankFragment2" >
+                <!--action级别的参数 在name和type相同的情况下会覆盖掉destination级别的参数(用于传递参数)
+                    生成BlankFragmentDirections.actionBlankFragmentToBlankFragment2("BlankFragment action传递的数据:age")传递参数-->
+                <argument
+                    android:name="age"
+                    app:argType="string"
+                    android:defaultValue="action_overide" />
+            </action>
+
         </fragment>
         <fragment
             android:id="@+id/blankFragment2"
-            android:name="com.east.navigation.BlankFragment2"
+            android:name="com.east.navigation.basic.BlankFragment2"
             android:label="fragment_blank_fragment2"
-            tools:layout="@layout/fragment_blank_fragment2" />
+            tools:layout="@layout/fragment_blank_fragment2" >
+
+
+            <!-- 接受到的参数 destination级别的参数-->
+            <argument
+                android:name="age"
+                app:argType="string"
+                app:nullable="true"
+                android:defaultValue="sdada" />
+        </fragment>
     </navigation>
+
+    <!-- popUTo会弹出指定destination上的所有destination,popUpToInclusive指定是否弹出的destination中是否包括其本身 -->
     <action
-        android:id="@+id/action_global_blankFragment32"
-        app:destination="@id/blankFragment3" />
+        android:id="@+id/action_global_blankFragment3"
+        app:popUpTo="@id/blankFragment3"
+        app:popUpToInclusive="true"
+        app:destination="@id/blankFragment3">
+
+        <argument
+            android:name="height"
+            app:argType="string"
+            android:defaultValue="height" />
+    </action>
 </navigation>
