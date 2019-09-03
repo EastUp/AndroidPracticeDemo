@@ -6,10 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.east.navigation.BlankFragmentArgs
-import com.east.navigation.BlankFragmentDirections
 import com.east.navigation.R
 import kotlinx.android.synthetic.main.fragment_blank.*
 
@@ -38,10 +37,14 @@ class BlankFragment : Fragment() {
                 "BlankFragment action传递的数据:age"
             )
 
-        button.setOnClickListener {
-//            it.findNavController().navigate(R.id.action_blankFragment_to_blankFragment2)
-            it.findNavController().navigate(action)
-        }
+//        button.setOnClickListener {
+////            it.findNavController().navigate(R.id.action_blankFragment_to_blankFragment2)
+//            it.findNavController().navigate(action)
+//        }
+
+        //点击按钮可以使用这种方式跳转
+        button.setOnClickListener(Navigation.createNavigateOnClickListener(action))
+
 
         back.setOnClickListener {
 //            it.findNavController().navigateUp()

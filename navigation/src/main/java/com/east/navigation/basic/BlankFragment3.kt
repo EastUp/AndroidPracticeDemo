@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.east.navigation.BlankFragment3Args
 import com.east.navigation.R
 import kotlinx.android.synthetic.main.fragment_blank_fragment3.*
 
