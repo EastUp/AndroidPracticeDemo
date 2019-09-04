@@ -21,7 +21,7 @@
 
         </activity>
 
-        <activity android:name="com.east.navigation.advance.BottomViewActivity">
+        <activity android:name="com.east.navigation.advance.bottom_view.BottomViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
