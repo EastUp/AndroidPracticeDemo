@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".advance.bottom_view.HomeFirstFragment">
 
@@ -10,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:textColor="@android:color/white"
         app:layout_constraintTop_toTopOf="parent"
         android:text="HOME FIRST" />
 
