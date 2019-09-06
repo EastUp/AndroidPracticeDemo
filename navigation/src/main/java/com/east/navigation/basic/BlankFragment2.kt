@@ -29,6 +29,8 @@ class BlankFragment2 : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        //全局Action安全的数据传输
 //        val action =
 //            NavGraphDirections.actionGlobalBlankFragment3("这是BlankFragment2发送的数据:height")
         val action =
