@@ -1,4 +1,4 @@
-```
+    ```
     Android architecture component
 ```
 [googlesamples / android-architecture-components](https://github.com/googlesamples/android-architecture-components)

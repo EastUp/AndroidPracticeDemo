@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/homeFragment"
+            android:icon="@mipmap/ic_launcher"
+            android:contentDescription="home"
+            android:title="home"/>
+    </group>
+
+    <item
+        android:id="@+id/leaderBoardFragment"
+        android:icon="@mipmap/ic_launcher"
+        android:contentDescription="home"
+        android:title="leaderboard"/>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/registerFragment"
+                android:icon="@mipmap/ic_launcher"
+                android:contentDescription="home"
+                android:title="register"/>
+        </menu>
+    </item>
+</menu>

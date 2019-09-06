@@ -21,7 +21,8 @@
 
         </activity>
 
-        <activity android:name="com.east.navigation.advance.bottom_view.BottomViewActivity"
+        <activity
+            android:name="com.east.navigation.advance.bottom_view.BottomViewActivity"
             android:label="Nav_Bottom">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,12 +30,22 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.east.navigation.advance.drawerlayout.DrawerLayoutActivity"
+        <activity
+            android:name="com.east.navigation.advance.drawerlayout.DrawerLayoutActivity"
             android:label="Nav_Drawer">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.east.navigation.advance.swip_view.SwipViewActivity"
+            android:label="SwipView">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 </manifest>
