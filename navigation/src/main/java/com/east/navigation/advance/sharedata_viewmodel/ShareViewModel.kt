@@ -15,7 +15,4 @@ class ShareViewModel(app : Application) : AndroidViewModel(app){
 
     var data : MutableLiveData<String> = MutableLiveData()
 
-
-
-
 }
