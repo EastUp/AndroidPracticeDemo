@@ -7,7 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
-import androidx.navigation.navGraphViewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.east.navigation.R
 import kotlinx.android.synthetic.main.fragment_test2.*
 
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.fragment_test2.*
  */
 class Test2Fragment : Fragment() {
 
-    val shareViewModel by navGraphViewModels<ShareViewModel>(R.navigation.nav_graph_viewmodel)
+//    val shareViewModel by navGraphViewModels<ShareViewModel>(R.navigation.nav_graph_viewmodel)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +29,9 @@ class Test2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val shareViewModel = ViewModelProvider(activity!!,ViewModelProvider.AndroidViewModelFactory.getInstance(activity!!.application))
+            .get(ShareViewModel::class.java)
 
         shareViewModel.data.observe(this, Observer {
             tv_f2.text = it

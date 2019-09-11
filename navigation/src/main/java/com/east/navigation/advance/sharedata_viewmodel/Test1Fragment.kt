@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.east.navigation.R
 import kotlinx.android.synthetic.main.fragment_test1.*
@@ -18,7 +20,6 @@ import kotlinx.android.synthetic.main.fragment_test1.*
  */
 class Test1Fragment : Fragment() {
 
-//    val shareViewModel : ShareViewModel by navGraphViewModels(R.navigation.nav_graph_viewmodel)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,15 +31,21 @@ class Test1Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//
-//        shareViewModel.data.observe(this, Observer {
-//            tv_f1.text = it
-//        })
-//
-//        shareViewModel.data.value = "fragment1传递的数据"
 
-        btn_navigation.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_test1Fragment_to_test2Fragment))
+        val shareViewModel = ViewModelProviders.of(activity!!).get(ShareViewModel::class.java)
 
+        shareViewModel.data.observe(this, Observer {
+            tv_f1.text = it
+        })
+//
+
+
+//        btn_navigation.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_test1Fragment_to_test2Fragment))
+
+        btn_navigation.setOnClickListener {
+            shareViewModel.data.value = "fragment1传递的数据"
+            findNavController().navigate(R.id.action_test1Fragment_to_test2Fragment)
+        }
 
     }
 
