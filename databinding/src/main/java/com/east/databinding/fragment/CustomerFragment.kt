@@ -45,7 +45,6 @@ class CustomerFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val fragmentCustomerBinding =
             DataBindingUtil.inflate<FragmentCustomerBinding>(inflater, R.layout.fragment_customer, container, false)
         fragmentCustomerBinding.entityUserInfo = User(param1!!,param2!!)
