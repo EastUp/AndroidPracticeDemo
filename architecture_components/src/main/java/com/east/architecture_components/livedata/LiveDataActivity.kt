@@ -39,9 +39,12 @@ class LiveDataActivity : AppCompatActivity() {
         })
 
 
+        /**
+         * switchMap和map方法的不同在于
+         *      map是如果传入的LiveData多次放生改变,UI就会订阅多个LiveData.
+         *      swichmap在每次传入的Livedata的值发送改变的时候,使用MediatorLiveData来在添加新源时删除原始源
+         */
 
-        //switchhMap方法中的参数Function 将Source的数据类型转换成LiveData并监听
-        //switchMap和map方法的不同在于  switchmap 还要观察Function转换后返回的LiveData数据变化
         //switchMap只观察Function转换后返回的LiveData数据变化,参数传递进去的LiveData变化只会触发Funtion方法
         val switchMap = Transformations.switchMap(myViewModel.myLiveData) {
             //转换成一个LiveData并且还要监听这个LiveData的数据变化
