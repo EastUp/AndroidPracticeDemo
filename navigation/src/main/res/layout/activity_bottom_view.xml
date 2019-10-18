@@ -10,14 +10,17 @@
 <!--    android:fitsSystemWindows="true"-->
 
 
-
+<!-- app:labelVisibilityMode="labeled"  lable会显示-->
+<!-- app:itemHorizontalTranslationEnabled="false"  大于3个items的时候禁用平移东动画-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomview"
         android:layout_width="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_height="wrap_content"
+        app:itemHorizontalTranslationEnabled="false"
+        android:layout_height="50dp"
         app:menu="@menu/menu_bottom_nav"/>
 
     <!--defaultNavHost 拦截返回按钮事件-->

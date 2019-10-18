@@ -11,11 +11,12 @@ import com.east.architecture_components.room.db.entity.RoomAutoKeyUser
  *  @date: 2019-08-06
  * |---------------------------------------------------------------------------------------------------------------|
  */
-@Entity(tableName = "book",indices = arrayOf(Index(value = ["user_id"])),foreignKeys = arrayOf(ForeignKey(entity = RoomAutoKeyUser::class,
-                                                            parentColumns = arrayOf("uid"),
-                                                            childColumns = arrayOf("user_id")/*,
-                                                            onUpdate = ForeignKey.CASCADE, //父表更新时,子表跟着更新
-                                                            onDelete = ForeignKey.RESTRICT*/)))//当parent中的key有依赖的时候禁止对parent做动作，做动作就会报错。
+@Entity(tableName = "book",indices = arrayOf(Index(value = ["user_id"])),foreignKeys = [ForeignKey(entity = RoomAutoKeyUser::class,
+    parentColumns = arrayOf("uid"),
+    childColumns = arrayOf("user_id")/*,
+                                                        onUpdate = ForeignKey.CASCADE, //父表更新时,子表跟着更新
+                                                        onDelete = ForeignKey.RESTRICT*/)]
+)//当parent中的key有依赖的时候禁止对parent做动作，做动作就会报错。
 
 //onDelete：默认NO_ACTION，当parent里面有删除操作的时候，child表可以做的Action动作有：
 //       1. NO_ACTION：当parent中的key有变化的时候child不做任何动作。

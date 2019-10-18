@@ -11,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.east.navigation.R
+import com.east.navigation.utils.BottomNavigationViewUtil
 import com.east.navigation.utils.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_bottom_view.*
 
@@ -31,6 +32,7 @@ class BottomViewActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_bottom)
 
         bottomview.setupWithNavController(navController)
+//        BottomNavigationViewUtil.disableShiftMode(bottomview)
 
         //actionbar跟navigation的联动在fragment里面
 

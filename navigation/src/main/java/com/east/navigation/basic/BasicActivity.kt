@@ -6,11 +6,11 @@ import androidx.core.os.bundleOf
 import androidx.navigation.NavDeepLinkBuilder
 import com.east.navigation.R
 
-class MainActivity : AppCompatActivity() {
+class BasicActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_basic)
 
 
         val pendingIntent = NavDeepLinkBuilder(this)

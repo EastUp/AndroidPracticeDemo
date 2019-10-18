@@ -88,7 +88,7 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
         Log.d(TAG, "onDestroyView")
 
-        val navController = Navigation.findNavController(activity!!, R.id.nav_host_home)
+//        val navController = Navigation.findNavController(activity!!, R.id.nav_host_home)
     }
 
     override fun onDestroy() {

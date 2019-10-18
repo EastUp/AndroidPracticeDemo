@@ -381,7 +381,7 @@ abstract class AppDatabase : RoomDatabase() {
 ###2.Data Access Objects（DAOs）
 DAOs是数据库访问的抽象层。  
 `Dao`可以是一个接口也可以是一个抽象类。如果是抽象类，那么它可以接受一个`RoomDatabase`作为构造器的唯一参数。  
-Room不允许在主线程中防伪数据库，除非在builder里面调用`allowMainThreadQueries()` 。因为访问数据库是耗时的，可能阻塞主线程，引起UI卡顿。
+Room不允许在主线程中访问数据库，除非在builder里面调用`allowMainThreadQueries()` 。因为访问数据库是耗时的，可能阻塞主线程，引起UI卡顿。
 
 ####2.1 Insert
 使用 @Insert注解的方法，Room将会生成插入的代码。
