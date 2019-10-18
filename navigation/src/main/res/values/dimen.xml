@@ -6,7 +6,7 @@
     <dimen name="test_area_padding">10dp</dimen>
     <dimen name="card_vertical_margin">8dp</dimen>
 
-    <!--文字的大小不会改变-->
+    <!--BottomNavigationView文字的大小不会改变-->
     <dimen name="design_bottom_navigation_text_size" tools:override="true">12sp</dimen>
     <dimen name="design_bottom_navigation_active_text_size" tools:override="true">12sp</dimen>
 </resources>

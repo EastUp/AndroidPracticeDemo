@@ -32,7 +32,8 @@ class BottomViewActivity : AppCompatActivity() {
         val navController = findNavController(R.id.nav_host_bottom)
 
         bottomview.setupWithNavController(navController)
-//        BottomNavigationViewUtil.disableShiftMode(bottomview)
+
+//        BottomNavigationViewUtil.setImageSize(bottomview,20,20)
 
         //actionbar跟navigation的联动在fragment里面
 

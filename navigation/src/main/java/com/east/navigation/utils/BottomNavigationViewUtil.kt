@@ -5,8 +5,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationMenuView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import android.annotation.SuppressLint
 import android.util.Log
-import android.widget.TextView
 import com.google.android.material.bottomnavigation.LabelVisibilityMode
+import android.view.View
+import com.east.navigation.R
 
 
 /**
@@ -24,6 +25,7 @@ object BottomNavigationViewUtil {
      * @param view
      */
     @SuppressLint("RestrictedApi")
+    @Deprecated(level = DeprecationLevel.WARNING,message = "在xml中可以使用 app:itemHorizontalTranslationEnabled=\"false\"代替")
     fun disableShiftMode(view: BottomNavigationView) {
         val menuView = view.getChildAt(0) as BottomNavigationMenuView
         try {
@@ -35,6 +37,28 @@ object BottomNavigationViewUtil {
         } catch (e: Exception) {
             Log.e("NavigationView", "Unable to get shift mode field", e)
         }
+    }
+
+    /**
+     * 设置图片尺寸
+     * @param view
+     * @param width
+     * @param height
+     */
+    fun setImageSize(view: BottomNavigationView, width: Int, height: Int) {
+        val menuView = view.getChildAt(0) as BottomNavigationMenuView
+        try {
+            for (i in 0 until menuView.childCount) {
+                val item = menuView.getChildAt(i) as BottomNavigationItemView
+                val imageView = item.findViewById<View>(com.google.android.material.R.id.icon)
+                imageView.layoutParams.width = width
+                imageView.layoutParams.height = height
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
 
     }
+
+
 }
