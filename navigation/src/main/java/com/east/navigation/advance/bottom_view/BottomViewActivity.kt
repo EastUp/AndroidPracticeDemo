@@ -1,18 +1,11 @@
 package com.east.navigation.advance.bottom_view
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.east.navigation.R
-import com.east.navigation.utils.BottomNavigationViewUtil
-import com.east.navigation.utils.StatusBarUtil
+import com.east.navigation.utils.status.StatusBarUtil
 import kotlinx.android.synthetic.main.activity_bottom_view.*
 
 class BottomViewActivity : AppCompatActivity() {
@@ -23,7 +16,7 @@ class BottomViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_bottom_view)
 
 
-        StatusBarUtil.setRootViewFitsSystemWindows(this,true);
+        StatusBarUtil.setRootViewFitsSystemWindows(this,true)
         //设置沉浸式状态栏
         StatusBarUtil.setTranslucentStatus(this)
 //        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
