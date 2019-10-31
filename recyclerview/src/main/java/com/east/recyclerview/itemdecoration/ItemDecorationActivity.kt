@@ -37,8 +37,9 @@ class ItemDecorationActivity : AppCompatActivity() {
         rv.addItemDecoration(RecyclerViewItemDecoration.Builder(this)
             .mode(RecyclerViewItemDecoration.MODE_GRID)
 //            .drawableID(R.mipmap.ic_launcher_round)
-//            .dashGap(30)
-//            .dashWidth(10)
+            .dashGap(30)
+            .dashWidth(10)
+            .gridBorderVisible(true)
             .thickness(DisplayUtil.dip2px(this,2f))
             .create())
 

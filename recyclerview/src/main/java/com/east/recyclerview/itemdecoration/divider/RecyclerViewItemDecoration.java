@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.regex.Pattern;
 
 /**
- * 应该是最万能的分割线了
+ * 应该是最万能的分割线了(如果设置gridborder为true则一定在recycleview中paddingTop和paddingLeft:thickness的值)
  * 下面有调用方式
  *
  * @author eastrise
@@ -30,7 +30,8 @@ import java.util.regex.Pattern;
         .mode(RecyclerViewItemDecoration.MODE_GRID)
         // .dashWidth(8)
         //  .dashGap(5)
-        .thickness(1)
+        .gridBorderVisible(true)  //一定在recycleview中paddingTop和paddingLeft:thickness的值
+        .thickness(DisplayUtil.dip2px(this,2f))
         //.drawableID(R.color.line3)
         .create());*/
 public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
@@ -152,6 +153,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
         this.mPaddingEnd = params.paddingEnd;
         this.mFirstLineVisible = params.firstLineVisible;
         this.mLastLineVisible = params.lastLineVisible;
+        this.mGridBorderVisible = params.gridBorderVisible;
 
         this.mBmp = BitmapFactory.decodeResource(context.getResources(), mDrawableRid);
         if (mBmp != null) {
@@ -479,11 +481,11 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
                             mNinePatch.draw(c, rect1);
 
                             //vertical
-                            Rect rect3 = new Rect(childView.getLeft()-mBmp.getWidth(), childView.getTop() - mBmp.getWidth(), childView.getLeft(), myY+mBmp.getWidth());
+                            Rect rect3 = new Rect(childView.getLeft()-mBmp.getWidth(), childView.getTop() - mBmp.getHeight(), childView.getLeft(), myY+mBmp.getHeight());
                             mNinePatch.draw(c, rect3);
                             if(isLastGridColumn(i, columnSize)){
                                 //vertical
-                                Rect rect4 = new Rect(myX, childView.getTop() - mBmp.getWidth(), myX + mBmp.getWidth(), myY+mBmp.getWidth());
+                                Rect rect4 = new Rect(myX, childView.getTop() - mBmp.getHeight(), myX + mBmp.getWidth(), myY+mBmp.getHeight());
                                 mNinePatch.draw(c, rect4);
                             }
                         }else{
@@ -492,13 +494,17 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
                             mNinePatch.draw(c, rect);
 
                             //vertical
-                            Rect rect3 = new Rect(childView.getLeft()-mBmp.getWidth(), childView.getTop() - mBmp.getWidth(), childView.getLeft(), myY);
+                            Rect rect3 = new Rect(childView.getLeft()-mBmp.getWidth(), childView.getTop() - mBmp.getHeight(), childView.getLeft(), myY);
                             mNinePatch.draw(c, rect3);
+                            if(isLastGridColumn(i, columnSize)){
+                                //vertical
+                                Rect rect4 = new Rect(myX, childView.getTop() - mBmp.getHeight(), myX + mBmp.getWidth(), myY+mBmp.getHeight());
+                                mNinePatch.draw(c, rect4);
+                            }
                         }
                     }
                 }
             } else {
-
                 for (int i = 0; i < childrentCount; i++) {
                     View childView = parent.getChildAt(i);
                     int myX = childView.getRight();
@@ -517,23 +523,29 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
                         if (!isLastGridColumn(i, columnSize)) {
                             c.drawBitmap(mBmp, myX, childView.getTop(), mPaint);
                         }
-                    }else{
+                    }else{//需要边框
                         if (isLastRowGrid(i, adapterChildrenCount, columnSize)) {
                             //horizonal
-                            Rect rect1 = new Rect(0, myY, myX, myY + mBmp.getHeight());
-                            mNinePatch.draw(c, rect1);
+                            c.drawBitmap(mBmp, childView.getLeft(), childView.getTop()-mBmp.getHeight(), mPaint);
+                            //horizonal
+                            c.drawBitmap(mBmp, childView.getLeft(), myY, mPaint);
 
                             //vertical
-                            Rect rect3 = new Rect(myX, childView.getTop() - mBmp.getWidth(), myX + mBmp.getWidth(), myY+mBmp.getWidth());
-                            mNinePatch.draw(c, rect3);
+                            c.drawBitmap(mBmp, childView.getLeft()-mBmp.getWidth(), childView.getTop()-mBmp.getHeight(), mPaint);
+                            if(isLastGridColumn(i, columnSize)){
+                                //vertical
+                                c.drawBitmap(mBmp, myX+mBmp.getWidth(), childView.getTop()-mBmp.getHeight(), mPaint);
+                            }
                         }else{
                             //horizonal
-                            Rect rect = new Rect(0, childView.getTop()-mBmp.getHeight(), myX,childView.getTop());
-                            mNinePatch.draw(c, rect);
+                            c.drawBitmap(mBmp, childView.getLeft(), childView.getTop()-mBmp.getHeight(), mPaint);
 
                             //vertical
-                            Rect rect3 = new Rect(myX, childView.getTop() - mBmp.getWidth(), myX + mBmp.getWidth(), myY);
-                            mNinePatch.draw(c, rect3);
+                            c.drawBitmap(mBmp, childView.getLeft()-mBmp.getWidth(), childView.getTop()-mBmp.getHeight(), mPaint);
+                            if(isLastGridColumn(i, columnSize)){
+                                //vertical
+                                c.drawBitmap(mBmp, myX+mBmp.getWidth(), childView.getTop()-mBmp.getHeight(), mPaint);
+                            }
                         }
                     }
                 }
@@ -545,22 +557,48 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
                 int myX = childView.getRight() + mThickness / 2;
                 int myY = childView.getBottom() + mThickness / 2;
 
-                //horizonal
-                if (!isLastRowGrid(i, adapterChildrenCount, columnSize)) {
-                    c.drawLine(childView.getLeft(), myY, childView.getRight(), myY, mPaint);
-                }
+                /**
+                 *  没有边框的
+                 */
+                if(!mGridBorderVisible){
+                    //horizonal
+                    if (!isLastRowGrid(i, adapterChildrenCount, columnSize)) {
+                        c.drawLine(childView.getLeft(), myY, childView.getRight(), myY, mPaint);
+                    }
 
-                //vertical
-                if (isLastRowGrid(i, adapterChildrenCount, columnSize)
-                        && !isLastGridColumn(i, columnSize)) {
-                    c.drawLine(myX, childView.getTop(), myX, childView.getBottom(), mPaint);
-                } else if (!isLastGridColumn(i, columnSize)) {
-                    c.drawLine(myX, childView.getTop(), myX, childView.getBottom() + mThickness, mPaint);
-                }
+                    //vertical
+                    if (isLastRowGrid(i, adapterChildrenCount, columnSize)
+                            && !isLastGridColumn(i, columnSize)) {
+                        c.drawLine(myX, childView.getTop(), myX, childView.getBottom(), mPaint);
+                    } else if (!isLastGridColumn(i, columnSize)) {
+                        c.drawLine(myX, childView.getTop(), myX, childView.getBottom() + mThickness, mPaint);
+                    }
+                }else{//有边框
+                    if (isLastRowGrid(i, adapterChildrenCount, columnSize)) {
+                        //horizonal
+                        c.drawLine(childView.getLeft(), childView.getTop() - mThickness / 2, childView.getRight(), childView.getTop() - mThickness / 2, mPaint);
+                        //horizonal
+                        c.drawLine(childView.getLeft(), myY, childView.getRight(), myY, mPaint);
 
+                        //vertical
+                        c.drawLine(childView.getLeft() - mThickness / 2, childView.getTop()-mThickness, childView.getLeft() - mThickness / 2, childView.getBottom()+mThickness, mPaint);
+                        if(isLastGridColumn(i, columnSize)){
+                            //vertical
+                            c.drawLine(myX, childView.getTop()-mThickness, myX, childView.getBottom()+mThickness, mPaint);
+                        }
+                    }else{
+                        //horizonal
+                        c.drawLine(childView.getLeft(), childView.getTop() - mThickness / 2, childView.getRight(), childView.getTop() - mThickness / 2, mPaint);
+
+                        //vertical
+                        c.drawLine(childView.getLeft() - mThickness / 2, childView.getTop()-mThickness, childView.getLeft() - mThickness / 2, childView.getBottom(), mPaint);
+                        if(isLastGridColumn(i, columnSize)){
+                            //vertical
+                            c.drawLine(myX, childView.getTop()-mThickness, myX, childView.getBottom(), mPaint);
+                        }
+                    }
+                }
             }
-
-
         } else {
             PathEffect effects = new DashPathEffect(new float[]{0, 0, mDashWidth, mThickness}, mDashGap);
             mPaint.setPathEffect(effects);
@@ -569,26 +607,76 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
                 int myX = childView.getRight() + mThickness / 2;
                 int myY = childView.getBottom() + mThickness / 2;
 
-                //horizonal
-                if (!isLastRowGrid(i, adapterChildrenCount, columnSize)) {
-                    Path path = new Path();
-                    path.moveTo(0, myY);
-                    path.lineTo(childView.getRight(), myY);
-                    c.drawPath(path, mPaint);
-                }
+                /**
+                 *  没有边框的
+                 */
+                if(!mGridBorderVisible){
+                    //horizonal
+                    if (!isLastRowGrid(i, adapterChildrenCount, columnSize)) {
+                        Path path = new Path();
+                        path.moveTo(0, myY);
+                        path.lineTo(childView.getRight(), myY);
+                        c.drawPath(path, mPaint);
+                    }
 
-                //vertical
-                if (isLastRowGrid(i, adapterChildrenCount, columnSize)
-                        && !isLastGridColumn(i, columnSize)) {
-                    Path path = new Path();
-                    path.moveTo(myX, childView.getTop());
-                    path.lineTo(myX, childView.getBottom());
-                    c.drawPath(path, mPaint);
-                } else if (!isLastGridColumn(i, columnSize)) {
-                    Path path = new Path();
-                    path.moveTo(myX, childView.getTop());
-                    path.lineTo(myX, childView.getBottom() + mThickness);
-                    c.drawPath(path, mPaint);
+                    //vertical
+                    if (isLastRowGrid(i, adapterChildrenCount, columnSize)
+                            && !isLastGridColumn(i, columnSize)) {
+                        Path path = new Path();
+                        path.moveTo(myX, childView.getTop());
+                        path.lineTo(myX, childView.getBottom());
+                        c.drawPath(path, mPaint);
+                    } else if (!isLastGridColumn(i, columnSize)) {
+                        Path path = new Path();
+                        path.moveTo(myX, childView.getTop());
+                        path.lineTo(myX, childView.getBottom() + mThickness);
+                        c.drawPath(path, mPaint);
+                    }
+                }else{//有边框
+                    if (isLastRowGrid(i, adapterChildrenCount, columnSize)) {
+                        //horizonal
+                        Path path = new Path();
+                        path.moveTo(childView.getLeft(), childView.getTop() - mThickness / 2);
+                        path.lineTo(childView.getRight(), childView.getTop() - mThickness / 2);
+                        c.drawPath(path, mPaint);
+                        //horizonal
+                        Path path1 = new Path();
+                        path1.moveTo(childView.getLeft(), myY);
+                        path1.lineTo(childView.getRight(), myY);
+                        c.drawPath(path1, mPaint);
+
+                        //vertical
+                        Path path2 = new Path();
+                        path2.moveTo(childView.getLeft()- mThickness / 2, childView.getTop()-mThickness);
+                        path2.lineTo(childView.getLeft()- mThickness / 2, childView.getBottom()+mThickness);
+                        c.drawPath(path2, mPaint);
+                        if(isLastGridColumn(i, columnSize)){
+                            //vertical
+                            Path path3 = new Path();
+                            path3.moveTo(myX, childView.getTop()-mThickness);
+                            path3.lineTo(myX, childView.getBottom()+mThickness);
+                            c.drawPath(path3, mPaint);
+                        }
+                    }else{
+                        //horizonal
+                        Path path = new Path();
+                        path.moveTo(childView.getLeft(), childView.getTop() - mThickness / 2);
+                        path.lineTo(childView.getRight(), childView.getTop() - mThickness / 2);
+                        c.drawPath(path, mPaint);
+
+                        //vertical
+                        Path path1 = new Path();
+                        path1.moveTo(childView.getLeft()- mThickness / 2, childView.getTop()-mThickness);
+                        path1.lineTo(childView.getLeft()- mThickness / 2, childView.getBottom());
+                        c.drawPath(path1, mPaint);
+                        if(isLastGridColumn(i, columnSize)){
+                            //vertical
+                            Path path2 = new Path();
+                            path2.moveTo(myX, childView.getTop()-mThickness);
+                            path2.lineTo(myX, childView.getBottom());
+                            c.drawPath(path2, mPaint);
+                        }
+                    }
                 }
 
             }
@@ -686,6 +774,10 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
             params.firstLineVisible = visible;
             return this;
         }
+        public Builder gridBorderVisible(boolean visible) {
+            params.gridBorderVisible = visible;
+            return this;
+        }
 
         public Builder paddingStart(int padding) {
             params.paddingStart = padding;
@@ -708,6 +800,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
         public int dashGap = 0;
         public boolean lastLineVisible;
         public boolean firstLineVisible;
+        public boolean gridBorderVisible;
         public int paddingStart;
         public int paddingEnd;
     }

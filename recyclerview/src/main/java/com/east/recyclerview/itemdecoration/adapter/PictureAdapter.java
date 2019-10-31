@@ -43,7 +43,7 @@ public class PictureAdapter extends RecyclerView.Adapter<PictureAdapter.PictureV
             return 0;
         }
         return picList.size();*/
-        return 20;
+        return 8;
     }
 
     static class PictureViewHolder extends RecyclerView.ViewHolder {
