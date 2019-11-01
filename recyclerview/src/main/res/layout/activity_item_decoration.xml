@@ -11,14 +11,13 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:paddingTop="2dp"
-        android:paddingLeft="2dp"
         android:requiresFadingEdge="vertical"
         android:fadingEdgeLength="200dp"
+        android:paddingRight="5dp"
         android:overScrollMode="always"
         android:scrollbars="vertical"
         android:scrollbarThumbVertical="@drawable/my_bar"
-        android:layout_width="206dp"
-        android:layout_height="410dp"/>
+        android:layout_width="320dp"
+        android:layout_height="320dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

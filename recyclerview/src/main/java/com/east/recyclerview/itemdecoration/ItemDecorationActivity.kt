@@ -3,6 +3,7 @@ package com.east.recyclerview.itemdecoration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.east.recyclerview.R
 import com.east.recyclerview.itemdecoration.adapter.PictureAdapter
 import com.east.recyclerview.itemdecoration.divider.RecyclerViewItemDecoration
@@ -22,7 +23,7 @@ class ItemDecorationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_decoration)
 
-        var layoutmanager = GridLayoutManager(this,2,GridLayoutManager.VERTICAL,false)
+        var layoutmanager = GridLayoutManager(this,3,GridLayoutManager.VERTICAL,false)
 //        layoutmanager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
 //            override fun getSpanSize(position: Int): Int {
 //                //如果是第一个item 则它占2个位置
@@ -33,14 +34,18 @@ class ItemDecorationActivity : AppCompatActivity() {
 //        }
 
         rv.layoutManager = layoutmanager
+//        rv.layoutManager = LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false)
         rv.adapter = PictureAdapter()
         rv.addItemDecoration(RecyclerViewItemDecoration.Builder(this)
             .mode(RecyclerViewItemDecoration.MODE_GRID)
+//            .mode(RecyclerViewItemDecoration.MODE_HORIZONTAL)
 //            .drawableID(R.mipmap.ic_launcher_round)
-            .dashGap(30)
-            .dashWidth(10)
+//            .dashGap(30)
+//            .dashWidth(10)
             .gridBorderVisible(true)
-            .thickness(DisplayUtil.dip2px(this,2f))
+//            .firstLineVisible(true)
+//            .lastLineVisible(true)
+            .thickness(DisplayUtil.dip2px(this,5f))
             .create())
 
 

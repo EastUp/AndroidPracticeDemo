@@ -20,8 +20,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.regex.Pattern;
 
 /**
- * 应该是最万能的分割线了(如果设置gridborder为true则一定在recycleview中paddingTop和paddingLeft:thickness的值)
+ * 应该是最万能的分割线了
  * 下面有调用方式
+ * 注意: 1 如果设置gridborder为true则一定在recycleview中paddingRight:thickness的值
  *
  * @author eastrise
  * @date 2018/5/27
@@ -63,7 +64,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
      * decoration thickness
      * 分割线的厚度
      */
-    private int mThickness;
+    private float mThickness;
     /**
      * decoration dash withd
      * 分割线虚线宽度
@@ -91,7 +92,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
     /**
      * choose the real thickness for image or thickness
      */
-    private int mCurrentThickness;
+    private float mCurrentThickness;
     /**
      * sign for if the resource image is a ninepatch image
      */
@@ -115,7 +116,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
     }
 
     @Deprecated
-    public RecyclerViewItemDecoration(int recyclerviewMode, int color, int thick, int dashWidth, int dashGap) {
+    public RecyclerViewItemDecoration(int recyclerviewMode, int color, float thick, int dashWidth, int dashGap) {
         this.mMode = recyclerviewMode;
         this.mColor = color;
         this.mThickness = thick;
@@ -202,17 +203,17 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
             if (!(!mLastLineVisible &&
                     parent.getChildLayoutPosition(view) == parent.getAdapter().getItemCount() - 1)) {
                 if (mDrawableRid != 0) {
-                    outRect.set(0, 0, 0, mCurrentThickness);
+                    outRect.set(0, 0, 0, (int)mCurrentThickness);
                 } else {
-                    outRect.set(0, 0, 0, mThickness);
+                    outRect.set(0, 0, 0, (int)mThickness);
                 }
             }
 
             if (mFirstLineVisible && parent.getChildLayoutPosition(view) == 0) {
                 if (mDrawableRid != 0) {
-                    outRect.set(0, mCurrentThickness, 0, mCurrentThickness);
+                    outRect.set(0, (int)mCurrentThickness, 0, (int)mCurrentThickness);
                 } else {
-                    outRect.set(0, mThickness, 0, mThickness);
+                    outRect.set(0, (int)mThickness, 0, (int)mThickness);
                 }
             }
 
@@ -220,45 +221,72 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
             if (!(!mLastLineVisible &&
                     parent.getChildLayoutPosition(view) == parent.getAdapter().getItemCount() - 1)) {
                 if (mDrawableRid != 0) {
-                    outRect.set(0, 0, mCurrentThickness, 0);
+                    outRect.set(0, 0, (int)mCurrentThickness, 0);
                 } else {
-                    outRect.set(0, 0, mThickness, 0);
+                    outRect.set(0, 0, (int)mThickness, 0);
                 }
             }
             if (mFirstLineVisible && parent.getChildLayoutPosition(view) == 0) {
                 if (mDrawableRid != 0) {
-                    outRect.set(mCurrentThickness, 0, mCurrentThickness, 0);
+                    outRect.set((int)mCurrentThickness, 0, (int)mCurrentThickness, 0);
                 } else {
-                    outRect.set(mThickness, 0, mThickness, 0);
+                    outRect.set((int)mThickness, 0, (int)mThickness, 0);
                 }
             }
 
         } else if (mMode == MODE_GRID) {
             int columnSize = ((GridLayoutManager) parent.getLayoutManager()).getSpanCount();
             int itemSzie = parent.getAdapter().getItemCount();
-            if (mDrawableRid != 0) {
-                if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)
-                        && isLastGridColumn(parent.getChildLayoutPosition(view), columnSize)) {
-                    outRect.set(0, 0, 0, 0);
-                } else if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)) {
-                    outRect.set(0, 0, mBmp.getWidth(), 0);
-                } else if ((parent.getChildLayoutPosition(view) + 1) % columnSize != 0) {
-                    outRect.set(0, 0, mBmp.getWidth(), mBmp.getHeight());
+            if(!mGridBorderVisible){//没有边框
+                if (mDrawableRid != 0) {
+                    if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)
+                            && isLastGridColumn(parent.getChildLayoutPosition(view), columnSize)) {
+                        outRect.set(0, 0, 0, 0);
+                    } else if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)) {
+                        outRect.set(0, 0, mBmp.getWidth(), 0);
+                    } else if ((parent.getChildLayoutPosition(view) + 1) % columnSize != 0) {
+                        outRect.set(0, 0, mBmp.getWidth(), mBmp.getHeight());
+                    } else {
+                        outRect.set(0, 0, 0, mBmp.getHeight());
+                    }
                 } else {
-                    outRect.set(0, 0, 0, mBmp.getHeight());
-                }
-            } else {
-                if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)
-                        && isLastGridColumn(parent.getChildLayoutPosition(view), columnSize)) {
-                    outRect.set(0, 0, 0, 0);
-                } else if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)) {
-                    outRect.set(0, 0, mThickness, 0);
-                } else if ((parent.getChildLayoutPosition(view) + 1) % columnSize != 0) {
-                    outRect.set(0, 0, mThickness, mThickness);
-                } else {
-                    outRect.set(0, 0, 0, mThickness);
-                }
+                    if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)
+                            && isLastGridColumn(parent.getChildLayoutPosition(view), columnSize)) {
+                        outRect.set(0, 0, 0, 0);
+                    } else if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)) {
+                        outRect.set(0, 0, (int)mThickness, 0);
+                    } else if ((parent.getChildLayoutPosition(view) + 1) % columnSize != 0) {
+                        outRect.set(0, 0, (int)mThickness, (int)mThickness);
+                    } else {
+                        outRect.set(0, 0, 0, (int)mThickness);
+                    }
 
+                }
+            }else{//有边框
+                if (mDrawableRid != 0) {
+                    if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)
+                            && isLastGridColumn(parent.getChildLayoutPosition(view), columnSize)) {
+                        outRect.set(mBmp.getWidth(), mBmp.getHeight(), mBmp.getWidth(), mBmp.getHeight());
+                    } else if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)) {
+                        outRect.set(mBmp.getWidth(), mBmp.getHeight(), 0, mBmp.getHeight());
+                    } else if (isLastGridColumn(parent.getChildLayoutPosition(view), columnSize)) {
+                        outRect.set(mBmp.getWidth(), mBmp.getHeight(), mBmp.getWidth(), 0);
+                    } else {
+                        outRect.set(mBmp.getWidth(), mBmp.getHeight(),0, 0);
+                    }
+                } else {
+                    if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)
+                            && isLastGridColumn(parent.getChildLayoutPosition(view), columnSize)) {
+                        outRect.set((int)mThickness, (int)mThickness, (int)mThickness, (int)mThickness);
+                    } else if (isLastRowGrid(parent.getChildLayoutPosition(view), itemSzie, columnSize)) {
+                        outRect.set((int)mThickness, (int)mThickness, 0, (int)mThickness);
+                    } else if (isLastGridColumn(parent.getChildLayoutPosition(view), columnSize)) {
+                        outRect.set((int)mThickness, (int)mThickness,  (int)mThickness, 0);
+                    } else {
+                        outRect.set((int)mThickness, (int)mThickness, 0, 0);
+                    }
+
+                }
             }
         }
 
@@ -296,7 +324,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
                 int myY = childView.getTop();
 
                 if (hasNinePatch) {
-                    Rect rect = new Rect(mPaddingStart, myY - mCurrentThickness, parent.getWidth() - mPaddingEnd, myY);
+                    Rect rect = new Rect(mPaddingStart, myY - (int)mCurrentThickness, parent.getWidth() - mPaddingEnd, myY);
                     mNinePatch.draw(c, rect);
                 } else {
                     c.drawBitmap(mBmp, mPaddingStart, myY - mCurrentThickness, mPaint);
@@ -310,7 +338,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
                 int myY = childView.getBottom();
 
                 if (hasNinePatch) {
-                    Rect rect = new Rect(mPaddingStart, myY, parent.getWidth() - mPaddingEnd, myY + mCurrentThickness);
+                    Rect rect = new Rect(mPaddingStart, myY, parent.getWidth() - mPaddingEnd, myY + (int)mCurrentThickness);
                     mNinePatch.draw(c, rect);
                 } else {
                     c.drawBitmap(mBmp, mPaddingStart, myY, mPaint);
@@ -328,7 +356,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
 
             if (mFirstLineVisible) {
                 View childView = parent.getChildAt(0);
-                int myY = childView.getTop() - mThickness / 2;
+                float myY = childView.getTop() - mThickness / 2;
 
                 if (isPureLine) {
                     c.drawLine(mPaddingStart, myY, parent.getWidth() - mPaddingEnd, myY, mPaint);
@@ -344,7 +372,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
                 if (!mLastLineVisible && i == childrentCount - 1)
                     break;
                 View childView = parent.getChildAt(i);
-                int myY = childView.getBottom() + mThickness / 2;
+                float myY = childView.getBottom() + mThickness / 2;
 
                 if (isPureLine) {
                     c.drawLine(mPaddingStart, myY, parent.getWidth() - mPaddingEnd, myY, mPaint);
@@ -374,7 +402,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
                 View childView = parent.getChildAt(0);
                 int myX = childView.getLeft();
                 if (hasNinePatch) {
-                    Rect rect = new Rect(myX - mCurrentThickness, mPaddingStart, myX, parent.getHeight() - mPaddingEnd);
+                    Rect rect = new Rect(myX - (int)mCurrentThickness, mPaddingStart, myX, parent.getHeight() - mPaddingEnd);
                     mNinePatch.draw(c, rect);
                 } else {
                     c.drawBitmap(mBmp, myX - mCurrentThickness, mPaddingStart, mPaint);
@@ -386,7 +414,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
                 View childView = parent.getChildAt(i);
                 int myX = childView.getRight();
                 if (hasNinePatch) {
-                    Rect rect = new Rect(myX, mPaddingStart, myX + mCurrentThickness, parent.getHeight() - mPaddingEnd);
+                    Rect rect = new Rect(myX, mPaddingStart, myX + (int)mCurrentThickness, parent.getHeight() - mPaddingEnd);
                     mNinePatch.draw(c, rect);
                 } else {
                     c.drawBitmap(mBmp, myX, mPaddingStart, mPaint);
@@ -403,7 +431,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
 
             if (mFirstLineVisible) {
                 View childView = parent.getChildAt(0);
-                int myX = childView.getLeft() - mThickness / 2;
+                float myX = childView.getLeft() - mThickness / 2;
                 if (isPureLine) {
                     c.drawLine(myX, mPaddingStart, myX, parent.getHeight() - mPaddingEnd, mPaint);
                 } else {
@@ -418,7 +446,7 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
                 if (!mLastLineVisible && i == childrentCount - 1)
                     break;
                 View childView = parent.getChildAt(i);
-                int myX = childView.getRight() + mThickness / 2;
+                float myX = childView.getRight() + mThickness / 2;
                 if (isPureLine) {
                     c.drawLine(myX, mPaddingStart, myX, parent.getHeight() - mPaddingEnd, mPaint);
                 } else {
@@ -554,8 +582,8 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
 
             for (int i = 0; i < childrentCount; i++) {
                 View childView = parent.getChildAt(i);
-                int myX = childView.getRight() + mThickness / 2;
-                int myY = childView.getBottom() + mThickness / 2;
+                float myX = childView.getRight() + mThickness / 2;
+                float myY = childView.getBottom() + mThickness / 2;
 
                 /**
                  *  没有边框的
@@ -604,8 +632,8 @@ public class RecyclerViewItemDecoration extends RecyclerView.ItemDecoration {
             mPaint.setPathEffect(effects);
             for (int i = 0; i < childrentCount; i++) {
                 View childView = parent.getChildAt(i);
-                int myX = childView.getRight() + mThickness / 2;
-                int myY = childView.getBottom() + mThickness / 2;
+                float myX = childView.getRight() + mThickness / 2;
+                float myY = childView.getBottom() + mThickness / 2;
 
                 /**
                  *  没有边框的
