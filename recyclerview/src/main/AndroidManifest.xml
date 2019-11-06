@@ -9,10 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name="com.east.recyclerview.itemdecoration.ItemDecorationActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name=".swap.SwapActivity"></activity>
+        <activity android:name=".itemanimator.ItemAnimatorActivity" />
         <activity
-            android:name="com.east.recyclerview.MainActivity"
+            android:name=".itemdecoration.ItemDecorationActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

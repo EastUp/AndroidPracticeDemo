@@ -48,6 +48,8 @@ class ItemDecorationActivity : AppCompatActivity() {
             .thickness(DisplayUtil.dip2px(this,5f))
             .create())
 
+        //当item的布局固定是,可以进行一定得优化
+        rv.setHasFixedSize(true)
 
     }
 }
