@@ -174,4 +174,231 @@
     OvershootInRight(OvershootInRightAnimator(1.0f)), //从右侧划入，并有1f的跳动
     OvershootInLeft(OvershootInLeftAnimator(1.0f))   //从左侧划入，并有1f的跳动
 ```
+## ItemTouchHelper(互换位置、滑动删除)
+**新建接口用于上下拖动，左右滑动**
+
+``` kotlin
+/**
+ * |---------------------------------------------------------------------------------------------------------------|
+ *  @description: 用于上下拖动时交换位置。以及左右滑动删除
+ *  @author: East
+ *  @date: 2019-11-05
+ * |---------------------------------------------------------------------------------------------------------------|
+ */
+interface OnItemCallbackListener {
+
+    /**
+     * @param fromPosition 起始位置
+     * @param toPosition 移动位置
+     */
+    fun onMove(fromPosition:Int, toPosition:Int)
+
+
+    //左滑
+    fun onSwipeLeft(position:Int)
+
+    //右滑
+    fun onSwipeRight(position: Int)
+}
+```
+**新建ItemTouchHelper实现类，上面创建的接口作为构造函数的参数**
+
+``` kotlin 
+/**
+ * |---------------------------------------------------------------------------------------------------------------|
+ *  @description: 作为ItemTouchHelper的构造参数传入,再调用ItemTouchHelper.attachToRecyclerView方法,使得他们可以拖拽
+ *  @author: East
+ *  @date: 2019-11-05
+ * |---------------------------------------------------------------------------------------------------------------|
+ */
+class DragItemTouchHelpCallback(private val onItemCallbackListener: OnItemCallbackListener): ItemTouchHelper.Callback() {
+    override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+        if(direction == ItemTouchHelper.END){
+            //item滑动方向为向右
+            onItemCallbackListener.onSwipeRight(viewHolder.adapterPosition)
+        }else if(direction == ItemTouchHelper.START){
+            //item滑动方向为向左
+            onItemCallbackListener.onSwipeLeft(viewHolder.adapterPosition)
+        }
+    }
+
+    override fun getMovementFlags(
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder
+    ): Int {
+        //设置为可上下拖拽
+        val dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN
+        //设置侧滑方向为左右
+        val swipeFlags = ItemTouchHelper.START or ItemTouchHelper.END
+        return makeMovementFlags(dragFlags,swipeFlags)
+    }
+
+    override fun onMove(
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
+        target: RecyclerView.ViewHolder
+    ): Boolean {
+        onItemCallbackListener.onMove(viewHolder.adapterPosition,target.adapterPosition)
+        return true
+    }
+
+    /**
+     *  是否长按拖拽
+     */
+    override fun isLongPressDragEnabled(): Boolean {
+        return true
+    }
+}
+```
+**Adapter实现创建的接口，在里面进行数据的操作**
+
+``` kotlin
+/**
+ * |---------------------------------------------------------------------------------------------------------------|
+ *  @description: 互换位置,滑动删除的Adapter
+ *  @author: East
+ *  @date: 2019-11-05
+ * |---------------------------------------------------------------------------------------------------------------|
+ */
+class SwapAdapter :RecyclerView.Adapter<SwapAdapter.ViewHolder>,OnItemCallbackListener{
+    private var picList: MutableList<String> ?= null
+    lateinit var onTouchListener: OnTouchListener
+    constructor()
+
+    constructor(picList: MutableList<String>,onTouchListener: OnTouchListener){
+        this.picList = picList
+        this.onTouchListener = onTouchListener
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(
+            R.layout.item_swap_rv,
+            parent, false
+        )
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.tv!!.text = picList!![position]
+
+        /**
+         * 在onBindViewHolder()方法中设置触摸监听，然后调用startDrag()方法进行移动。
+         */
+        holder.itemView.setOnTouchListener { v, event ->
+            onTouchListener.onTouchListener(holder)
+        }
+    }
+
+    override fun getItemCount(): Int {
+        if (picList.isNullOrEmpty()) {
+            return 0
+        }
+        return picList!!.size
+    }
+
+    class ViewHolder(private val mView: View) : RecyclerView.ViewHolder(mView) {
+        var tv: TextView? = null
+
+        init {
+            initView()
+        }
+
+        private fun initView() {
+            tv = mView.findViewById(R.id.tv)
+        }
+    }
+
+    override fun onMove(fromPosition: Int, toPosition: Int) {
+        /**
+         * 在这里进行给原数组数据的移动
+         * 第一个参数为数据源
+         */
+        Collections.swap(picList,fromPosition,toPosition)
+
+        /**
+         *  通知数据移动
+         */
+        notifyItemMoved(fromPosition,toPosition)
+    }
+
+    override fun onSwipeLeft(position: Int) {
+        /**
+         *  左滑删除
+         */
+        picList!!.removeAt(position)
+        notifyItemRemoved(position)
+        onTouchListener.onSwipeLeft()
+    }
+
+    override fun onSwipeRight(position: Int) {
+        //右滑删除
+        picList!!.removeAt(position)
+        notifyItemRemoved(position)
+        onTouchListener.onSwipeRight()
+    }
+
+
+    interface OnTouchListener{
+        fun onTouchListener(holder: ViewHolder):Boolean
+        fun onSwipeLeft()
+        fun onSwipeRight()
+    }
+}
+```
+
+**Activity中实现**
+
+``` kotlin
+/**
+ * |---------------------------------------------------------------------------------------------------------------|
+ *  @description:  不用长按拖动,左滑,右滑
+ *  @author: East
+ *  @date: 2019-11-06 17:45
+ * |---------------------------------------------------------------------------------------------------------------|
+ */
+class SwapActivity : AppCompatActivity() {
+
+    lateinit var itemTouchHelper : ItemTouchHelper
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_swap)
+
+        //添加分割线
+        rv.addItemDecoration(RecyclerViewItemDecoration.Builder(this)
+            .color("#ffffff")
+            .thickness(DisplayUtil.dip2px(this,2f))
+            .create())
+        var list = listOf<String>("1","2","3","4","5","6","7","8","9","10").toMutableList()
+        val adapter = SwapAdapter(list,object : SwapAdapter.OnTouchListener {
+            override fun onTouchListener(holder: SwapAdapter.ViewHolder): Boolean {
+                /**
+                 * 设置触摸监听，然后调用startDrag()方法进行移动。
+                 */
+//                itemTouchHelper.startDrag(holder)
+                return true
+            }
+
+            override fun onSwipeLeft() {
+                Toast.makeText(this@SwapActivity,"左滑",Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onSwipeRight() {
+                Toast.makeText(this@SwapActivity,"右滑",Toast.LENGTH_SHORT).show()
+            }
+        })
+        rv.adapter = adapter
+
+
+        //先实例化Callback
+        var dragItemTouchHelpCallback =  DragItemTouchHelpCallback(adapter)
+        //用Callback构造ItemtouchHelper
+        itemTouchHelper = ItemTouchHelper(dragItemTouchHelpCallback)
+        //调用ItemTouchHelper的attachToRecyclerView方法建立联系
+        itemTouchHelper.attachToRecyclerView(rv)
+//        itemTouchHelper.startDrag()
+
+    }
+}
+```
 	

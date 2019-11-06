@@ -9,7 +9,13 @@ import com.east.recyclerview.itemdecoration.divider.RecyclerViewItemDecoration
 import com.east.recyclerview.swap.adapter.SwapAdapter
 import com.east.recyclerview.utils.DisplayUtil
 import kotlinx.android.synthetic.main.activity_swap.*
-
+/**
+ * |---------------------------------------------------------------------------------------------------------------|
+ *  @description:  不用长按拖动,左滑,右滑
+ *  @author: East
+ *  @date: 2019-11-06 17:45
+ * |---------------------------------------------------------------------------------------------------------------|
+ */
 class SwapActivity : AppCompatActivity() {
 
     lateinit var itemTouchHelper : ItemTouchHelper
