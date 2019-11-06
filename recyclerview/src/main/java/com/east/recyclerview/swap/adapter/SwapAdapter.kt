@@ -20,12 +20,12 @@ import java.util.*
  */
 class SwapAdapter :RecyclerView.Adapter<SwapAdapter.ViewHolder>,OnItemCallbackListener{
     private var picList: MutableList<String> ?= null
-    lateinit var activity: Activity
+    lateinit var onTouchListener: OnTouchListener
     constructor()
 
-    constructor(activity:Activity,picList: MutableList<String>){
+    constructor(picList: MutableList<String>,onTouchListener: OnTouchListener){
         this.picList = picList
-        this.activity = activity
+        this.onTouchListener = onTouchListener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -38,10 +38,12 @@ class SwapAdapter :RecyclerView.Adapter<SwapAdapter.ViewHolder>,OnItemCallbackLi
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.tv!!.text = picList!![position]
+
+        /**
+         * 在onBindViewHolder()方法中设置触摸监听，然后调用startDrag()方法进行移动。
+         */
         holder.itemView.setOnTouchListener { v, event ->
-            val itemTouchHelper = (activity as SwapActivity).itemTouchHelper
-            itemTouchHelper.startDrag(holder)
-            true
+            onTouchListener.onTouchListener(holder)
         }
     }
 
@@ -64,7 +66,7 @@ class SwapAdapter :RecyclerView.Adapter<SwapAdapter.ViewHolder>,OnItemCallbackLi
         }
     }
 
-    override fun move(fromPosition: Int, toPosition: Int) {
+    override fun onMove(fromPosition: Int, toPosition: Int) {
         /**
          * 在这里进行给原数组数据的移动
          * 第一个参数为数据源
@@ -76,4 +78,31 @@ class SwapAdapter :RecyclerView.Adapter<SwapAdapter.ViewHolder>,OnItemCallbackLi
          */
         notifyItemMoved(fromPosition,toPosition)
     }
+
+    override fun onSwipeLeft(position: Int) {
+        /**
+         *  左滑删除
+         */
+        picList!!.removeAt(position)
+        notifyItemRemoved(position)
+        onTouchListener.onSwipeLeft()
+    }
+
+    override fun onSwipeRight(position: Int) {
+        //右滑删除
+        picList!!.removeAt(position)
+        notifyItemRemoved(position)
+        onTouchListener.onSwipeRight()
+    }
+
+
+
+    interface OnTouchListener{
+        fun onTouchListener(holder: ViewHolder):Boolean
+        fun onSwipeLeft()
+        fun onSwipeRight()
+    }
+
+
+
 }

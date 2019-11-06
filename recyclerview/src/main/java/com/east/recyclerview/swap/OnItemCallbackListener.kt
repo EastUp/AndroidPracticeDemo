@@ -13,5 +13,12 @@ interface OnItemCallbackListener {
      * @param fromPosition 起始位置
      * @param toPosition 移动位置
      */
-    fun move(fromPosition:Int,toPosition:Int)
+    fun onMove(fromPosition:Int, toPosition:Int)
+
+
+    //左滑
+    fun onSwipeLeft(position:Int)
+
+    //右滑
+    fun onSwipeRight(position: Int)
 }

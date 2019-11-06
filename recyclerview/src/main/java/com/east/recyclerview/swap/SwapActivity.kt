@@ -2,6 +2,7 @@ package com.east.recyclerview.swap
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.east.recyclerview.R
 import com.east.recyclerview.itemdecoration.divider.RecyclerViewItemDecoration
@@ -23,7 +24,23 @@ class SwapActivity : AppCompatActivity() {
             .thickness(DisplayUtil.dip2px(this,2f))
             .create())
         var list = listOf<String>("1","2","3","4","5","6","7","8","9","10").toMutableList()
-        val adapter = SwapAdapter(this,list)
+        val adapter = SwapAdapter(list,object : SwapAdapter.OnTouchListener {
+            override fun onTouchListener(holder: SwapAdapter.ViewHolder): Boolean {
+                /**
+                 * 设置触摸监听，然后调用startDrag()方法进行移动。
+                 */
+//                itemTouchHelper.startDrag(holder)
+                return true
+            }
+
+            override fun onSwipeLeft() {
+                Toast.makeText(this@SwapActivity,"左滑",Toast.LENGTH_SHORT).show()
+            }
+
+            override fun onSwipeRight() {
+                Toast.makeText(this@SwapActivity,"右滑",Toast.LENGTH_SHORT).show()
+            }
+        })
         rv.adapter = adapter
 
 

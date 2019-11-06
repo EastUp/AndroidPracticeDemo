@@ -12,7 +12,13 @@ import androidx.recyclerview.widget.RecyclerView
  */
 class DragItemTouchHelpCallback(private val onItemCallbackListener: OnItemCallbackListener): ItemTouchHelper.Callback() {
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-
+        if(direction == ItemTouchHelper.END){
+            //item滑动方向为向右
+            onItemCallbackListener.onSwipeRight(viewHolder.adapterPosition)
+        }else if(direction == ItemTouchHelper.START){
+            //item滑动方向为向左
+            onItemCallbackListener.onSwipeLeft(viewHolder.adapterPosition)
+        }
     }
 
     override fun getMovementFlags(
@@ -31,7 +37,7 @@ class DragItemTouchHelpCallback(private val onItemCallbackListener: OnItemCallba
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
-        onItemCallbackListener.move(viewHolder.adapterPosition,target.adapterPosition)
+        onItemCallbackListener.onMove(viewHolder.adapterPosition,target.adapterPosition)
         return true
     }
 
@@ -39,6 +45,6 @@ class DragItemTouchHelpCallback(private val onItemCallbackListener: OnItemCallba
      *  是否长按拖拽
      */
     override fun isLongPressDragEnabled(): Boolean {
-        return false
+        return true
     }
 }
