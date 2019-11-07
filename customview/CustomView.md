@@ -97,7 +97,11 @@ var dy = (fontMetricsInt.descent - fontMetricsInt.ascent)/2 - fontMetricsInt.des
 var baseLine = height/2+dy
 ```
 
+### 自定义View集成ViewGroup不显示的问题解决
 
+- 把onDraw()方法替换成dispatchDraw()
+- 设置透明背景
+- setwillNotDraw(false)
 
 
 
