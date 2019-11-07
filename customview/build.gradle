@@ -7,8 +7,8 @@ android {
 
 
     defaultConfig {
-        applicationId "com.east.recyclerview"
-        minSdkVersion 16
+        applicationId "com.east.customview"
+        minSdkVersion 15
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -34,6 +34,4 @@ dependencies {
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
-    implementation deps.material
-    implementation deps.thirdpart.recyclerview_animators
 }
