@@ -23,4 +23,22 @@
             <enum name="password" value="3"/>
         </attr>
     </declare-styleable>
+
+
+    <declare-styleable name="StepView">
+        <!-- 底部圆弧背景颜色 -->
+        <attr name="outerColor" format="reference|color"/>
+        <!-- 顶部圆弧背景颜色 -->
+        <attr name="innerColor" format="reference|color"/>
+        <!-- 圆弧的宽度 -->
+        <attr name="borderWidth" format="dimension"/>
+        <!-- 最大步数 -->
+        <attr name="stepMax" format="integer"/>
+        <!-- 已经走了的步数 -->
+        <attr name="stepProgress" format="integer"/>
+        <!-- 中间步数的文字颜色 -->
+        <attr name="stepTextColor" format="reference|color"/>
+        <!-- 中间步数的文字大小 -->
+        <attr name="stepTextSize" format="dimension"/>
+    </declare-styleable>
 </resources>
