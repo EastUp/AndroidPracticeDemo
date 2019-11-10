@@ -24,7 +24,7 @@
         </attr>
     </declare-styleable>
 
-
+    <!--仿QQ运动步数-->
     <declare-styleable name="StepView">
         <!-- 底部圆弧背景颜色 -->
         <attr name="outerColor" format="reference|color"/>
@@ -40,5 +40,11 @@
         <attr name="stepTextColor" format="reference|color"/>
         <!-- 中间步数的文字大小 -->
         <attr name="stepTextSize" format="dimension"/>
+    </declare-styleable>
+
+    <!--玩转变色字体-->
+    <declare-styleable name="ColorTrackTextView">
+        <attr name="originColor" format="reference|color"/>
+        <attr name="changeColor" format="reference|color"/>
     </declare-styleable>
 </resources>

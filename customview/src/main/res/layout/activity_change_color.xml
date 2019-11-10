@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".custom_changecolor.ChangeColorActivity">
+
+    <com.east.customview.custom_changecolor.widget.ColorTrackTextView
+        android:id="@+id/colortrackview"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="15sp"
+        app:originColor="@android:color/black"
+        android:text="HelloWord"
+        app:changeColor="@android:color/holo_red_dark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/left_to_right"
+        app:layout_constraintTop_toBottomOf="@id/colortrackview"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="左到右"
+        android:onClick="onClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/right_to_left"
+        app:layout_constraintTop_toBottomOf="@id/left_to_right"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="右到左"
+        android:onClick="onClick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
