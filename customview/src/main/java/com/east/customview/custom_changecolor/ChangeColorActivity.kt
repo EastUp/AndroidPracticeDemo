@@ -9,6 +9,13 @@ import com.east.customview.R
 import com.east.customview.custom_changecolor.widget.ColorTrackTextView
 import kotlinx.android.synthetic.main.activity_change_color.*
 
+/**
+ * |---------------------------------------------------------------------------------------------------------------|
+ *  @description:  玩转字体颜色
+ *  @author: East
+ *  @date: 2019-11-10 16:35
+ * |---------------------------------------------------------------------------------------------------------------|
+ */
 class ChangeColorActivity : AppCompatActivity() {
 
     lateinit var valueAnimator: ValueAnimator
@@ -19,7 +26,7 @@ class ChangeColorActivity : AppCompatActivity() {
 
         valueAnimator = ValueAnimator.ofFloat(0f,1f)
 
-        valueAnimator.duration = 1000
+        valueAnimator.duration = 2000
 
         valueAnimator.addUpdateListener {
             Log.d("value",it.animatedValue.toString())

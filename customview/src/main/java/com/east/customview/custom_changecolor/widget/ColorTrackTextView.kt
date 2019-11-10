@@ -31,7 +31,7 @@ class ColorTrackTextView @JvmOverloads constructor(
     // 1. 实现一个文字两种颜色 - 绘制变色字体的画笔
     private lateinit var mChangePaint:Paint
     // 1. 实现一个文字两种颜色 - 当前的进度
-    private var mCurrentProgress = 0.5f
+    private var mCurrentProgress = 0f
 
     // 2.实现不同朝向
     private var mDirection = Direction.LEFT_TO_RIGHT
@@ -109,6 +109,14 @@ class ColorTrackTextView @JvmOverloads constructor(
      */
     fun setDirection(direction:Direction){
         this.mDirection = direction
+    }
+
+    fun setChangeColor(color : Int){
+        mChangePaint.color = color
+    }
+
+    fun setOriginColor(color : Int){
+        mOriginPaint.color = color
     }
 
 
