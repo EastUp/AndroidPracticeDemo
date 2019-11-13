@@ -15,7 +15,10 @@ MeasureSpec.AT_MOST : 在布局中指定了wrap_content
 MeasureSpec.EXACTLY : 在不居中指定了确切的值  100dp   match_parent  fill_parent 
 MeasureSpec.UNSPECIFIED : 尽可能的大,很少能用到，ListView , ScrollView 在测量子布局的时候会用UNSPECIFIED 
 
-ScrollView + ListView 会显示不全问题，
+ScrollView + ListView 会显示不全问题  
+// 解决显示不全的问题  32值  
+heightMeasureSpec = MeasureSpec.makeMeasureSpec(  
+&emsp;&emsp;&emsp;&emsp;                Integer.MAX_VALUE >> 2,MeasureSpec.AT_MOST);
 
 widthMeasureSpec heightMeasureSpec :是一个32位的值,前两位表示模式,后30位表示的是值  
 

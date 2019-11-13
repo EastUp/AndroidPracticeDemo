@@ -4,10 +4,13 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.RatingBar
 import com.east.customview.custom_changecolor.ChangeColorActivity
 import com.east.customview.custom_changecolor.ViewPagerActivity
 import com.east.customview.custom_qqarc.QQArcActivity
+import com.east.customview.custom_ratingbar.CustomRatingBarActivity
 import com.east.customview.customtextview.CustomTextViewActivity
+import com.east.customview.practice_paint.PracticePaintActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +28,10 @@ class MainActivity : AppCompatActivity() {
             cutom_qqarc -> startActivity(Intent(this,QQArcActivity::class.java))
             //玩转字体变色
             custom_changeColor -> startActivity(Intent(this,ViewPagerActivity::class.java))
+            //画笔练习(炫酷进度条,仿58同城数据加载)
+            practice_paint -> startActivity(Intent(this,PracticePaintActivity::class.java))
+            //仿淘宝评价 RatingBar
+            custom_ratingbar -> startActivity(Intent(this,CustomRatingBarActivity::class.java))
         }
     }
 }

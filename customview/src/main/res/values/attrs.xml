@@ -47,4 +47,22 @@
         <attr name="originColor" format="reference|color"/>
         <attr name="changeColor" format="reference|color"/>
     </declare-styleable>
+
+    <!--炫酷进度条-->
+    <declare-styleable name="ProgressBar">
+        <attr name="innerCircleColor" format="reference|color"/>
+        <attr name="outerCircleColor" format="reference|color"/>
+        <attr name="progressBarBorderWidth" format="dimension"/>
+        <attr name="progressBarTextColor" format="reference|color"/>
+        <attr name="progressBarTextSize" format="dimension"/>
+        <attr name="progressBarProgress" format="float"/>
+        <attr name="progressBarMax" format="float"/>
+    </declare-styleable>
+
+    <declare-styleable name="RatingBar">
+        <attr name="starNormal" format="reference"/>
+        <attr name="starFocus" format="reference"/>
+        <attr name="starNumber" format="integer"/>
+        <attr name="ratingBarPadding" format="dimension"/>
+    </declare-styleable>
 </resources>
