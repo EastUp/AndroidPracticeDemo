@@ -59,10 +59,19 @@
         <attr name="progressBarMax" format="float"/>
     </declare-styleable>
 
+    <!-- 仿淘宝评价 -->
     <declare-styleable name="RatingBar">
         <attr name="starNormal" format="reference"/>
         <attr name="starFocus" format="reference"/>
         <attr name="starNumber" format="integer"/>
         <attr name="ratingBarPadding" format="dimension"/>
     </declare-styleable>
+
+    <!-- 字母索引 -->
+    <declare-styleable name="LetterSideBar">
+        <attr name="letterTextSize" format="dimension"/>
+        <attr name="letterTextColor" format="reference|color"/>
+        <attr name="letterHignlightTextColor" format="reference|color"/>
+    </declare-styleable>
+
 </resources>

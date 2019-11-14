@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.RatingBar
 import com.east.customview.custom_changecolor.ChangeColorActivity
 import com.east.customview.custom_changecolor.ViewPagerActivity
+import com.east.customview.custom_letterside.LetterSideActivity
 import com.east.customview.custom_qqarc.QQArcActivity
 import com.east.customview.custom_ratingbar.CustomRatingBarActivity
 import com.east.customview.customtextview.CustomTextViewActivity
@@ -32,6 +33,8 @@ class MainActivity : AppCompatActivity() {
             practice_paint -> startActivity(Intent(this,PracticePaintActivity::class.java))
             //仿淘宝评价 RatingBar
             custom_ratingbar -> startActivity(Intent(this,CustomRatingBarActivity::class.java))
+            //字母索引
+            custom_letterSide -> startActivity(Intent(this, LetterSideActivity::class.java))
         }
     }
 }
