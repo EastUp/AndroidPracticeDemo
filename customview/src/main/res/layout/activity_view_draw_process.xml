@@ -6,12 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".view_draw_process.ViewDrawProcessActivity">
 
-    <TextView
-        android:id="@+id/tv"
+    <LinearLayout
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="测试View的绘制流程"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/tv"
+            android:text="测试View的绘制流程"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="测试View的绘制流程"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="测试View的绘制流程"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
