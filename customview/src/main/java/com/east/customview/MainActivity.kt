@@ -12,6 +12,7 @@ import com.east.customview.custom_qqarc.QQArcActivity
 import com.east.customview.custom_ratingbar.CustomRatingBarActivity
 import com.east.customview.customtextview.CustomTextViewActivity
 import com.east.customview.practice_paint.PracticePaintActivity
+import com.east.customview.view_draw_process.ViewDrawProcessActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -35,6 +36,8 @@ class MainActivity : AppCompatActivity() {
             custom_ratingbar -> startActivity(Intent(this,CustomRatingBarActivity::class.java))
             //字母索引
             custom_letterSide -> startActivity(Intent(this, LetterSideActivity::class.java))
+            //View的绘制流程
+            view_draw_process -> startActivity(Intent(this,ViewDrawProcessActivity::class.java))
         }
     }
 }
