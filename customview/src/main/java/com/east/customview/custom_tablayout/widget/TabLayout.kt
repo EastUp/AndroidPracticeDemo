@@ -21,6 +21,10 @@ class TabLayout @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : ViewGroup(context, attrs,defStyleAttr) {
 
+
+    /**
+     *  OnMeasure会调用两次
+     */
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         var width = MeasureSpec.getSize(widthMeasureSpec)
         var height = 0 //总高度
