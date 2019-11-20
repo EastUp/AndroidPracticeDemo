@@ -12,15 +12,15 @@ class ViewDrawProcessActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_view_draw_process)
 
-        Log.e("TAG","height1:${tv.measuredWidth}")
+        Log.e("TAG","height1:${tv.measuredWidth}") //0
 
         tv.post {
-            Log.e("TAG","height2:${tv.measuredWidth}")
+            Log.e("TAG","height2:${tv.measuredWidth}") //有值
         }
     }
 
     override fun onResume() {
         super.onResume()
-        Log.e("TAG","height3:${tv.measuredWidth}")
+        Log.e("TAG","height3:${tv.measuredWidth}") //0
     }
 }

@@ -1,15 +1,14 @@
 package com.east.customview
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.RatingBar
-import com.east.customview.custom_changecolor.ChangeColorActivity
+import androidx.appcompat.app.AppCompatActivity
 import com.east.customview.custom_changecolor.ViewPagerActivity
 import com.east.customview.custom_letterside.LetterSideActivity
 import com.east.customview.custom_qqarc.QQArcActivity
 import com.east.customview.custom_ratingbar.CustomRatingBarActivity
+import com.east.customview.custom_tablayout.CustomTabLayoutActivity
 import com.east.customview.customtextview.CustomTextViewActivity
 import com.east.customview.practice_paint.PracticePaintActivity
 import com.east.customview.view_draw_process.ViewDrawProcessActivity
@@ -38,6 +37,8 @@ class MainActivity : AppCompatActivity() {
             custom_letterSide -> startActivity(Intent(this, LetterSideActivity::class.java))
             //View的绘制流程
             view_draw_process -> startActivity(Intent(this,ViewDrawProcessActivity::class.java))
+            //自定义流式布局TabLayout
+            custom_tablayout -> startActivity(Intent(this, CustomTabLayoutActivity::class.java))
         }
     }
 }

@@ -28,7 +28,7 @@ wm.addView(decor, l); ->  WindowManangerImpl.addView()
 -> performTraversals() (网上的文章都是从这里开始, 书本来的, 才开始)
 
 ### 重点performTraversals开始
-第一个调用的方法：performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);  
+*第一个调用的方法：performMeasure(childWidthMeasureSpec, childHeightMeasureSpec);*  
 -> mView.measure(childWidthMeasureSpec, childHeightMeasureSpec);    
 -> onMeasure(widthMeasureSpec, heightMeasureSpec); 测量开始   
 -> LinearLayout.onMeasure(widthMeasureSpec, heightMeasureSpec)  第三又从这里开始    
@@ -97,4 +97,38 @@ mMeasuredWidth和mMeasuredHeight才开始有值
 childHeight = child.getMeasuredHeight(); 高度的算法如果是垂直方向是不断的叠加子View的高度,    
 RelativeLayout的高度算法是指定，子孩子里面最高的   
 
+
+*第二个调用的方法：performLayout(lp, mWidth, mHeight);*  
+-> View.layout()  
+-> onLayout()  
+-> 摆放子布局 for循环所有子View, 前提不是GONE，调用child.layout()
+
+*第三个调用的方法：performDraw()*  
+-> draw(fullRedrawNeeded);  
+-> drawSoftware(...)  
+-> View.draw(canvas);  
+-> drawBackground();//画背景 ViewGroup 默认情况下不会调用  
+-> onDraw(canvas);// 画自己 ViewGroup 默认情况下不会调用  
+-> dispatchDraw(canvas);// 画子View 不断的循环调用子View的 draw()  
+-> drawChild(canvas, child, drawingTime); //画子View 不断的循环调用子View的 draw()  
+-> child.draw(canvas, this, drawingTime);  
+
+### 面试 [ View的绘制流程]
+
+第一步 performMeasure()：用于指定和测量layout中所有控件的宽高，对于ViewGroup,先去测量里面的子孩子，根据子孩子的宽高再来计算和指定自己的宽高，  
+对于View,它的宽高是由自己和父布局决定的。
+
+第二步   performLayout(): 用于摆放子布局,for循环所有子View,用child.layout()摆放ChildView
+
+第三步   performDraw(): 用于绘制自己还有子View , 对于ViewGroup首先绘制自己的背景,for循环绘制子View调用子View的draw()方法, 对于View绘制自己的背景，绘制自己显示的内容（TextView）
+
+
+### 思考问题：
+1. 如果要获取View的高度，前提肯定需要调用测量方法，测量完毕之后才能获取宽高  
+
+2. View的绘制流程是在 onResume() 之后才开始（Activity 启动流程的源码）  
+
+3. addView  setVisibility 等等 会调用requestLayout(); 重新走一遍View的绘制流程  
+
+4. 优化的时候，根据知道源码写代码的时候优化, onDraw() 不要布局嵌套，等等
 

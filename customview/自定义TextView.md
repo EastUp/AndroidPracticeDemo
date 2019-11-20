@@ -100,7 +100,77 @@ var dy = (fontMetricsInt.descent - fontMetricsInt.ascent)/2 - fontMetricsInt.des
 var baseLine = height/2+dy
 ```
 
-### 自定义View集成ViewGroup不显示的问题解决
+### 自定义View集成ViewGroup不显示的问题原因及解决
+
+onDraw() 面试题讲解  
+
+extends LinearLayout 能不能出效果？  
+出不来，默认的ViewGroup 不会调用onDraw方法     为什么？  
+
+画的其实是  draw(Canvas canvas)  模板设计   
+if (!dirtyOpaque) onDraw(canvas);  
+dispatchDraw(canvas);  
+onDrawForeground(canvas);    
+
+dirtyOpaque是false 才行 其实就是由 privateFlags -> mPrivateFlags  
+
+``` java
+final boolean dirtyOpaque = (privateFlags & PFLAG_DIRTY_MASK) == PFLAG_DIRTY_OPAQUE &&
+                (mAttachInfo == null || !mAttachInfo.mIgnoreDirtyState);
+```
+
+mPrivateFlags 到底是怎么赋值的   在View的构造函数中调用 `computeOpaqueFlags`  
+
+``` java
+protected void computeOpaqueFlags() {
+        // Opaque if:
+        //   - Has a background
+        //   - Background is opaque
+        //   - Doesn't have scrollbars or scrollbars overlay
+
+        if (mBackground != null && mBackground.getOpacity() == PixelFormat.OPAQUE) {
+            mPrivateFlags |= PFLAG_OPAQUE_BACKGROUND;
+        } else {
+            mPrivateFlags &= ~PFLAG_OPAQUE_BACKGROUND;
+        }
+
+        final int flags = mViewFlags;
+        if (((flags & SCROLLBARS_VERTICAL) == 0 && (flags & SCROLLBARS_HORIZONTAL) == 0) ||
+                (flags & SCROLLBARS_STYLE_MASK) == SCROLLBARS_INSIDE_OVERLAY ||
+                (flags & SCROLLBARS_STYLE_MASK) == SCROLLBARS_OUTSIDE_OVERLAY) {
+            mPrivateFlags |= PFLAG_OPAQUE_SCROLLBARS;
+        } else {
+            mPrivateFlags &= ~PFLAG_OPAQUE_SCROLLBARS;
+        }
+    }
+```
+
+ViewGroup 为什么出不来  initViewGroup  mPrivateFlags  会重新赋值
+
+``` java
+private void initViewGroup() {
+        // ViewGroup doesn't draw by default
+        if (!debugDraw()) {
+            setFlags(WILL_NOT_DRAW, DRAW_MASK);
+        }
+        mGroupFlags |= FLAG_CLIP_CHILDREN;
+        mGroupFlags |= FLAG_CLIP_TO_PADDING;
+        mGroupFlags |= FLAG_ANIMATION_DONE;
+        mGroupFlags |= FLAG_ANIMATION_CACHE;
+        mGroupFlags |= FLAG_ALWAYS_DRAWN_WITH_CACHE;
+
+        if (mContext.getApplicationInfo().targetSdkVersion >= Build.VERSION_CODES.HONEYCOMB) {
+            mGroupFlags |= FLAG_SPLIT_MOTION_EVENTS;
+        }
+
+        setDescendantFocusability(FOCUS_BEFORE_DESCENDANTS);
+
+        mChildren = new View[ARRAY_INITIAL_CAPACITY];
+        mChildrenCount = 0;
+
+        mPersistentDrawingCache = PERSISTENT_SCROLLING_CACHE;
+    } 
+```
 
 - 把onDraw()方法替换成dispatchDraw()
 - 设置透明背景
