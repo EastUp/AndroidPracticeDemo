@@ -7,9 +7,10 @@
     tools:context=".custom_tablayout.CustomTabLayoutActivity">
 
     <com.east.customview.custom_tablayout.widget.TabLayout
+        android:id="@+id/tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FF0000"
+        android:background="#0000ff"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
