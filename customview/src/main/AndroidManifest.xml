@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".custom_tablayout.CustomTabLayoutActivity"></activity>
+        <activity android:name=".view_viewgroup_touch.ViewAndViewGroupTouchActivity"></activity>
+        <activity android:name=".custom_tablayout.CustomTabLayoutActivity" />
         <activity android:name=".view_draw_process.ViewDrawProcessActivity" />
         <activity android:name=".custom_letterside.LetterSideActivity" />
         <activity android:name=".custom_ratingbar.CustomRatingBarActivity" />
