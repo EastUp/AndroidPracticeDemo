@@ -12,7 +12,8 @@ import com.east.customview.custom_tablayout.CustomTabLayoutActivity
 import com.east.customview.customtextview.CustomTextViewActivity
 import com.east.customview.practice_paint.PracticePaintActivity
 import com.east.customview.view_draw_process.ViewDrawProcessActivity
-import com.east.customview.view_viewgroup_touch.ViewAndViewGroupTouchActivity
+import com.east.customview.view_touch.ViewTouchActivity
+import com.east.customview.viewgroup_touch.ViewGroupTouchActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -40,8 +41,10 @@ class MainActivity : AppCompatActivity() {
             view_draw_process -> startActivity(Intent(this,ViewDrawProcessActivity::class.java))
             //自定义流式布局TabLayout
             custom_tablayout -> startActivity(Intent(this, CustomTabLayoutActivity::class.java))
-            //View和ViewGroup的Touch分发事件
-            viewViewGroupTouch -> startActivity(Intent(this, ViewAndViewGroupTouchActivity::class.java))
+            //View的Touch分发事件
+            viewTouch -> startActivity(Intent(this, ViewTouchActivity::class.java))
+            //ViewGroup的Touch分发事件
+            viewGroupTouch -> startActivity(Intent(this, ViewGroupTouchActivity::class.java))
         }
     }
 }

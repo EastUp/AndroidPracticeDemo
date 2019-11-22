@@ -1,4 +1,4 @@
-package com.east.customview.view_viewgroup_touch
+package com.east.customview.viewgroup_touch
 
 import android.content.Context
 import android.util.AttributeSet
@@ -13,14 +13,14 @@ import android.view.View
  *  @date: 2019-11-21
  * |---------------------------------------------------------------------------------------------------------------|
  */
-class TouchView @JvmOverloads constructor(
+open class TouchView @JvmOverloads constructor(
     context: Context,
     attrs : AttributeSet ?= null,
     defStyleAttr : Int = 0
     ):View(context,attrs,defStyleAttr) {
 
-    override fun dispatchTouchEvent(event: MotionEvent?): Boolean {
-        Log.e("TAG","View -> dispatchTouchEvent")
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        Log.e("TAG","View -> dispatchTouchEvent -> ${event.action}")
         return super.dispatchTouchEvent(event)
     }
 

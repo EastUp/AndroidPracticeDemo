@@ -102,17 +102,18 @@
                 android:text="自定义TabLayout流式布局" />
 
             <Button
-                android:id="@+id/viewViewGroupTouch"
+                android:id="@+id/viewTouch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
-                android:text="View和ViewGroup的Touch分发事件"/>
+                android:text="ViewTouch分发事件"/>
 
             <Button
+                android:id="@+id/viewGroupTouch"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
-                android:text="Paint练习" />
+                android:text="ViewGroupTouch分发事件" />
 
             <Button
                 android:layout_width="match_parent"
