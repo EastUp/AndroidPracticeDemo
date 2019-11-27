@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.east.customview.custom_kugou.widget.SlidingMenu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".custom_kugou.KugouSlidingMenuActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <include layout="@layout/layout_home_menu"/>
+
+        <include layout="@layout/layout_home_content"/>
+
+    </LinearLayout>
+
+</com.east.customview.custom_kugou.widget.SlidingMenu>

@@ -116,10 +116,11 @@
                 android:text="ViewGroupTouch分发事件" />
 
             <Button
+                android:id="@+id/kugou"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="onClick"
-                android:text="RatingBar" />
+                android:text="酷狗侧滑菜单效果" />
 
             <Button
                 android:layout_width="match_parent"

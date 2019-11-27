@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".viewgroup_touch.ViewGroupTouchActivity"></activity>
+        <activity android:name=".custom_kugou.KugouSlidingMenuActivity"></activity>
+        <activity android:name=".viewgroup_touch.ViewGroupTouchActivity" />
         <activity android:name=".view_touch.ViewTouchActivity" />
         <activity android:name=".custom_tablayout.CustomTabLayoutActivity" />
         <activity android:name=".view_draw_process.ViewDrawProcessActivity" />

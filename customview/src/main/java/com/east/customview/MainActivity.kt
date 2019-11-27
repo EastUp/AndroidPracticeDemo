@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.east.customview.custom_changecolor.ViewPagerActivity
+import com.east.customview.custom_kugou.KugouSlidingMenuActivity
 import com.east.customview.custom_letterside.LetterSideActivity
 import com.east.customview.custom_qqarc.QQArcActivity
 import com.east.customview.custom_ratingbar.CustomRatingBarActivity
@@ -45,6 +46,8 @@ class MainActivity : AppCompatActivity() {
             viewTouch -> startActivity(Intent(this, ViewTouchActivity::class.java))
             //ViewGroup的Touch分发事件
             viewGroupTouch -> startActivity(Intent(this, ViewGroupTouchActivity::class.java))
+            //酷狗侧滑菜单效果
+            kugou -> startActivity(Intent(this, KugouSlidingMenuActivity::class.java))
         }
     }
 }
