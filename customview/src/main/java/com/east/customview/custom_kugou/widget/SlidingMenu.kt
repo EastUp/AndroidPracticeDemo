@@ -4,12 +4,10 @@ import android.content.Context
 import android.util.AttributeSet
 import android.util.DisplayMetrics
 import android.util.Log
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
+import android.view.*
 import android.widget.HorizontalScrollView
 import com.east.customview.R
+import kotlin.math.abs
 
 /**
  * |---------------------------------------------------------------------------------------------------------------|
@@ -19,25 +17,49 @@ import com.east.customview.R
  * |---------------------------------------------------------------------------------------------------------------|
  */
 class SlidingMenu @JvmOverloads constructor(
-    context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
 ) : HorizontalScrollView(context, attrs, defStyleAttr) {
 
     //菜单栏的宽度
     private var mMenuWidth: Float
     private lateinit var mMenuView: View
     private lateinit var mContentView: View
+    private var mIsMenuOpen = false //菜单是否是打开的状态
+
+    private var mInterceptor = false // 是否拦截事件
 
     // GestureDetector 处理快速滑动
+    private var mGestureDetector: GestureDetector
+
+    private var mOnGestureListener: GestureDetector.SimpleOnGestureListener = object : GestureDetector.SimpleOnGestureListener() {
+        override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
+            Log.e("TAG","onFling -- $velocityX")
+            if(mIsMenuOpen){
+                if(velocityX<0 && abs(velocityX) > abs(velocityY)){
+                    closeMenu()
+                    return true
+                }
+            }else{
+                if(velocityX>0 && abs(velocityX) > abs(velocityY)){
+                    openMenu()
+                    return true
+                }
+            }
+            return super.onFling(e1, e2, velocityX, velocityY)
+        }
+    }
 
     init {
         var typedArray = context.obtainStyledAttributes(attrs, R.styleable.SlidingMenu)
         var rightMenuMargin =
-            typedArray.getDimension(R.styleable.SlidingMenu_rightMenuMargin, dip2px(60f) * 10f / 7f)
+                typedArray.getDimension(R.styleable.SlidingMenu_rightMenuMargin, dip2px(40f) * 10f / 7f)
         // 菜单页的宽度是 = 屏幕的宽度 - 右边的一小部分距离（自定义属性）
         mMenuWidth = getScreenWidth(context) - rightMenuMargin
         typedArray.recycle()
+
+        mGestureDetector = GestureDetector(context, mOnGestureListener)
     }
 
     /**
@@ -82,11 +104,39 @@ class SlidingMenu @JvmOverloads constructor(
         scrollTo(mMenuWidth.toInt(), 0)
     }
 
+    //6. 处理事件拦截 + ViewGroup 事件分发的源码实践
+    //        //    当菜单打开的时候，手指触摸右边内容部分需要关闭菜单，还需要拦截事件（打开情况下点击内容页不会响应点击事件）
+    override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
+        Log.e("TAG","${ev.action}")
+        mInterceptor = false
+        //菜单打开的情况下
+        if(mIsMenuOpen){
+            if(ev.x > mMenuWidth){
+                //6.1关闭菜单
+                closeMenu()
+                //6.2.子 View 不需要响应任何事件（点击和触摸），拦截子 View 的事件
+                //如果返回 true 代表我会拦截子View的事件，但是我会响应自己的 onTouch 事件
+                mInterceptor = true
+                return true
+            }
+        }
+        return super.onInterceptTouchEvent(ev)
+    }
+
 
     /**
      * 3.手指抬起是二选一，要么关闭要么打开
      */
     override fun onTouchEvent(ev: MotionEvent): Boolean {
+
+        //如果有拦截不执行自己的onTouch事件
+        if(mInterceptor)
+            return true
+
+        //5.判断是否是快速滑动,如果是快速滑动,则先响应快速滑动的事件,如果快速滑动没处理则交由后面的逻辑去处理
+        if(mGestureDetector.onTouchEvent(ev)){
+            return true
+        }
 
         // 1. 获取手指滑动的速率，当期大于一定值就认为是快速滑动 ， GestureDetector（系统提供好的类）
         // 2. 处理事件拦截 + ViewGroup 事件分发的源码实践
@@ -95,11 +145,9 @@ class SlidingMenu @JvmOverloads constructor(
         if (ev.action == MotionEvent.ACTION_UP) {
             // 只需要管手指抬起 ，根据我们当前滚动的距离来判断
             if (scrollX > mMenuWidth / 2)
-                //关闭菜单
-                smoothScrollTo(mMenuWidth.toInt(), 0)
+                closeMenu()
             else
-                //打开菜单
-                smoothScrollTo(0, 0)
+                openMenu()
 
             return true //确保super.onTouchEvent()里面的fling不执行
         }
@@ -120,18 +168,18 @@ class SlidingMenu @JvmOverloads constructor(
         // 设置右边的缩放,默认是以中心点缩放
         // 设置缩放的中心点位置
         mContentView.pivotX = 0f
-        mContentView.pivotY = (measuredHeight/2).toFloat()
+        mContentView.pivotY = (measuredHeight / 2).toFloat()
         mContentView.scaleX = rightScale
         mContentView.scaleY = rightScale
 
         //设置左边的透明度和缩放
 
         // 右边的缩放: 最小是 0.7f, 最大是 1f
-        val leftScale = 0.7f + 0.3f * (1-scale)
+        val leftScale = 0.7f + 0.3f * (1 - scale)
         mMenuView.scaleX = leftScale
         mMenuView.scaleY = leftScale
         //设置透明度
-        var leftAlpha = 0.1f + 0.9*(1-scale)
+        var leftAlpha = 0.1f + 0.9 * (1 - scale)
         mMenuView.alpha = leftAlpha.toFloat()
 
 
@@ -139,7 +187,23 @@ class SlidingMenu @JvmOverloads constructor(
         // 设置平移，先看一个抽屉效果
         // ViewCompat.setTranslationX(mMenuView,l);
         // 平移 l*0.7f
-        mMenuView.translationX = 0.25f*l
+        mMenuView.translationX = 0.25f * l
+    }
+
+    /**
+     * 打开菜单
+     */
+    fun openMenu() {
+        smoothScrollTo(0, 0)
+        mIsMenuOpen = true
+    }
+
+    /**
+     * 关闭菜单
+     */
+    fun closeMenu() {
+        smoothScrollTo(mMenuWidth.toInt(), 0)
+        mIsMenuOpen = false
     }
 
 

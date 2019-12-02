@@ -1,84 +1,16 @@
-@[TOC](仿酷狗侧滑菜单效果) 
+package com.east.customview.custom_qq.widget
 
-## 一、重要类和方法详解
+import android.content.Context
+import android.graphics.Color
+import android.util.AttributeSet
+import android.util.DisplayMetrics
+import android.util.Log
+import android.view.*
+import android.widget.HorizontalScrollView
+import android.widget.RelativeLayout
+import com.east.customview.R
+import kotlin.math.abs
 
-<font color = red>**onFinishInflate**</font>
-
-ViewGroup中的`onFinishInflate`方法是是布局解析完毕也就是XML布局文件解析完毕，在activity的在onCreate中调用
-
-<font color = red>**scrollTo scrollBy  无动画**</font>  
-`会触发onScrollChanged，并且视图将会重新创建`  
-scrollTo ：相对于初始位置移动  
-scrollBy : 相对于上次移动的最后位置移动  
-两者 移动的都是view的内容 view本身 是不移动的 所以getx gety 一直是不变的  
-
-
-
-<font color = red>**smoothScrollTo smoothScrollBy 有动画**</font>
-
-这两个方法都是HorizontalScrollView的方法,本质上还是调用了View的scrollTo和scrollBy方法
-
-smoothScrollTo ：相对于初始位置移动  
-smoothScrollBy : 相对于上次移动的最后位置移动  
-两者 移动的都是view的内容 view本身 是不移动的 所以getx gety 一直是不变的 
-
-<font color = red>**GestureDetector**</font>
-
-这是个处理快速滑动的工具类
-
-1. 初始化 ：mGestureDetector = GestureDetector(context, mOnGestureListener)
-
-``` kotlin
-//快速滑动的监听类，
- private var mOnGestureListener: GestureDetector.SimpleOnGestureListener = object : GestureDetector.SimpleOnGestureListener() {
-        override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
-            Log.e("TAG","onFling -- $velocityX")
-            if(mIsMenuOpen){
-                if(velocityX<0){
-                    closeMenu()
-                    return true
-                }
-            }else{
-                if(velocityX>0){
-                    openMenu()
-                    return true
-                }
-            }
-            return super.onFling(e1, e2, velocityX, velocityY)
-        }
-    }
-    
-//初始化    
-mGestureDetector = GestureDetector(context, mOnGestureListener)
-```
-
-2. 在需要监听的View的onTouchEvent方法中填写 mGestureDetector.onTouchEvent(ev)
-
-## 思路
-
-1. 实现思路
-这样的一个任务怎么办？  靠搜 + 改一次， 如果是在找不到再来写  
-实现思路分析：  
-1.1 目前系统已有的 DrawerLayout 一般做侧滑效果  
-1.2 自定义 ViewGaourp + 手势的处理类  （处理麻烦，代码多）  
-1.3 自定义 ScrollView  + ( 默认是可以自己滚动，当前位置回掉)  
-
-
-思路： 
-
-1. 继承自HorizontalScrollView
-2. 在onFinishInflate方法中给子View设置宽高
-3. 在onTouchEvent中处理当手指抬起时，菜单只能是打开或是关闭
-4. 处理快速滑动
-5. 处理事件拦截,当菜单打开的时候，手指触摸右边内容部分需要关闭菜单，还需要拦截事件（打开情况下点击内容页不会响应点击事件）
-6. 在onScrollChanged方法中进行view的缩放和透明度变化,还有一个简单的抽屉效果
-
-
-## 源码
-
-SlidingMenu的代码如下
-
-```kotlin
 /**
  * |---------------------------------------------------------------------------------------------------------------|
  *  @description: 仿酷狗侧滑效果
@@ -86,7 +18,7 @@ SlidingMenu的代码如下
  *  @date: 2019-11-27
  * |---------------------------------------------------------------------------------------------------------------|
  */
-class SlidingMenu @JvmOverloads constructor(
+class QQSlidingMenu @JvmOverloads constructor(
         context: Context,
         attrs: AttributeSet? = null,
         defStyleAttr: Int = 0
@@ -96,6 +28,7 @@ class SlidingMenu @JvmOverloads constructor(
     private var mMenuWidth: Float
     private lateinit var mMenuView: View
     private lateinit var mContentView: View
+    private lateinit var mShadowView : View //阴影View
     private var mIsMenuOpen = false //菜单是否是打开的状态
 
     private var mInterceptor = false // 是否拦截事件
@@ -107,12 +40,12 @@ class SlidingMenu @JvmOverloads constructor(
         override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
             Log.e("TAG","onFling -- $velocityX")
             if(mIsMenuOpen){
-                if(velocityX<0){
+                if(velocityX<0 && abs(velocityX) > abs(velocityY)){
                     closeMenu()
                     return true
                 }
             }else{
-                if(velocityX>0){
+                if(velocityX>0 && abs(velocityX) > abs(velocityY)){
                     openMenu()
                     return true
                 }
@@ -122,9 +55,9 @@ class SlidingMenu @JvmOverloads constructor(
     }
 
     init {
-        var typedArray = context.obtainStyledAttributes(attrs, R.styleable.SlidingMenu)
+        var typedArray = context.obtainStyledAttributes(attrs, R.styleable.QQSlidingMenu)
         var rightMenuMargin =
-                typedArray.getDimension(R.styleable.SlidingMenu_rightMenuMargin, dip2px(60f) * 10f / 7f)
+                typedArray.getDimension(R.styleable.QQSlidingMenu_qqRightMenuMargin, dip2px(40f) * 10f / 7f)
         // 菜单页的宽度是 = 屏幕的宽度 - 右边的一小部分距离（自定义属性）
         mMenuWidth = getScreenWidth(context) - rightMenuMargin
         typedArray.recycle()
@@ -155,12 +88,21 @@ class SlidingMenu @JvmOverloads constructor(
         //7.0以下的手机需要采用以下方式
         mMenuView.layoutParams = menuParams
 
-        //1.为contentView指定宽度
+        // 把内容布局单独提取出来，
         mContentView = container.getChildAt(1)
         val contentParams = mContentView.layoutParams
+        container.removeView(mContentView)
+        // 然后在外面套一层阴影，
+        var contentContainer = RelativeLayout(context)
+        contentContainer.addView(mContentView)
+        mShadowView = View(context)
+        mShadowView.setBackgroundColor(Color.parseColor("#88000000"))
+        contentContainer.addView(mShadowView)
+        // 最后在把容器放回原来的位置
         contentParams.width = getScreenWidth(context)
-        //7.0以下的手机需要采用以下方式
-        mContentView.layoutParams = contentParams
+        contentContainer.layoutParams = contentParams
+        container.addView(contentContainer)
+        mShadowView.alpha = 0.0f //一开始是这个半透明遮罩是透明的
 
     }
 
@@ -233,31 +175,15 @@ class SlidingMenu @JvmOverloads constructor(
 
         // 算一个梯度值
         var scale = l / mMenuWidth //scale变化时 1 - 0
-        // 右边的缩放: 最小是 0.7f, 最大是 1f
-        val rightScale = 0.7f + 0.3f * scale
-        // 设置右边的缩放,默认是以中心点缩放
-        // 设置缩放的中心点位置
-        mContentView.pivotX = 0f
-        mContentView.pivotY = (measuredHeight / 2).toFloat()
-        mContentView.scaleX = rightScale
-        mContentView.scaleY = rightScale
 
-        //设置左边的透明度和缩放
-
-        // 右边的缩放: 最小是 0.7f, 最大是 1f
-        val leftScale = 0.7f + 0.3f * (1 - scale)
-        mMenuView.scaleX = leftScale
-        mMenuView.scaleY = leftScale
-        //设置透明度
-        var leftAlpha = 0.1f + 0.9 * (1 - scale)
-        mMenuView.alpha = leftAlpha.toFloat()
+        mShadowView.alpha = 1 - scale
 
 
         // 最后一个效果 退出这个按钮刚开始是在右边，安装我们目前的方式永远都是在左边
         // 设置平移，先看一个抽屉效果
         // ViewCompat.setTranslationX(mMenuView,l);
         // 平移 l*0.7f
-        mMenuView.translationX = 0.25f * l
+        mMenuView.translationX = 0.6f * l
     }
 
     /**
@@ -297,13 +223,3 @@ class SlidingMenu @JvmOverloads constructor(
 
 
 }
-```
-
-
-
-
-
-      
-     
- 
-

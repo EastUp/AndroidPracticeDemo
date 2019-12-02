@@ -79,4 +79,9 @@
         <attr name="rightMenuMargin" format="dimension"/>
     </declare-styleable>
 
+    <!--仿酷狗侧滑效果-->
+    <declare-styleable name="QQSlidingMenu">
+        <attr name="qqRightMenuMargin" format="dimension"/>
+    </declare-styleable>
+
 </resources>
