@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.east.customview.custom_car_home.CarHomeActivity
 import com.east.customview.custom_changecolor.ViewPagerActivity
 import com.east.customview.custom_kugou.KugouSlidingMenuActivity
 import com.east.customview.custom_letterside.LetterSideActivity
@@ -51,6 +52,8 @@ class MainActivity : AppCompatActivity() {
             kugou -> startActivity(Intent(this, KugouSlidingMenuActivity::class.java))
             //QQ侧滑菜单效果
             qq -> startActivity(Intent(this, QQSlidingMenuActivity::class.java))
+            //汽车之家折叠效果
+            car_home -> startActivity(Intent(this, CarHomeActivity::class.java))
         }
     }
 }

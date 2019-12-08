@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".custom_qq.QQSlidingMenuActivity"></activity>
+        <activity android:name=".custom_car_home.CarHomeActivity"></activity>
+        <activity android:name=".custom_qq.QQSlidingMenuActivity" />
         <activity android:name=".custom_kugou.KugouSlidingMenuActivity" />
         <activity android:name=".viewgroup_touch.ViewGroupTouchActivity" />
         <activity android:name=".view_touch.ViewTouchActivity" />
