@@ -8,6 +8,7 @@ import com.east.customview.custom_car_home.CarHomeActivity
 import com.east.customview.custom_changecolor.ViewPagerActivity
 import com.east.customview.custom_kugou.KugouSlidingMenuActivity
 import com.east.customview.custom_letterside.LetterSideActivity
+import com.east.customview.custom_lockpattern.LockPatternActivity
 import com.east.customview.custom_qq.QQSlidingMenuActivity
 import com.east.customview.custom_qqarc.QQArcActivity
 import com.east.customview.custom_ratingbar.CustomRatingBarActivity
@@ -54,6 +55,8 @@ class MainActivity : AppCompatActivity() {
             qq -> startActivity(Intent(this, QQSlidingMenuActivity::class.java))
             //汽车之家折叠效果
             car_home -> startActivity(Intent(this, CarHomeActivity::class.java))
+            //九宫格解锁
+            lockpattern -> startActivity(Intent(this, LockPatternActivity::class.java))
         }
     }
 }
