@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".custom_lockpattern.LockPatternActivity"></activity>
+        <activity android:name=".material_design_1.FruitActivity"></activity>
+        <activity android:name=".material_design_1.SimplePracticeActivity" />
+        <activity android:name=".custom_lockpattern.LockPatternActivity" />
         <activity android:name=".custom_car_home.CarHomeActivity" />
         <activity android:name=".custom_qq.QQSlidingMenuActivity" />
         <activity android:name=".custom_kugou.KugouSlidingMenuActivity" />

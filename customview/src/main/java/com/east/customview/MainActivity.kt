@@ -14,6 +14,7 @@ import com.east.customview.custom_qqarc.QQArcActivity
 import com.east.customview.custom_ratingbar.CustomRatingBarActivity
 import com.east.customview.custom_tablayout.CustomTabLayoutActivity
 import com.east.customview.customtextview.CustomTextViewActivity
+import com.east.customview.material_design_1.SimplePracticeActivity
 import com.east.customview.practice_paint.PracticePaintActivity
 import com.east.customview.view_draw_process.ViewDrawProcessActivity
 import com.east.customview.view_touch.ViewTouchActivity
@@ -57,6 +58,9 @@ class MainActivity : AppCompatActivity() {
             car_home -> startActivity(Intent(this, CarHomeActivity::class.java))
             //九宫格解锁
             lockpattern -> startActivity(Intent(this, LockPatternActivity::class.java))
+
+            //MaterialDesign 初次练习
+            simple_prcactice -> startActivity(Intent(this, SimplePracticeActivity::class.java))
         }
     }
 }
