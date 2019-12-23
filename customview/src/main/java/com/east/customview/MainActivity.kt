@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.east.customview.custom_behavior.CustomBehaviorActivity
 import com.east.customview.custom_car_home.CarHomeActivity
 import com.east.customview.custom_changecolor.ViewPagerActivity
 import com.east.customview.custom_kugou.KugouSlidingMenuActivity
@@ -58,9 +59,10 @@ class MainActivity : AppCompatActivity() {
             car_home -> startActivity(Intent(this, CarHomeActivity::class.java))
             //九宫格解锁
             lockpattern -> startActivity(Intent(this, LockPatternActivity::class.java))
-
             //MaterialDesign 初次练习
             simple_prcactice -> startActivity(Intent(this, SimplePracticeActivity::class.java))
+            //自定义Behavior
+            custom_behavior -> startActivity(Intent(this, CustomBehaviorActivity::class.java))
         }
     }
 }

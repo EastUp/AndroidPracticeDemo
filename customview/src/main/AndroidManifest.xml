@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".material_design_1.FruitActivity"></activity>
+        <activity android:name=".custom_behavior.CustomBehaviorActivity"></activity>
+        <activity android:name=".material_design_1.FruitActivity" />
         <activity android:name=".material_design_1.SimplePracticeActivity" />
         <activity android:name=".custom_lockpattern.LockPatternActivity" />
         <activity android:name=".custom_car_home.CarHomeActivity" />
