@@ -6,4 +6,5 @@
     <color name="red">#f15533</color>
     <color name="theme_primary">#4b342f</color>
     <color name="theme_primary_dark">#231714</color>
+    <color name="white">#ffffffff</color>
 </resources>

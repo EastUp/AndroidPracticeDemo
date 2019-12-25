@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".swap.SwapActivity"></activity>
+        <activity android:name=".swap.SwapActivity" />
         <activity android:name=".itemanimator.ItemAnimatorActivity" />
         <activity
             android:name=".itemdecoration.ItemDecorationActivity"
@@ -23,6 +23,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".recycleranalysis.RecyclerAnalysisActivity" />
+        <activity
+            android:name=".recycleranalysis.basicUse.BasicUseActivity"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".recycleranalysis.commonAdapterUse.CommonAdapterActivity" />
+        <activity android:name=".recycleranalysis.dragItemAnimatorUse.DragItemAnimatorActivity" />
+        <activity android:name=".recycleranalysis.headerFooterUse.HeaderFooterActivity" />
+        <activity android:name=".recycleranalysis.refreshLoad.RefreshLoadActivity" />
     </application>
 
 </manifest>

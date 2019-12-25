@@ -36,4 +36,7 @@ dependencies {
     androidTestImplementation deps.espresso.core
     implementation deps.material
     implementation deps.thirdpart.recyclerview_animators
+    implementation deps.glide.runtime
+    // ViewModel and LiveData
+    implementation deps.lifecycle.lifecycle_extensions
 }
