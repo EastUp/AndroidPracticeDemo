@@ -4,6 +4,173 @@
 	MPAndroidChart:Android上强大图表工具
 ```
 [官方文档说明](https://weeklycoding.com/mpandroidchart-documentation/)
+## LineChart
+###常用方法说明：
+
+```kotlin
+		//设置当前的折线图的描述
+//        line_chart.setDescription();
+        //隐藏描述模块
+        line_chart.getDescription().setEnabled(false);
+        //是否绘制网格背景(false：背景为白色   true：背景为灰色)
+        line_chart.setDrawGridBackground(false);
+        //影藏底部色块
+        Legend legend = line_chart.getLegend();
+        legend.setEnabled(false);
+        line_chart.getAxisRight().setEnabled(false);
+        line_chart.setNoDataText("暂无数据");
+
+        //获取当前的x轴对象
+        XAxis xAxis = line_chart.getXAxis();
+        //设置x轴的显示位置
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        //设置x轴的字体
+        xAxis.setTypeface(mTf);
+        xAxis.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 9f, getContext().getResources().getDisplayMetrics()));
+        xAxis.setTextColor(Color.parseColor("#8F8E8E"));
+        //设置是否绘制x轴的网格线
+        xAxis.setDrawGridLines(true);
+        //设置是否绘制x轴的轴线
+        xAxis.setDrawAxisLine(true);
+        xAxis.setLabelCount(10,false);
+
+        //设置x轴数据
+        xAxis.setValueFormatter(new IndexAxisValueFormatter(){
+            @Override
+            public String getFormattedValue(float value) {
+                String date = dataX1[(int) value % dataX1.length];
+                String[] split = date.split("-");
+                String month = split[1];
+                String year = split[0].substring(2);
+                return month+"/"+year;
+            }
+        });
+
+        //获取左边的y轴对象
+        YAxis leftAxis = line_chart.getAxisLeft();
+        //获取左边y轴的字体
+        leftAxis.setTypeface(mTf);
+        leftAxis.setTextColor(Color.parseColor("#8F8E8E"));
+        //参数1：左边y轴提供的区间的个数   参数2：是否均匀分布这几个区间 false：均匀  true：不均匀
+        leftAxis.setLabelCount(5, false); //5根线
+        //
+        leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+
+        //获取右边的y轴对象
+        YAxis rightAxis = line_chart.getAxisRight();
+        //设置右边的y轴为不显示的
+        rightAxis.setEnabled(false);
+        rightAxis.setTypeface(mTf);
+        rightAxis.setLabelCount(5, false);
+        rightAxis.setDrawGridLines(false);
+        rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
+
+        //提供折现数据(这里是随机生成的，一般数据来自服务器)
+        LineData lineData = generateDataLine(1,dataY1,mLineChart);
+        // set data
+        line_chart.setData(lineData);
+
+        //设置x轴方向的动画，执行时间是750毫秒
+        //不需要在执行：invalidate();
+        // do not forget to refresh the chart
+        // holder.chart.invalidate();
+        line_chart.animateX(750);
+        line_chart.setXAxisRenderer(new MyXAxisRenderer(getContext(),line_chart.getViewPortHandler(),xAxis,line_chart.getTransformer(YAxis.AxisDependency.LEFT)));
+```
+
+###X轴渲染器：
+```kotlin
+/**
+ * |---------------------------------------------------------------------------------------------------------------|
+ *  @description: X轴渲染器
+ *  @author: East
+ *  @date: 2019-12-25
+ * |---------------------------------------------------------------------------------------------------------------|
+ */
+class MyXAxisRenderer(var context:Context,viewPortHandler: ViewPortHandler, xAxis: XAxis, trans: Transformer): XAxisRenderer(viewPortHandler, xAxis, trans) {
+
+    private val mDrawTextRectBuffer = Rect()
+    private val mFontMetricsBuffer = Paint.FontMetrics()
+    
+    override fun drawLabel(c: Canvas, formattedLabel: String, x: Float, y: Float, anchor: MPPointF, angleDegrees: Float) {
+        val originalTextAlign = mAxisLabelPaint.textAlign
+        mAxisLabelPaint.textAlign = Align.LEFT
+        var month = formattedLabel.substring(0,2)
+        var year = formattedLabel.substring(2,formattedLabel.length)
+        var monthRect = Rect()
+        mAxisLabelPaint.textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 9f, context.resources.displayMetrics)
+        mAxisLabelPaint.getTextBounds(month,0,month.length,monthRect)
+        var yearRect = Rect()
+        mAxisLabelPaint.textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 6f, context.resources.displayMetrics)
+        mAxisLabelPaint.getTextBounds(year,0,year.length,yearRect)
+
+        val startDrawX = x - ((yearRect.width() + monthRect.width()+5) / 2).toFloat()
+        mAxisLabelPaint.textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 9f, context.resources.displayMetrics)
+        mAxisLabelPaint.getFontMetrics(mFontMetricsBuffer)
+        var drawOffsetY = -mFontMetricsBuffer.ascent
+        c.drawText(month, startDrawX, drawOffsetY+y, mAxisLabelPaint)
+        mAxisLabelPaint.textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 6f, context.resources.displayMetrics)
+        Log.d("TAG","${monthRect.height()}--${yearRect.height()}")
+        c.drawText(year, startDrawX+monthRect.width()+5, drawOffsetY+y, mAxisLabelPaint)
+        mAxisLabelPaint.textAlign = originalTextAlign
+    }
+
+
+    fun drawXAxisValue(c: Canvas, text: String, x: Float, y: Float,
+                       paint: Paint,
+                       anchor: MPPointF, angleDegrees: Float) {
+        var drawOffsetX = 0f
+        var drawOffsetY = 0f
+        val lineHeight = paint.getFontMetrics(mFontMetricsBuffer)
+        paint.getTextBounds(text, 0, text.length, mDrawTextRectBuffer)
+        // Android sometimes has pre-padding
+        drawOffsetX -= mDrawTextRectBuffer.left.toFloat()
+        // Android does not snap the bounds to line boundaries,
+//  and draws from bottom to top.
+// And we want to normalize it.
+//        drawOffsetY += -mFontMetricsBuffer.ascent
+        // To have a consistent point of reference, we always draw left-aligned
+        val originalTextAlign = paint.textAlign
+        paint.textAlign = Align.LEFT
+        if (angleDegrees != 0f) { // Move the text drawing rect in a way that it always rotates around its center
+            drawOffsetX -= mDrawTextRectBuffer.width() * 0.5f
+            drawOffsetY -= lineHeight * 0.5f
+            var translateX = x
+            var translateY = y
+            // Move the "outer" rect relative to the anchor, assuming its centered
+            if (anchor.x != 0.5f || anchor.y != 0.5f) {
+                val rotatedSize = getSizeOfRotatedRectangleByDegrees(
+                        mDrawTextRectBuffer.width().toFloat(),
+                        lineHeight,
+                        angleDegrees)
+                translateX -= rotatedSize!!.width * (anchor.x - 0.5f)
+                translateY -= rotatedSize!!.height * (anchor.y - 0.5f)
+                FSize.recycleInstance(rotatedSize)
+            }
+            c.save()
+            c.translate(translateX, translateY)
+            c.rotate(angleDegrees)
+            c.drawText(text, drawOffsetX, drawOffsetY, paint)
+            c.restore()
+        } else {
+            if (anchor.x != 0f || anchor.y != 0f) {
+                drawOffsetX -= mDrawTextRectBuffer.width() * anchor.x
+                drawOffsetY -= lineHeight * anchor.y
+            }
+            drawOffsetX += x
+            drawOffsetY += y
+            c.drawText(text, drawOffsetX, drawOffsetY, paint)
+        }
+    }
+
+    fun getSizeOfRotatedRectangleByDegrees(rectangleWidth: Float, rectangleHeight: Float, degrees: Float): FSize? {
+        val radians = degrees * Utils.FDEG2RAD
+        return Utils.getSizeOfRotatedRectangleByRadians(rectangleWidth, rectangleHeight, radians)
+    }
+
+}
+```
+
 ## Barchart(柱状图)
 ### 常用方法说明:
 ``` kotlin

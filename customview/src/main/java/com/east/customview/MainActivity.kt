@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.east.customview.animaotr1.Fang58Activity
 import com.east.customview.custom_behavior.CustomBehaviorActivity
 import com.east.customview.custom_car_home.CarHomeActivity
 import com.east.customview.custom_changecolor.ViewPagerActivity
@@ -15,6 +16,7 @@ import com.east.customview.custom_qqarc.QQArcActivity
 import com.east.customview.custom_ratingbar.CustomRatingBarActivity
 import com.east.customview.custom_tablayout.CustomTabLayoutActivity
 import com.east.customview.customtextview.CustomTextViewActivity
+import com.east.customview.list_data_screen.ListDataScreenActivity
 import com.east.customview.material_design_1.SimplePracticeActivity
 import com.east.customview.practice_paint.PracticePaintActivity
 import com.east.customview.view_draw_process.ViewDrawProcessActivity
@@ -63,6 +65,10 @@ class MainActivity : AppCompatActivity() {
             simple_prcactice -> startActivity(Intent(this, SimplePracticeActivity::class.java))
             //自定义Behavior
             custom_behavior -> startActivity(Intent(this, CustomBehaviorActivity::class.java))
+            //仿58同城数据加载动画
+            fang58 -> startActivity(Intent(this, Fang58Activity::class.java))
+            //常见多条命菜单筛选
+            list_data_screen -> startActivity(Intent(this, ListDataScreenActivity::class.java))
         }
     }
 }

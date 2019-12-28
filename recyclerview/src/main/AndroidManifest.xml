@@ -23,14 +23,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".recycleranalysis.RecyclerAnalysisActivity" />
+        <activity android:name=".recycleranalysis.RecyclerAnalysisActivity"/>
         <activity
             android:name=".recycleranalysis.basicUse.BasicUseActivity"
             android:theme="@style/AppTheme" />
-        <activity android:name=".recycleranalysis.commonAdapterUse.CommonAdapterActivity" />
-        <activity android:name=".recycleranalysis.dragItemAnimatorUse.DragItemAnimatorActivity" />
-        <activity android:name=".recycleranalysis.headerFooterUse.HeaderFooterActivity" />
-        <activity android:name=".recycleranalysis.refreshLoad.RefreshLoadActivity" />
+        <activity android:name=".recycleranalysis.commonAdapterUse.CommonAdapterActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".recycleranalysis.dragItemAnimatorUse.DragItemAnimatorActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".recycleranalysis.headerFooterUse.HeaderFooterActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".recycleranalysis.refreshLoad.RefreshLoadActivity"
+            android:theme="@style/AppTheme"/>
     </application>
 
 </manifest>

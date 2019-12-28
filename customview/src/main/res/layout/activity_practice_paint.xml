@@ -23,7 +23,7 @@
         android:layout_height="0dp"/>
 
 
-    <com.east.customview.practice_paint.widget.ShapeView
+    <com.east.customview.animaotr1.widget.ShapeView
         android:id="@+id/shapeView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
