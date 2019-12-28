@@ -1,10 +1,12 @@
 package com.east.customview.list_data_screen.adapter
 
+import android.content.Context
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import com.east.customview.R
 
 /**
@@ -16,6 +18,7 @@ import com.east.customview.R
  */
 class ListDataScreenAdapter: BaseMenuAdapter() {
 
+    private var mToast : Toast?= null
     private var datas = arrayOf("类型","品牌","价格","更多")
     override fun getItemCount() = datas.size
 
@@ -31,6 +34,14 @@ class ListDataScreenAdapter: BaseMenuAdapter() {
         val contentView =
             LayoutInflater.from(parent.context).inflate(R.layout.item_content, parent, false) as TextView
         contentView.text = datas[position]
+        contentView.setOnClickListener {
+            mObservers.forEach {
+                //点击完后需要关闭菜单
+                it.closeMenuContent()
+                show(parent.context,datas[position],Toast.LENGTH_SHORT)
+            }
+
+        }
         return contentView
     }
 
@@ -42,6 +53,14 @@ class ListDataScreenAdapter: BaseMenuAdapter() {
     override fun closeMenu(view:View) {
         val textView = view as TextView
         textView.setTextColor(Color.WHITE)
+    }
+
+    fun show(context: Context, msg:String, timer:Int){
+        if(mToast == null)
+            mToast =
+                Toast.makeText(context,"关闭菜单",timer)
+        mToast!!.setText(msg)
+        mToast!!.show()
     }
 
 }

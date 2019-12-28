@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import com.east.customview.list_data_screen.MenuObserver
 import com.east.customview.list_data_screen.adapter.BaseMenuAdapter
 
 /**
@@ -44,6 +45,8 @@ class ListDataScreenView @JvmOverloads constructor(
     private var mAnimatorDuration = 350L//动画执行的时间
     //动画是否正在执行中
     private var mIsAnimatorExcuting = false
+
+    private var mObserver :MenuObserver ?= null//观察者
     init {
         orientation = VERTICAL //默认排列方式是竖直排列
         //1.用代码的方式把布局填充进去
@@ -76,14 +79,28 @@ class ListDataScreenView @JvmOverloads constructor(
             mMenuContentContainer.layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,mMenuContentHeight)
             mMenuContentContainer.translationY = -mMenuContentHeight.toFloat()
         }
-
     }
+
+
 
     /**
      *  设置Adapter View
      */
     fun setAdapter(adapter: BaseMenuAdapter){
+        //先解除之前的观察者
+        if(mAdapter!=null && mObserver!=null){
+            mAdapter!!.unRegisterDataSetObserver(mObserver!!)
+        }
+
         this.mAdapter = adapter
+        //创建观察者,并注册
+        mAdapter!!.registerDataSetObserver(object :MenuObserver{
+            override fun closeMenuContent() {
+                this@ListDataScreenView.closeMenuContent()
+            }
+
+        })
+
         val count = adapter.getItemCount()
         for(position in 0 until count){
             //3.添加tabview到TabViewContainer中去
@@ -99,7 +116,6 @@ class ListDataScreenView @JvmOverloads constructor(
             val contentView = adapter.getContentView(position,mMenuContentContainer)
             mMenuContentContainer.addView(contentView)
             contentView.visibility = View.GONE //先全部隐藏
-            contentView.setOnClickListener {  }
         }
     }
 
