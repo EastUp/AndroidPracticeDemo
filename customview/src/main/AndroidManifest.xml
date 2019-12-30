@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".list_data_screen.ListDataScreenActivity"></activity>
+        <activity android:name=".huashu_loading.HuaShuLoadingActivity"></activity>
+        <activity android:name=".list_data_screen.ListDataScreenActivity" />
         <activity
-            android:name=".animaotr1.Fang58Activity"
+            android:name=".fang58.Fang58Activity"
             android:theme="@style/AppTheme" />
         <activity android:name=".custom_behavior.CustomBehaviorActivity" />
         <activity android:name=".material_design_1.FruitActivity" />

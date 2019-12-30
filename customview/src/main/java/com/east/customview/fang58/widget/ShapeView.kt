@@ -1,4 +1,4 @@
-package com.east.customview.animaotr1.widget
+package com.east.customview.fang58.widget
 
 import android.content.Context
 import android.graphics.Canvas

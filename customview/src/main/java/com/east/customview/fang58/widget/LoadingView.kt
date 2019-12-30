@@ -1,4 +1,4 @@
-package com.east.customview.animaotr1.widget
+package com.east.customview.fang58.widget
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -9,7 +9,6 @@ import android.util.AttributeSet
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
-import android.view.ViewGroup
 import android.view.animation.AccelerateInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.widget.LinearLayout
@@ -59,9 +58,9 @@ class LoadingView @JvmOverloads constructor(
 
         var fallAnimator =
             ObjectAnimator.ofFloat(mShapeView, "translationY", 0f, mTranslationDistance)
-        var shapeScaleAnimator1 = ObjectAnimator.ofFloat(mShapeView, "scaleX", 1f, 0.3f)
-        var shapeScaleAnimator2 = ObjectAnimator.ofFloat(mShapeView, "scaleY", 1f, 0.3f)
-        var shadowScaleAnimator = ObjectAnimator.ofFloat(mShadowView, "scaleX", 1f, 0.3f)
+        var shapeScaleAnimator1 = ObjectAnimator.ofFloat(mShapeView, "scaleX", 1f, 0.3f)//X缩小
+        var shapeScaleAnimator2 = ObjectAnimator.ofFloat(mShapeView, "scaleY", 1f, 0.3f)//Y缩小
+        var shadowScaleAnimator = ObjectAnimator.ofFloat(mShadowView, "scaleX", 1f, 0.3f)//阴影只有X缩小
 
         var animatorSet = AnimatorSet()
 //        animatorSet.playSequentially(fallAnimator,scaleAnimator)//按照顺序执行
@@ -91,9 +90,9 @@ class LoadingView @JvmOverloads constructor(
 
         var fallAnimator =
             ObjectAnimator.ofFloat(mShapeView, "translationY", mTranslationDistance, 0f)
-        var shapeScaleAnimator1 = ObjectAnimator.ofFloat(mShapeView, "scaleX", 0.3f, 1f)
-        var shapeScaleAnimator2 = ObjectAnimator.ofFloat(mShapeView, "scaleY", 0.3f, 1f)
-        var shadowScaleAnimator = ObjectAnimator.ofFloat(mShadowView, "scaleX", 0.3f, 1f)
+        var shapeScaleAnimator1 = ObjectAnimator.ofFloat(mShapeView, "scaleX", 0.3f, 1f)//X放大
+        var shapeScaleAnimator2 = ObjectAnimator.ofFloat(mShapeView, "scaleY", 0.3f, 1f)//Y放大
+        var shadowScaleAnimator = ObjectAnimator.ofFloat(mShadowView, "scaleX", 0.3f, 1f)//阴影只有X放大
         //4.根据不同的形状生成不同的旋转动画
         var rotationAnimator = generateRotationAnimator()
         var animatorSet = AnimatorSet()
@@ -132,16 +131,26 @@ class LoadingView @JvmOverloads constructor(
         TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dip, resources.displayMetrics)
 
     override fun setVisibility(visibility: Int) {
-        super.setVisibility(View.INVISIBLE) //不要再去摆放和计算，少走一些系统的源码（View的绘制流程）
-        // 清理动画
-        mShapeView.clearAnimation()
-        mShadowView.clearAnimation()
-        //把loadingView从父布局中移除
-        val parent = parent as ViewGroup
-        if(parent!=null){
-            parent.removeView(this)// 从父布局移除
-            removeAllViews() // 移除自己所有的View
+        super.setVisibility(visibility) //不要再去摆放和计算，少走一些系统的源码（View的绘制流程）
+        if(visibility == View.VISIBLE){
+            mShapeView.translationY = 0f
+            mShapeView.scaleX = 1f
+            mShapeView.scaleY = 1f
+            mShadowView.translationX = 1f
+            mIsStopAnimator = false
+            startFallAnimator() //显示的时候再展开动画
+        }else{
+            mIsStopAnimator = true
+            // 清理动画
+            mShapeView.clearAnimation()
+            mShadowView.clearAnimation()
         }
-        mIsStopAnimator = true
+//        //把loadingView从父布局中移除
+//        val parent = parent as ViewGroup
+//        if(parent!=null){
+//            parent.removeView(this)// 从父布局移除
+//            removeAllViews() // 移除自己所有的View
+//        }
+
     }
 }
