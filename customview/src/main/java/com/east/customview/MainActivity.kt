@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.east.customview.fang58.Fang58Activity
+import com.east.customview.beisaier1_meesagebuddleview.MessageBubbleActivity
 import com.east.customview.custom_behavior.CustomBehaviorActivity
 import com.east.customview.custom_car_home.CarHomeActivity
 import com.east.customview.custom_changecolor.ViewPagerActivity
@@ -16,6 +16,7 @@ import com.east.customview.custom_qqarc.QQArcActivity
 import com.east.customview.custom_ratingbar.CustomRatingBarActivity
 import com.east.customview.custom_tablayout.CustomTabLayoutActivity
 import com.east.customview.customtextview.CustomTextViewActivity
+import com.east.customview.fang58.Fang58Activity
 import com.east.customview.huashu_loading.HuaShuLoadingActivity
 import com.east.customview.list_data_screen.ListDataScreenActivity
 import com.east.customview.material_design_1.SimplePracticeActivity
@@ -72,6 +73,8 @@ class MainActivity : AppCompatActivity() {
             list_data_screen -> startActivity(Intent(this, ListDataScreenActivity::class.java))
             //花束直播加载动画
             huashu_loading -> {startActivity(Intent(this,HuaShuLoadingActivity::class.java))}
+            //贝塞尔曲线1:消息气泡View
+            messageBunbbleView -> {startActivity(Intent(this,MessageBubbleActivity::class.java))}
         }
     }
 }
