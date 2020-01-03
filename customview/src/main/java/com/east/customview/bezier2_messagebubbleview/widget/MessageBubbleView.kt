@@ -192,18 +192,6 @@ class MessageBubbleView @JvmOverloads constructor(
      */
     fun handleActionUp() {
         if (mFixationRadius > mFixationRadiusMin) {//回弹
-//            // 回弹  ValueAnimator 值变化的动画  0 变化到 1(因为要有回弹的效果所有只写一个1f)
-//            val animator = ObjectAnimator.ofFloat(0f,1f)
-//            animator.duration = 250
-//            val start = PointF(mDragPoint.x, mDragPoint.y)
-//            val end = PointF(mFixationPoint.x, mFixationPoint.y)
-//            animator.addUpdateListener { animation ->
-//                val percent = animation.animatedValue as Float // 0 - 1
-//                Log.d("TAG", "percent:$percent")
-//                val pointF = BubbleUtils.getPointByPercent(start, end, percent)
-//                // 用代码更新拖拽点
-//                updateDragPoint(pointF.x, pointF.y)
-//            }
             //ValueAnimator 值变化的动画  1 变化到 0
             var animator: ValueAnimator = ObjectAnimator.ofFloat(1f, 0f)
             val start = PointF(mFixationPoint.x, mFixationPoint.y)
