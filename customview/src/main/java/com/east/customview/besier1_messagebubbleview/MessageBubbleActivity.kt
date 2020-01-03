@@ -1,4 +1,4 @@
-package com.east.customview.beisaier1_meesagebuddleview
+package com.east.customview.besier1_messagebubbleview
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".beisaier1_meesagebuddleview.MessageBubbleActivity">
+    tools:context=".besier1_messagebubbleview.MessageBubbleActivity">
 
-    <com.east.customview.beisaier1_meesagebuddleview.widget.MessageBubbleView
+    <com.east.customview.bezier2_messagebubbleview.widget.MessageBubbleView
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -4,7 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.east.customview.beisaier1_meesagebuddleview.MessageBubbleActivity
+import com.east.customview.besier1_messagebubbleview.MessageBubbleActivity
+import com.east.customview.bezier2_messagebubbleview.DragBombActivity
 import com.east.customview.custom_behavior.CustomBehaviorActivity
 import com.east.customview.custom_car_home.CarHomeActivity
 import com.east.customview.custom_changecolor.ViewPagerActivity
@@ -75,6 +76,8 @@ class MainActivity : AppCompatActivity() {
             huashu_loading -> {startActivity(Intent(this,HuaShuLoadingActivity::class.java))}
             //贝塞尔曲线1:消息气泡View
             messageBunbbleView -> {startActivity(Intent(this,MessageBubbleActivity::class.java))}
+            //贝塞尔曲线2:可拖动爆炸消息气泡View
+            messageBunbbleView_DragBomb -> {startActivity(Intent(this,DragBombActivity::class.java))}
         }
     }
 }
