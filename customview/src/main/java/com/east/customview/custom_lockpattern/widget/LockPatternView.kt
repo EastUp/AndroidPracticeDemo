@@ -24,7 +24,7 @@ class LockPatternView @JvmOverloads constructor(
 
     private var mIsInit = false //是否已经初始化过点和画笔
 
-    private var mPoints = Array(3) { Array<Point?>(3) { null } } //所有的点
+    private var mPoints = Array(3) { arrayOfNulls<Point>(3) } //所有的点
 
     // 外圆的半径
     private var mDotRadius = 0
