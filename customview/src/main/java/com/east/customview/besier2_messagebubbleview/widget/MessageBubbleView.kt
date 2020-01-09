@@ -1,4 +1,4 @@
-package com.east.customview.bezier2_messagebubbleview.widget
+package com.east.customview.besier2_messagebubbleview.widget
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -11,8 +11,8 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.animation.OvershootInterpolator
-import com.east.customview.bezier2_messagebubbleview.BubbleTouchListener
-import com.east.customview.bezier2_messagebubbleview.BubbleUtils
+import com.east.customview.besier2_messagebubbleview.BubbleTouchListener
+import com.east.customview.besier2_messagebubbleview.BubbleUtils
 import kotlin.math.atan
 import kotlin.math.cos
 import kotlin.math.sin

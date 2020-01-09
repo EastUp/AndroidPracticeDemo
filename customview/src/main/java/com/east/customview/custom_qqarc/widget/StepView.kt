@@ -22,15 +22,15 @@ class StepView @JvmOverloads constructor(
     defStyleAttr : Int = 0
 ):View(context,attrs,defStyleAttr) {
 
-    private lateinit var mOuterColor:ColorStateList
-    private lateinit var mInnerColor:ColorStateList
+    private var mOuterColor:ColorStateList
+    private var mInnerColor:ColorStateList
     private var mBorderWidth:Float = dp2px(8f)
     private var mTextColor:ColorStateList
     private var mTextSize:Float = sp2px(12f)
 
-    private lateinit var mOuterPaint:Paint
-    private lateinit var mInnerPaint:Paint
-    private lateinit var mTextPaint:Paint
+    private var mOuterPaint:Paint
+    private var mInnerPaint:Paint
+    private var mTextPaint:Paint
 
 
     private var mStepMax = 100

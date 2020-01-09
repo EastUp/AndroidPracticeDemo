@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".besier1_messagebubbleview.MessageBubbleActivity">
 
-    <com.east.customview.bezier2_messagebubbleview.widget.MessageBubbleView
+    <com.east.customview.besier2_messagebubbleview.widget.MessageBubbleView
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

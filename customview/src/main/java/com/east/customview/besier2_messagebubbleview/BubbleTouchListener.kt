@@ -1,4 +1,4 @@
-package com.east.customview.bezier2_messagebubbleview
+package com.east.customview.besier2_messagebubbleview
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -13,7 +13,7 @@ import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.ImageView
 import com.east.customview.R
-import com.east.customview.bezier2_messagebubbleview.widget.MessageBubbleView
+import com.east.customview.besier2_messagebubbleview.widget.MessageBubbleView
 
 /**
  * |---------------------------------------------------------------------------------------------------------------|

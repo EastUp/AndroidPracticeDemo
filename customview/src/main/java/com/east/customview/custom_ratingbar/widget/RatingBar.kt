@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.content.ContextCompat
 import com.east.customview.R
 
 /**
@@ -31,8 +32,8 @@ class RatingBar @JvmOverloads constructor(
     private var mSelectStarNumber = 0//选中的星星
     init {
         var typedArray = context.obtainStyledAttributes(attrs, R.styleable.RatingBar)
-        mStarNormal = typedArray.getDrawable(R.styleable.RatingBar_starNormal)?:resources.getDrawable(R.drawable.star_normal)
-        mStarFocus = typedArray.getDrawable(R.styleable.RatingBar_starFocus)?:resources.getDrawable(R.drawable.star_selected)
+        mStarNormal = typedArray.getDrawable(R.styleable.RatingBar_starNormal)?:ContextCompat.getDrawable(context,R.drawable.star_normal)!!
+        mStarFocus = typedArray.getDrawable(R.styleable.RatingBar_starFocus)?:ContextCompat.getDrawable(context,R.drawable.star_selected)!!
         mStarNumber = typedArray.getInt(R.styleable.RatingBar_starNumber,5)
         mPadding = typedArray.getDimension(R.styleable.RatingBar_ratingBarPadding,dip2px(10f))
         typedArray.recycle()

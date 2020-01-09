@@ -1,4 +1,4 @@
-package com.east.customview.bezier2_messagebubbleview;
+package com.east.customview.besier2_messagebubbleview;
 
 import android.content.Context;
 import android.graphics.PointF;

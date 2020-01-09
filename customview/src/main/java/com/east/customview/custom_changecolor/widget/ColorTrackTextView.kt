@@ -27,9 +27,9 @@ class ColorTrackTextView @JvmOverloads constructor(
     private var mChangeColor : ColorStateList
 
     // 1. 实现一个文字两种颜色 - 绘制不变色字体的画笔
-    private lateinit var mOriginPaint:Paint
+    private var mOriginPaint:Paint
     // 1. 实现一个文字两种颜色 - 绘制变色字体的画笔
-    private lateinit var mChangePaint:Paint
+    private var mChangePaint:Paint
     // 1. 实现一个文字两种颜色 - 当前的进度
     private var mCurrentProgress = 0f
 

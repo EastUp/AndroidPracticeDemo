@@ -119,7 +119,7 @@ class ProgressBar @JvmOverloads constructor(
 
     @Synchronized
     fun setMax(max:Float){
-        this.mMax = mMax
+        this.mMax = max
         invalidate()
     }
 

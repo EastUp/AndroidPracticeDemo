@@ -125,7 +125,8 @@ class LockPatternView @JvmOverloads constructor(
                 // 贝塞尔曲线 - 讲一次数学课
                 drawLine(lastPoint, mSelectPoints[index], canvas, mLinePaint)
                 // 两个点之间绘制一个箭头
-                drawArrow(canvas, mArrowPaint!!, lastPoint, mSelectPoints[index], (mDotRadius / 5).toFloat(), 38)
+                drawArrow(canvas,
+                    mArrowPaint, lastPoint, mSelectPoints[index], (mDotRadius / 5).toFloat(), 38)
                 lastPoint = mSelectPoints[index]
             }
             //}
@@ -225,7 +226,7 @@ class LockPatternView @JvmOverloads constructor(
             for (i in 0..2){
                 for(point in mPoints[i]){
                     if(MathUtil.checkInRound(point!!.centerX.toFloat(),
-                            point!!.centerY.toFloat(), mDotRadius.toFloat(),mMovingX,mMovingY))
+                            point.centerY.toFloat(), mDotRadius.toFloat(),mMovingX,mMovingY))
                         return point
                 }
             }

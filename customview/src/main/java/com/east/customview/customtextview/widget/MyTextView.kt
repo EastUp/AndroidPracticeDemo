@@ -25,7 +25,7 @@ class MyTextView : View{
     var mTextColor : Int = Color.BLACK
     var mTextSize : Float = 15f
 
-    lateinit var mPaint :Paint
+    var mPaint :Paint
 
     /**
      *  在代码中 new的时候调用
@@ -100,7 +100,7 @@ class MyTextView : View{
             //计算的宽度 与 字体的长度有关  与字体的大小  用画笔来测量
             var bounds = Rect()
             //// 获取文本的Rect
-            mPaint.getTextBounds(mText,0,mText!!.length,bounds)
+            mPaint.getTextBounds(mText,0, mText.length,bounds)
             width = bounds.width()+paddingLeft+paddingRight
         }
 
@@ -110,7 +110,7 @@ class MyTextView : View{
             //计算的宽度 与 字体的长度有关  与字体的大小  用画笔来测量
             var bounds = Rect()
             //// 获取文本的Rect
-            mPaint.getTextBounds(mText,0,mText!!.length,bounds)
+            mPaint.getTextBounds(mText,0, mText.length,bounds)
             height = bounds.height()+paddingTop+paddingBottom
         }
 
