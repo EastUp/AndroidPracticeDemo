@@ -84,4 +84,12 @@
         <attr name="qqRightMenuMargin" format="dimension"/>
     </declare-styleable>
 
+    <!--视差动画的属性-->
+    <!-- X方向上的位移 -->
+    <attr name="translationXIn" format="float" />
+    <attr name="translationXOut" format="float" />
+    <!-- Y方向上的位移 -->
+    <attr name="translationYIn" format="float" />
+    <attr name="translationYOut" format="float" />
+
 </resources>

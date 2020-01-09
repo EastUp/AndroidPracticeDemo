@@ -22,6 +22,7 @@ import com.east.customview.fang58.Fang58Activity
 import com.east.customview.huashu_loading.HuaShuLoadingActivity
 import com.east.customview.list_data_screen.ListDataScreenActivity
 import com.east.customview.material_design_1.SimplePracticeActivity
+import com.east.customview.parallax1_kugou_splash.ParallaxKugouActivity
 import com.east.customview.practice_paint.PracticePaintActivity
 import com.east.customview.view_draw_process.ViewDrawProcessActivity
 import com.east.customview.view_touch.ViewTouchActivity
@@ -81,6 +82,8 @@ class MainActivity : AppCompatActivity() {
             messageBunbbleView_DragBomb -> {startActivity(Intent(this,DragBombActivity::class.java))}
             //贝塞尔曲线3:花椒直播点赞效果
             huajiao_praise -> {startActivity(Intent(this,HuajiaoPraiseActivity::class.java))}
+            //视差动画1:酷狗引导页
+            kugou_splash -> {startActivity(Intent(this,ParallaxKugouActivity::class.java))}
         }
     }
 }
