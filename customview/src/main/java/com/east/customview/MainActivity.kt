@@ -16,6 +16,7 @@ import com.east.customview.custom_lockpattern.LockPatternActivity
 import com.east.customview.custom_qq.QQSlidingMenuActivity
 import com.east.customview.custom_qqarc.QQArcActivity
 import com.east.customview.custom_ratingbar.CustomRatingBarActivity
+import com.east.customview.custom_redpacket.RedPackageActivity
 import com.east.customview.custom_tablayout.CustomTabLayoutActivity
 import com.east.customview.customtextview.CustomTextViewActivity
 import com.east.customview.fang58.Fang58Activity
@@ -87,6 +88,10 @@ class MainActivity : AppCompatActivity() {
             kugou_splash -> {startActivity(Intent(this,ParallaxKugouActivity::class.java))}
             //视差动画2:雅虎引导页
             yahu_splash -> {startActivity(Intent(this,ParallaxYahuActivity::class.java))}
+//            //UI渲染和布局适配
+//            ui_romance -> {startActivity(Intent(this,ParallaxYahuActivity::class.java))}
+            //炫酷动画_抢红包
+            red_bao -> {startActivity(Intent(this,RedPackageActivity::class.java))}
         }
     }
 }

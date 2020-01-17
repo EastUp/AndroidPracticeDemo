@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".parallax2_yahu_splash.ParallaxYahuActivity"></activity>
+        <activity android:name=".custom_redpacket.RedPackageActivity"></activity>
+        <activity android:name=".parallax2_yahu_splash.ParallaxYahuActivity" />
         <activity android:name=".parallax1_kugou_splash.ParallaxKugouActivity" />
         <activity android:name=".besier3_huajiao_praise.HuajiaoPraiseActivity" />
         <activity android:name=".besier2_messagebubbleview.DragBombActivity" />

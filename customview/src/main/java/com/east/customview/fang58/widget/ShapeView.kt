@@ -26,7 +26,7 @@ class ShapeView @JvmOverloads constructor(
 
     private var mPaint: Paint = Paint()
     var mCurrentShape = Shape.Circle //当前的状态
-
+    private var mPath :Path ?= null
     init {
         mPaint.isAntiAlias = true
     }
@@ -48,18 +48,20 @@ class ShapeView @JvmOverloads constructor(
             Shape.Square -> {
                 mPaint.color = ContextCompat.getColor(context, R.color.rect)
                 var rect = RectF(0f, 0f, width.toFloat(), height.toFloat())
-                canvas.drawRoundRect(rect, 10f, 10f, mPaint)
+                canvas.drawRoundRect(rect, 5f, 5f, mPaint)
             }
 
             Shape.Tringle -> { //画等边三角形,这样后面做动画旋转会好看
                 mPaint.color = ContextCompat.getColor(context, R.color.triangle)
-                var path = Path()
-                val triangleY = (width * sin(Math.toRadians(60.0))).toFloat()
-                path.moveTo((width / 2).toFloat(), 0F)
-                path.lineTo(0f, triangleY)
-                path.lineTo(width.toFloat(), triangleY)
-                path.close() //会自动连接到起始点
-                canvas.drawPath(path, mPaint)
+                if(mPath == null){
+                    mPath = Path()
+                    val triangleY = (width * sin(Math.toRadians(60.0))).toFloat()
+                    mPath!!.moveTo((width / 2).toFloat(), 0F)
+                    mPath!!.lineTo(0f, triangleY)
+                    mPath!!.lineTo(width.toFloat(), triangleY)
+                    mPath!!.close() //会自动连接到起始点
+                }
+                canvas.drawPath(mPath!!, mPaint)
             }
         }
     }

@@ -32,6 +32,13 @@ class LoadingView @JvmOverloads constructor(
     private var mTranslationDistance: Float = 0f //下落距离
     private var mDuration = 350L //动画执行时间
     private var mIsStopAnimator = false //是否停止动画
+    private lateinit var mFallAnimatorSet: AnimatorSet
+    private lateinit var mUpAnimatorSet: AnimatorSet
+    private lateinit var upAnimator: ObjectAnimator
+    private lateinit var shapeScaleAnimatorUp1: ObjectAnimator
+    private lateinit var shapeScaleAnimatorUp2: ObjectAnimator
+    private lateinit var shadowScaleAnimatorUp: ObjectAnimator
+    private lateinit var rotationAnimator: ObjectAnimator
 
     init {
         //1.把loadingview添加到这个自定义Group中
@@ -39,8 +46,11 @@ class LoadingView @JvmOverloads constructor(
         mShapeView = view.findViewById(R.id.shape_view)
         mShadowView = view.findViewById(R.id.shadow_view)
         mTranslationDistance = dip2px(80f)
-        if(visibility != View.VISIBLE) //如果在xml中就设置的是不可见那么就不开启动画
+        if (visibility != View.VISIBLE) //如果在xml中就设置的是不可见那么就不开启动画
             mIsStopAnimator = true
+
+        initAnimator()
+
 
         post {
             // onResume 之后View绘制流程执行完毕之后（View的绘制流程源码分析那一章）
@@ -51,68 +61,77 @@ class LoadingView @JvmOverloads constructor(
         // onCreate() 方法中执行 ，布局文件解析 反射创建实例
     }
 
-    //2.下落和缩小动画
-    private fun startFallAnimator() {
-        if (mIsStopAnimator)
-            return
-
+    /**
+     *  初始化动画
+     */
+    private fun initAnimator() {
         var fallAnimator =
             ObjectAnimator.ofFloat(mShapeView, "translationY", 0f, mTranslationDistance)
         var shapeScaleAnimator1 = ObjectAnimator.ofFloat(mShapeView, "scaleX", 1f, 0.3f)//X缩小
         var shapeScaleAnimator2 = ObjectAnimator.ofFloat(mShapeView, "scaleY", 1f, 0.3f)//Y缩小
         var shadowScaleAnimator = ObjectAnimator.ofFloat(mShadowView, "scaleX", 1f, 0.3f)//阴影只有X缩小
 
-        var animatorSet = AnimatorSet()
+        mFallAnimatorSet = AnimatorSet()
 //        animatorSet.playSequentially(fallAnimator,scaleAnimator)//按照顺序执行
-        animatorSet.playTogether(
+        mFallAnimatorSet.playTogether(
             fallAnimator,
             shapeScaleAnimator1,
             shapeScaleAnimator2,
             shadowScaleAnimator
         )//同时执行的动画
-        animatorSet.duration = mDuration
-        animatorSet.interpolator = AccelerateInterpolator() //下落的时候速度是慢慢加快的
-        animatorSet.addListener(object : AnimatorListenerAdapter() {
+        mFallAnimatorSet.duration = mDuration
+        mFallAnimatorSet.interpolator = AccelerateInterpolator() //下落的时候速度是慢慢加快的
+        mFallAnimatorSet.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator?) {
+                //先改变形状
+                mShapeView.exchange()
                 //3.开启上抛和放大还有旋转的动画
                 startUpAnimator()
-                mShapeView.exchange()//切换图形
             }
         })
-        animatorSet.start()
+
+
+        upAnimator =
+            ObjectAnimator.ofFloat(mShapeView, "translationY", mTranslationDistance, 0f)
+        shapeScaleAnimatorUp1 = ObjectAnimator.ofFloat(mShapeView, "scaleX", 0.3f, 1f)//X放大
+        shapeScaleAnimatorUp2 = ObjectAnimator.ofFloat(mShapeView, "scaleY", 0.3f, 1f)//Y放大
+        shadowScaleAnimatorUp = ObjectAnimator.ofFloat(mShadowView, "scaleX", 0.3f, 1f)//阴影只有X放大
+        //4.根据不同的形状生成不同的旋转动画
+        rotationAnimator = generateRotationAnimator()
+        mUpAnimatorSet = AnimatorSet()
+//        animatorSet.playSequentially(fallAnimator,scaleAnimator)//按照顺序执行
+        mUpAnimatorSet.duration = mDuration
+        mUpAnimatorSet.interpolator = DecelerateInterpolator() //上抛的时候速度慢慢降低
+        mUpAnimatorSet.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationEnd(animation: Animator?) {
+                //5.下落和缩小动画
+                startFallAnimator()
+            }
+        })
+    }
+
+    //2.下落和缩小动画
+    private fun startFallAnimator() {
+        if (mIsStopAnimator)
+            return
+        mFallAnimatorSet.start()
     }
 
     //3.开启上抛和放大还有旋转的动画
     private fun startUpAnimator() {
         if (mIsStopAnimator)
             return
-        Log.e("TAG", "startUpAnimator$this")
-
-        var fallAnimator =
-            ObjectAnimator.ofFloat(mShapeView, "translationY", mTranslationDistance, 0f)
-        var shapeScaleAnimator1 = ObjectAnimator.ofFloat(mShapeView, "scaleX", 0.3f, 1f)//X放大
-        var shapeScaleAnimator2 = ObjectAnimator.ofFloat(mShapeView, "scaleY", 0.3f, 1f)//Y放大
-        var shadowScaleAnimator = ObjectAnimator.ofFloat(mShadowView, "scaleX", 0.3f, 1f)//阴影只有X放大
         //4.根据不同的形状生成不同的旋转动画
-        var rotationAnimator = generateRotationAnimator()
-        var animatorSet = AnimatorSet()
-//        animatorSet.playSequentially(fallAnimator,scaleAnimator)//按照顺序执行
-        animatorSet.playTogether(
-            fallAnimator,
-            shapeScaleAnimator1,
-            shapeScaleAnimator2,
-            shadowScaleAnimator,
+        rotationAnimator = generateRotationAnimator()
+        mUpAnimatorSet.playTogether(
+            upAnimator,
+            shapeScaleAnimatorUp1,
+            shapeScaleAnimatorUp2,
+            shadowScaleAnimatorUp,
             rotationAnimator
         )//同时执行的动画
-        animatorSet.duration = mDuration
-        animatorSet.interpolator = DecelerateInterpolator() //上抛的时候速度慢慢降低
-        animatorSet.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?) {
-                //5.下落和缩小动画
-                startFallAnimator()
-            }
-        })
-        animatorSet.start()
+        Log.e("TAG", "startUpAnimator$this")
+        mUpAnimatorSet.start()
     }
 
     //4.根据不同的形状生成不同的旋转动画
@@ -132,19 +151,21 @@ class LoadingView @JvmOverloads constructor(
 
     override fun setVisibility(visibility: Int) {
         super.setVisibility(visibility) //不要再去摆放和计算，少走一些系统的源码（View的绘制流程）
-        if(visibility == View.VISIBLE){
+        if (visibility == View.VISIBLE) {
             mShapeView.translationY = 0f
             mShapeView.scaleX = 1f
             mShapeView.scaleY = 1f
             mShadowView.translationX = 1f
             mIsStopAnimator = false
             startFallAnimator() //显示的时候再展开动画
-        }else{
+        } else {
             mIsStopAnimator = true
             // 清理动画
             mShapeView.clearAnimation()
             mShadowView.clearAnimation()
         }
+        mFallAnimatorSet.cancel()
+        mUpAnimatorSet.cancel()
 //        //把loadingView从父布局中移除
 //        val parent = parent as ViewGroup
 //        if(parent!=null){
