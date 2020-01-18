@@ -34,4 +34,7 @@ dependencies {
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
+    implementation deps.thirdpart.gson
+    implementation 'com.squareup.okhttp3:okhttp:4.2.0'
+    implementation 'org.xutils:xutils:3.5.0'
 }
