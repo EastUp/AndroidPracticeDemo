@@ -46,4 +46,7 @@ dependencies {
 
     //aspect
     implementation 'org.aspectj:aspectjrt:1.8.9'
+
+    //reflect
+    implementation deps.kotlin.reflect
 }
