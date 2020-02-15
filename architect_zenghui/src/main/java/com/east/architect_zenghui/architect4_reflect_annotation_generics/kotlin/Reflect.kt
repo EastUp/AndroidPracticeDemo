@@ -1,4 +1,4 @@
-package com.east.architect_zenghui.reflect_annotation_generics.kotlin
+package com.east.architect_zenghui.architect4_reflect_annotation_generics.kotlin
 
 import kotlin.reflect.full.memberProperties
 

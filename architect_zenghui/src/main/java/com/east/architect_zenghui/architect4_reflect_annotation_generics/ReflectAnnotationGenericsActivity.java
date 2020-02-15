@@ -1,13 +1,13 @@
-package com.east.architect_zenghui.reflect_annotation_generics;
+package com.east.architect_zenghui.architect4_reflect_annotation_generics;
 
 
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.east.architect_zenghui.R;
-import com.east.architect_zenghui.reflect_annotation_generics.java.BaseActivity;
-import com.east.architect_zenghui.reflect_annotation_generics.java.ViewById;
-import com.east.architect_zenghui.reflect_annotation_generics.java.ViewUtils;
+import com.east.architect_zenghui.architect4_reflect_annotation_generics.java.BaseActivity;
+import com.east.architect_zenghui.architect4_reflect_annotation_generics.java.ViewById;
+import com.east.architect_zenghui.architect4_reflect_annotation_generics.java.ViewUtils;
 
 
 public class ReflectAnnotationGenericsActivity extends BaseActivity {

@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".reflect_annotation_generics.ReflectAnnotationGenericsActivity"/>
+        <activity android:name=".architect8_designmode1_singleton.RegisterActivity"></activity>
+        <activity android:name=".architect8_designmode1_singleton.MyMainActivity" />
+        <activity android:name=".architect8_designmode1_singleton.LoginActivity" />
+        <activity android:name=".architect6_handler.HandlerActivity" />
+        <activity android:name=".architect5_butterknife.ButterKnifeActivity" />
+        <activity android:name=".architect4_reflect_annotation_generics.ReflectAnnotationGenericsActivity" />
         <activity android:name=".architect2_aop.AopActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

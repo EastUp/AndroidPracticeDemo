@@ -1,4 +1,4 @@
-package com.east.architect_zenghui.reflect_annotation_generics.java;
+package com.east.architect_zenghui.architect4_reflect_annotation_generics.java;
 
 /**
  * Created by hcDarren on 2017/9/4.
