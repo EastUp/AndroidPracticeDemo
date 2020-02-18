@@ -4,13 +4,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.east.architect_zenghui.architect10_designmode3_factory.FactoryActivity
+import com.east.architect_zenghui.architect11_Designmode4_decorator.DecoratorActivity
 import com.east.architect_zenghui.architect1_change_network_engine.simple3.MainActivity
 import com.east.architect_zenghui.architect2_aop.AopActivity
 import com.east.architect_zenghui.architect4_reflect_annotation_generics.ReflectAnnotationGenericsActivity
 import com.east.architect_zenghui.architect5_butterknife.ButterKnifeActivity
 import com.east.architect_zenghui.architect6_handler.HandlerActivity
-import com.east.architect_zenghui.architect8_designmode1_singleton.LoginActivity
 import com.east.architect_zenghui.architect8_designmode1_singleton.MyMainActivity
+import com.east.architect_zenghui.architect9_designmode2_builder.BuilderActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -41,6 +43,16 @@ class MainActivity : AppCompatActivity() {
             }
             singleton -> {//8.单例设计模式,activity管理
                 startActivity(Intent(this,MyMainActivity::class.java))
+            }
+            builder -> { //9. Builder设计模式 增强版NavigationBar
+                startActivity(Intent(this,BuilderActivity::class.java))
+            }
+            factory -> { //10. 工厂模式-数据存储的特有方式
+                startActivity(Intent(this,FactoryActivity::class.java))
+            }
+
+            decorator -> { //11. 装饰者设计模式-RecycleView添加头部和底部
+                startActivity(Intent(this,DecoratorActivity::class.java))
             }
         }
     }

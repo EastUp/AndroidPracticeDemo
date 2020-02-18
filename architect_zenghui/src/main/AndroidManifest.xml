@@ -11,7 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".architect8_designmode1_singleton.RegisterActivity"></activity>
+        <activity android:name=".architect11_Designmode4_decorator.DecoratorActivity"></activity>
+        <activity android:name=".architect10_designmode3_factory.simple6_abstract_factory_mode_singleton.TestActivity" />
+        <activity android:name=".architect10_designmode3_factory.simple5_abstract_factory_mode.TestActivity" />
+        <activity android:name=".architect10_designmode3_factory.simple4_factory_method_mode.TestActivity" />
+        <activity android:name=".architect10_designmode3_factory.simple3_simple_factory_mode.TestActivity" />
+        <activity android:name=".architect10_designmode3_factory.simple2_preferenceutil.TestActivity" />
+        <activity android:name=".architect10_designmode3_factory.simple1_normal_preference.TestActivity" />
+        <activity android:name=".architect10_designmode3_factory.FactoryActivity" />
+        <activity android:name=".architect9_designmode2_builder.BuilderActivity" />
+        <activity android:name=".architect8_designmode1_singleton.RegisterActivity" />
         <activity android:name=".architect8_designmode1_singleton.MyMainActivity" />
         <activity android:name=".architect8_designmode1_singleton.LoginActivity" />
         <activity android:name=".architect6_handler.HandlerActivity" />
