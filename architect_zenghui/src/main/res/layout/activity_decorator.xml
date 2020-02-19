@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.east.architect_zenghui.architect11_Designmode4_decorator.simple3_decorator_recycleview.WrapRecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/recyclerview"
+    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".architect11_Designmode4_decorator.DecoratorActivity">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    tools:context=".architect11_Designmode4_decorator.DecoratorActivity" />

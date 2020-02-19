@@ -48,7 +48,7 @@ dependencies {
     implementation deps.thirdpart.gson
     implementation 'com.squareup.okhttp3:okhttp:4.2.0'
     implementation 'org.xutils:xutils:3.5.0'
-
+    implementation deps.support.recyclerview
     //aspect
     implementation 'org.aspectj:aspectjrt:1.8.9'
 
@@ -58,4 +58,6 @@ dependencies {
     //butterknife
     implementation 'com.jakewharton:butterknife:10.2.1'
     kapt 'com.jakewharton:butterknife-compiler:10.2.1'
+
+
 }

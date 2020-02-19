@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.east.architect_zenghui.architect10_designmode3_factory.FactoryActivity
 import com.east.architect_zenghui.architect11_Designmode4_decorator.DecoratorActivity
+import com.east.architect_zenghui.architect12_Designmode5_tempolate.TemplateActivity
 import com.east.architect_zenghui.architect1_change_network_engine.simple3.MainActivity
 import com.east.architect_zenghui.architect2_aop.AopActivity
 import com.east.architect_zenghui.architect4_reflect_annotation_generics.ReflectAnnotationGenericsActivity
@@ -53,6 +54,10 @@ class MainActivity : AppCompatActivity() {
 
             decorator -> { //11. 装饰者设计模式-RecycleView添加头部和底部
                 startActivity(Intent(this,DecoratorActivity::class.java))
+            }
+
+            template -> { //12. 模板设计模式-手写OkHttp的Dispatcher
+                startActivity(Intent(this,TemplateActivity::class.java))
             }
         }
     }
