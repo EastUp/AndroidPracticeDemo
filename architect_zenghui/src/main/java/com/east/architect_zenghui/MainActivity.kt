@@ -8,6 +8,8 @@ import com.east.architect_zenghui.architect10_designmode3_factory.FactoryActivit
 import com.east.architect_zenghui.architect11_Designmode4_decorator.DecoratorActivity
 import com.east.architect_zenghui.architect12_Designmode5_tempolate.TemplateActivity
 import com.east.architect_zenghui.architect13_Designmode6_strategy.StrategyActivity
+import com.east.architect_zenghui.architect14_designmode7_adapter.AdapterActivity
+import com.east.architect_zenghui.architect15_designmode8_observe.ObserveActivity
 import com.east.architect_zenghui.architect1_change_network_engine.simple3.MainActivity
 import com.east.architect_zenghui.architect2_aop.AopActivity
 import com.east.architect_zenghui.architect4_reflect_annotation_generics.ReflectAnnotationGenericsActivity
@@ -63,6 +65,12 @@ class MainActivity : AppCompatActivity() {
 
             strategy -> { //13.策略模式-Log 日志输出策略
                 startActivity(Intent(this, StrategyActivity::class.java))
+            }
+            adapter_mode -> {// 14.Adapter设计模式-打造通用的IndicatorView
+                startActivity(Intent(this, AdapterActivity::class.java))
+            }
+            observe -> {// 15.观察者设计模式-观察数据的插入
+                startActivity(Intent(this, ObserveActivity::class.java))
             }
         }
     }
