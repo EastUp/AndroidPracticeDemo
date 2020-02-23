@@ -10,6 +10,8 @@ import com.east.architect_zenghui.architect12_Designmode5_tempolate.TemplateActi
 import com.east.architect_zenghui.architect13_Designmode6_strategy.StrategyActivity
 import com.east.architect_zenghui.architect14_designmode7_adapter.AdapterActivity
 import com.east.architect_zenghui.architect15_designmode8_observe.ObserveActivity
+import com.east.architect_zenghui.architect16_designmode9_proxy.ProxyActivity
+import com.east.architect_zenghui.architect17_designmode10_prototype.PrototypeActivity
 import com.east.architect_zenghui.architect1_change_network_engine.simple3.MainActivity
 import com.east.architect_zenghui.architect2_aop.AopActivity
 import com.east.architect_zenghui.architect4_reflect_annotation_generics.ReflectAnnotationGenericsActivity
@@ -17,6 +19,7 @@ import com.east.architect_zenghui.architect5_butterknife.ButterKnifeActivity
 import com.east.architect_zenghui.architect6_handler.HandlerActivity
 import com.east.architect_zenghui.architect8_designmode1_singleton.MyMainActivity
 import com.east.architect_zenghui.architect9_designmode2_builder.BuilderActivity
+import com.east.architect_zenghui.architect_18_designmode11_iteration.IterationActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -71,6 +74,18 @@ class MainActivity : AppCompatActivity() {
             }
             observe -> {// 15.观察者设计模式-观察数据的插入
                 startActivity(Intent(this, ObserveActivity::class.java))
+            }
+
+            proxy -> { // 16.代理设计模式 - 实现 Retrofit 的 create
+                startActivity(Intent(this, ProxyActivity::class.java))
+            }
+
+            prototype -> { // 17.原型设计模式 - 订单查询拆分
+                startActivity(Intent(this, PrototypeActivity::class.java))
+            }
+
+            iteration -> { // 18.迭代器设计模式 - 构建通用 BottomTabNavigat
+                startActivity(Intent(this, IterationActivity::class.java))
             }
         }
     }

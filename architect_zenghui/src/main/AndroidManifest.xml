@@ -11,7 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".architect15_designmode8_observe.ObserveActivity"></activity>
+        <activity android:name=".architect_18_designmode11_iteration.IterationActivity"></activity>
+        <activity android:name=".architect17_designmode10_prototype.PrototypeActivity" />
+        <activity android:name=".architect16_designmode9_proxy.ProxyActivity" />
+        <activity android:name=".architect15_designmode8_observe.simple4.InsuranceActivity" />
+        <activity android:name=".architect15_designmode8_observe.ObserveActivity" />
         <activity android:name=".architect14_designmode7_adapter.AdapterActivity" />
         <activity android:name=".architect13_Designmode6_strategy.StrategyActivity" />
         <activity android:name=".architect12_Designmode5_tempolate.TemplateActivity" />
