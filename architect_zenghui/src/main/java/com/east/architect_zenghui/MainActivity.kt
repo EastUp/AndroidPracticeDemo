@@ -20,6 +20,7 @@ import com.east.architect_zenghui.architect6_handler.HandlerActivity
 import com.east.architect_zenghui.architect8_designmode1_singleton.MyMainActivity
 import com.east.architect_zenghui.architect9_designmode2_builder.BuilderActivity
 import com.east.architect_zenghui.architect_18_designmode11_iteration.IterationActivity
+import com.east.architect_zenghui.architect_19_designmode12_responsibility_chain.ResponsibilityChainActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -86,6 +87,10 @@ class MainActivity : AppCompatActivity() {
 
             iteration -> { // 18.迭代器设计模式 - 构建通用 BottomTabNavigat
                 startActivity(Intent(this, IterationActivity::class.java))
+            }
+
+            responsibility_chain -> { // 19.责任链设计模式 - QQ微信多用户系统检测
+                startActivity(Intent(this, ResponsibilityChainActivity::class.java))
             }
         }
     }
