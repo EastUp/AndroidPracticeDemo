@@ -92,6 +92,10 @@ class MainActivity : AppCompatActivity() {
             responsibility_chain -> { // 19.责任链设计模式/ 门面设计模式 - QQ微信多用户系统检测
                 startActivity(Intent(this, ResponsibilityChainActivity::class.java))
             }
+
+            architect_20 -> {//20. 享元/命令/组合设计模式
+
+            }
         }
     }
 }
