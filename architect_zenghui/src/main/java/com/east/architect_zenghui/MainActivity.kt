@@ -21,6 +21,7 @@ import com.east.architect_zenghui.architect8_designmode1_singleton.MyMainActivit
 import com.east.architect_zenghui.architect9_designmode2_builder.BuilderActivity
 import com.east.architect_zenghui.architect_18_designmode11_iteration.IterationActivity
 import com.east.architect_zenghui.architect_19_designmode12_responsibility_chain.ResponsibilityChainActivity
+import com.east.architect_zenghui.architect_22_eventbus.EventBusActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -95,6 +96,10 @@ class MainActivity : AppCompatActivity() {
 
             architect_20 -> {//20. 享元/命令/组合设计模式
 
+            }
+
+            eventbus -> {  // 21.EventBus源码分析和手写
+                startActivity(Intent(this, EventBusActivity::class.java))
             }
         }
     }
