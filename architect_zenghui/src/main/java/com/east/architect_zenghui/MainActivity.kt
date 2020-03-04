@@ -22,6 +22,7 @@ import com.east.architect_zenghui.architect9_designmode2_builder.BuilderActivity
 import com.east.architect_zenghui.architect_18_designmode11_iteration.IterationActivity
 import com.east.architect_zenghui.architect_19_designmode12_responsibility_chain.ResponsibilityChainActivity
 import com.east.architect_zenghui.architect_22_eventbus.EventBusActivity
+import com.east.architect_zenghui.architect_24_okhttp2.OkHttp2Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -98,8 +99,28 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-            eventbus -> {  // 21.EventBus源码分析和手写
+            architect_20 -> {//21. 状态/桥接/中介/备忘录设计模式
+
+            }
+
+            eventbus -> {  // 22.EventBus源码分析和手写
                 startActivity(Intent(this, EventBusActivity::class.java))
+            }
+
+            okhttp1 -> { // 23.OkHttp-Java网络编程基础
+
+            }
+            okhttp2 -> { // 24.OkHttp-整体架构和源码分析
+                startActivity(Intent(this, OkHttp2Activity::class.java))
+            }
+            okhttp3 -> { // 25.OkHttp-手写表单提交和文件上传
+
+            }
+            okhttp4 -> { // 26.OkHttp-源码精髓之拦截器分析
+
+            }
+            okhttp5 -> { // 27.OkHttp-上传进度监听和自定义缓存
+
             }
         }
     }
