@@ -11,7 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".architect_25_okhttp3.OkHttp3Activity"></activity>
+        <activity android:name=".architect_28_okhttp6.OkHttp6Activity"></activity>
+        <activity android:name=".architect_27_okhttp5.OkHttp5Activity" />
+        <activity android:name=".architect_26_okhttp4.OkHttp4Activity" />
+        <activity android:name=".architect_25_okhttp3.OkHttp3Activity" />
         <activity android:name=".architect_24_okhttp2.OkHttp2Activity" />
         <activity android:name=".architect_22_eventbus.TestActivity" />
         <activity android:name=".architect_22_eventbus.EventBusActivity" />

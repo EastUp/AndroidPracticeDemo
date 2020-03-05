@@ -23,6 +23,10 @@ import com.east.architect_zenghui.architect_18_designmode11_iteration.IterationA
 import com.east.architect_zenghui.architect_19_designmode12_responsibility_chain.ResponsibilityChainActivity
 import com.east.architect_zenghui.architect_22_eventbus.EventBusActivity
 import com.east.architect_zenghui.architect_24_okhttp2.OkHttp2Activity
+import com.east.architect_zenghui.architect_25_okhttp3.OkHttp3Activity
+import com.east.architect_zenghui.architect_26_okhttp4.OkHttp4Activity
+import com.east.architect_zenghui.architect_27_okhttp5.OkHttp5Activity
+import com.east.architect_zenghui.architect_28_okhttp6.OkHttp6Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -114,13 +118,16 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, OkHttp2Activity::class.java))
             }
             okhttp3 -> { // 25.OkHttp-手写表单提交和文件上传
-
+                startActivity(Intent(this, OkHttp3Activity::class.java))
             }
             okhttp4 -> { // 26.OkHttp-源码精髓之拦截器分析
-
+                startActivity(Intent(this, OkHttp4Activity::class.java))
             }
             okhttp5 -> { // 27.OkHttp-上传进度监听和自定义缓存
-
+                startActivity(Intent(this, OkHttp5Activity::class.java))
+            }
+            okhttp6 -> { // 28.文件断点下载
+                startActivity(Intent(this, OkHttp6Activity::class.java))
             }
         }
     }
