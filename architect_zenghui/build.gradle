@@ -28,6 +28,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        //记得在自己的moudle加上
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -50,9 +52,12 @@ dependencies {
     implementation deps.support.app_compat
     implementation deps.support.core_ktx
     implementation deps.constraint_layout
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation deps.junit
     androidTestImplementation deps.atsl.runner
     androidTestImplementation deps.espresso.core
+    api deps.support.multidex
     implementation deps.thirdpart.gson
     implementation 'com.squareup.okhttp3:okhttp:4.2.0'
     implementation 'org.xutils:xutils:3.5.0'
@@ -70,5 +75,9 @@ dependencies {
 
 
     implementation 'com.google.code.gson:gson:2.8.2'
+
+    //rxjava
+    implementation deps.rxjava2
+    implementation deps.rx_android
 
 }

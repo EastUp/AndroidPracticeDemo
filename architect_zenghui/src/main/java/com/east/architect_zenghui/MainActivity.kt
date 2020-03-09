@@ -24,9 +24,13 @@ import com.east.architect_zenghui.architect_19_designmode12_responsibility_chain
 import com.east.architect_zenghui.architect_22_eventbus.EventBusActivity
 import com.east.architect_zenghui.architect_24_okhttp2.OkHttp2Activity
 import com.east.architect_zenghui.architect_25_okhttp3.OkHttp3Activity
-import com.east.architect_zenghui.architect_26_okhttp4.OkHttp4Activity
+import com.east.architect_zenghui.architect_26_okhttp4_interceptor.OkHttp4Activity
 import com.east.architect_zenghui.architect_27_okhttp5.OkHttp5Activity
-import com.east.architect_zenghui.architect_28_okhttp6.OkHttp6Activity
+import com.east.architect_zenghui.architect_28_okhttp6_download.OkHttp6Activity
+import com.east.architect_zenghui.architect_29_rxjava1.rxjava.Rxjava1Activity
+import com.east.architect_zenghui.architect_30_rxjava2.Rxjava2Activity
+import com.east.architect_zenghui.architect_31_rxjava3.Rxjava3Activity
+import com.east.architect_zenghui.architect_32_rxjava4.Rxjava4Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -129,6 +133,20 @@ class MainActivity : AppCompatActivity() {
             okhttp6 -> { // 28.文件断点下载
                 startActivity(Intent(this, OkHttp6Activity::class.java))
             }
+            rxjava1 -> { // 29.第三方开源库 RXJava - 基本使用和源码分析
+                startActivity(Intent(this, Rxjava1Activity::class.java))
+            }
+            rxjava2 -> { // 30.第三方开源库 RxJava - 自己动手写事件变换
+                startActivity(Intent(this, Rxjava2Activity::class.java))
+            }
+            rxjava3 -> { // 31.第三方开源库 RxJava - 自己动手线程调度切换
+                startActivity(Intent(this, Rxjava3Activity::class.java))
+            }
+            rxjava4 -> { // 32.第三方开源库 RxJava - Android实际开发场景
+                startActivity(Intent(this, Rxjava4Activity::class.java))
+            }
+
+
         }
     }
 }

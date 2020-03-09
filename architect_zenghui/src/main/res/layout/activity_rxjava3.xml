@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".architect_26_okhttp4_interceptor.OkHttp4Activity">
+    tools:context=".architect_31_rxjava3.Rxjava3Activity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

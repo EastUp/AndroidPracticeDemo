@@ -3,20 +3,28 @@
     package="com.east.architect_zenghui">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:name=".App"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".architect_28_okhttp6.OkHttp6Activity"></activity>
+        <activity android:name=".architect_32_rxjava4.Rxjava4Activity"></activity>
+        <activity android:name=".architect_31_rxjava3.Rxjava3Activity" />
+        <activity android:name=".architect_30_rxjava2.Rxjava2Activity" />
+        <activity android:name=".architect_29_rxjava1.Rxjava1Activity" />
+        <activity android:name=".architect_29_rxjava1.simple1.Rxjava1Activity" />
+        <activity android:name=".architect_29_rxjava1.rxjava.Rxjava1Activity" />
+        <activity android:name=".architect_29_rxjava1.SimpleActivity" />
+        <activity android:name=".architect_28_okhttp6_download.OkHttp6Activity" />
         <activity android:name=".architect_27_okhttp5.OkHttp5Activity" />
-        <activity android:name=".architect_26_okhttp4.OkHttp4Activity" />
+        <activity android:name=".architect_26_okhttp4_interceptor.OkHttp4Activity" />
         <activity android:name=".architect_25_okhttp3.OkHttp3Activity" />
         <activity android:name=".architect_24_okhttp2.OkHttp2Activity" />
         <activity android:name=".architect_22_eventbus.TestActivity" />
