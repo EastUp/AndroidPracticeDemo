@@ -79,5 +79,11 @@ dependencies {
     //rxjava
     implementation deps.rxjava2
     implementation deps.rx_android
+    implementation deps.rxpermissions
+    implementation deps.rxbinding.rxbinding
+//    implementation deps.rxbinding.rxbinding_core
+//    implementation deps.rxbinding.rxbinding_appcompat
+
+    implementation project(':sharecomponent')
 
 }

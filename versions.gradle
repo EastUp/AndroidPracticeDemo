@@ -39,6 +39,7 @@ versions.room = "2.2.0"
 versions.rx_android = "2.1.1"
 versions.rxjava2 = "2.2.13"
 versions.rxpermissions = "0.10.2"
+versions.rxbinding = "3.1.0"
 versions.support = "1.0.0"
 versions.timber = "4.5.1"
 versions.work = "2.3.0-alpha01"
@@ -184,6 +185,19 @@ deps.hamcrest = "org.hamcrest:hamcrest-all:$versions.hamcrest"
 deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_gradle_plugin"
 deps.robolectric = "org.robolectric:robolectric:$versions.robolectric"
 ext.deps = deps
+
+def rxbinding = [:]
+rxbinding.rxbinding = "com.jakewharton.rxbinding3:rxbinding:$versions.rxbinding"
+rxbinding.rxbinding_core = "com.jakewharton.rxbinding3:rxbinding-core:$versions.rxbinding"
+rxbinding.rxbinding_appcompat = "com.jakewharton.rxbinding3:rxbinding-appcompat:$versions.rxbinding"
+rxbinding.rxbinding_drawerlayout = "com.jakewharton.rxbinding3:rxbinding-drawerlayout:$versions.rxbinding"
+rxbinding.rxbinding_leanback = "com.jakewharton.rxbinding3:rxbinding-leanback:$versions.rxbinding"
+rxbinding.rxbinding_recyclerview = "com.jakewharton.rxbinding3:rxbinding-recyclerview:$versions.rxbinding"
+rxbinding.rxbinding_slidingpanelayout = "com.jakewharton.rxbinding3:rxbinding-slidingpanelayout:$versions.rxbinding"
+rxbinding.rxbinding_swiperefreshlayout = "com.jakewharton.rxbinding3:rxbinding-swiperefreshlayout:$versions.rxbinding"
+rxbinding.rxbinding_viewpager = "com.jakewharton.rxbinding3:rxbinding-viewpager:$versions.rxbinding"
+rxbinding.rxbinding_viewpager2 = "com.jakewharton.rxbinding3:rxbinding-viewpager2:$versions.rxbinding"
+deps.rxbinding = rxbinding
 
 def build_versions = [:]
 build_versions.min_sdk = 14

@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
             butterknife_test -> {//5.ButterKnife源码分析和手写(APT(Annotation Processing Tool))
                 startActivity(Intent(this, ButterKnifeActivity::class.java))
             }
-            //6.编译时注解-绕过微信支付和分享的局限
+            //6.编译时注解-绕过微信支付和分享的局限  (具体请看 Joker项目)
             handler -> {//7.Handler源码分析
                 startActivity(Intent(this, HandlerActivity::class.java))
             }

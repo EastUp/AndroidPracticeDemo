@@ -1,21 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.east.architect_zenghui">
+    package="com.east.architect_zenghui" >
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".App"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme1">
-        <activity android:name=".architect_32_rxjava4.Rxjava4Activity"></activity>
+        android:theme="@style/AppTheme1" >
+        <activity android:name=".architect_32_rxjava4.rxlogin.rxlogin.RxLoginActivity" />
+        <activity android:name=".architect_32_rxjava4.rxpermission.PermissionActivity" />
+        <activity android:name=".architect_32_rxjava4.rxlogin.LoginActivity" />
+        <activity android:name=".architect_32_rxjava4.operate.OperateActivity" />
+        <activity android:name=".architect_32_rxjava4.Rxjava4Activity" />
         <activity android:name=".architect_31_rxjava3.Rxjava3Activity" />
         <activity android:name=".architect_30_rxjava2.Rxjava2Activity" />
         <activity android:name=".architect_29_rxjava1.Rxjava1Activity" />
@@ -54,7 +59,7 @@
         <activity android:name=".architect5_butterknife.ButterKnifeActivity" />
         <activity android:name=".architect4_reflect_annotation_generics.ReflectAnnotationGenericsActivity" />
         <activity android:name=".architect2_aop.AopActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
