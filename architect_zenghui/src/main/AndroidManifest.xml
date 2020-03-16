@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.east.architect_zenghui" >
+    package="com.east.architect_zenghui">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".App"
@@ -15,7 +15,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme1" >
+        android:theme="@style/AppTheme1">
+        <activity android:name=".architect_33_retrofit1.simple2.RetrofitDealResultActivity"/>
+        <activity android:name=".architect_33_retrofit1.simple1.RetrofitSimpleUseActivity"/>
+        <activity android:name=".architect_33_retrofit2.Retrofit2Activity" />
+        <activity android:name=".architect_33_retrofit1.Retrofit1Activity" />
         <activity android:name=".architect_32_rxjava4.rxlogin.rxlogin.RxLoginActivity" />
         <activity android:name=".architect_32_rxjava4.rxpermission.PermissionActivity" />
         <activity android:name=".architect_32_rxjava4.rxlogin.LoginActivity" />
@@ -59,7 +63,7 @@
         <activity android:name=".architect5_butterknife.ButterKnifeActivity" />
         <activity android:name=".architect4_reflect_annotation_generics.ReflectAnnotationGenericsActivity" />
         <activity android:name=".architect2_aop.AopActivity" />
-        <activity android:name=".MainActivity" >
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

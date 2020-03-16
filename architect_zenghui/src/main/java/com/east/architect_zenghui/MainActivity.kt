@@ -31,6 +31,8 @@ import com.east.architect_zenghui.architect_29_rxjava1.rxjava.Rxjava1Activity
 import com.east.architect_zenghui.architect_30_rxjava2.Rxjava2Activity
 import com.east.architect_zenghui.architect_31_rxjava3.Rxjava3Activity
 import com.east.architect_zenghui.architect_32_rxjava4.Rxjava4Activity
+import com.east.architect_zenghui.architect_33_retrofit1.Retrofit1Activity
+import com.east.architect_zenghui.architect_33_retrofit2.Retrofit2Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -144,6 +146,12 @@ class MainActivity : AppCompatActivity() {
             }
             rxjava4 -> { // 32.第三方开源库 RxJava - Android实际开发场景
                 startActivity(Intent(this, Rxjava4Activity::class.java))
+            }
+            retrofit1 -> { // 33.第三方开源库 Retrofit - 源码设计模式分析
+                startActivity(Intent(this,Retrofit1Activity::class.java))
+            }
+            retrofit2 -> { // 34.第三方开源库 Retrofit - 自己动手写核心架构部分
+                startActivity(Intent(this, Retrofit2Activity::class.java))
             }
 
 
