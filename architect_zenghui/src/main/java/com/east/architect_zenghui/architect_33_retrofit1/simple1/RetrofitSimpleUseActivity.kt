@@ -1,7 +1,6 @@
 package com.east.architect_zenghui.architect_33_retrofit1.simple1
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.east.architect_zenghui.R
 import retrofit2.Call
