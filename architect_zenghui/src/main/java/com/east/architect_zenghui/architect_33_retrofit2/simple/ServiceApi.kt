@@ -1,10 +1,9 @@
-package com.east.architect_zenghui.architect_33_retrofit1.simple2
+package com.east.architect_zenghui.architect_33_retrofit2.simple
 
-import com.east.architect_zenghui.architect_33_retrofit2.simple.Result
-import com.east.architect_zenghui.architect_33_retrofit2.simple.UserInfo
-import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Query
+import com.east.architect_zenghui.architect_33_retrofit2.retrofit.Call
+import com.east.architect_zenghui.architect_33_retrofit2.retrofit.http.GET
+import com.east.architect_zenghui.architect_33_retrofit2.retrofit.http.Query
+
 
 /**
  * |---------------------------------------------------------------------------------------------------------------|

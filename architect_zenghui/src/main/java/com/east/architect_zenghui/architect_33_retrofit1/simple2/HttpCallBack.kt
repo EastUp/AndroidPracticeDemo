@@ -1,5 +1,6 @@
 package com.east.architect_zenghui.architect_33_retrofit1.simple2
 
+import com.east.architect_zenghui.architect_33_retrofit2.simple.Result
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback

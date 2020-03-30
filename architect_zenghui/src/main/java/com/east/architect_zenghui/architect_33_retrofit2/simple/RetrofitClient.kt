@@ -1,11 +1,9 @@
-package com.east.architect_zenghui.architect_33_retrofit1.simple2
+package com.east.architect_zenghui.architect_33_retrofit2.simple
 
 import android.util.Log
-import com.east.architect_zenghui.architect_33_retrofit2.simple.ServiceApi
+import com.east.architect_zenghui.architect_33_retrofit2.retrofit.Retrofit
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 /**
  * |---------------------------------------------------------------------------------------------------------------|
@@ -16,7 +14,7 @@ import retrofit2.converter.gson.GsonConverterFactory
  */
 object RetrofitClient {
 
-    lateinit var mServiceApi : ServiceApi
+    var mServiceApi : ServiceApi
     init {
         var okhttpClient = OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
@@ -37,8 +35,6 @@ object RetrofitClient {
         var retrofit = Retrofit.Builder()
             // 访问后台接口的主路径
             .baseUrl("http://192.168.6.143:8080/OkHttpServer/")
-            // 添加解析转换工厂,Gson 解析，Xml解析，等等
-            .addConverterFactory(GsonConverterFactory.create())
             // 添加 OkHttpClient,不添加默认就是 光杆 OkHttpClient
             .client(okhttpClient)
             .build()
