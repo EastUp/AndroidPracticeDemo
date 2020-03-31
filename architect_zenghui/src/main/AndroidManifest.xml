@@ -16,6 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
+        <activity android:name=".architect_35_okhttp_rxjava_retrofit.simple2.MainActivity"/>
+        <activity android:name=".architect_35_okhttp_rxjava_retrofit.MainActivity"/>
         <activity android:name=".architect_33_retrofit1.simple2.RetrofitDealResultActivity"/>
         <activity android:name=".architect_33_retrofit1.simple1.RetrofitSimpleUseActivity"/>
         <activity android:name=".architect_34_retrofit2.Retrofit2Activity" />

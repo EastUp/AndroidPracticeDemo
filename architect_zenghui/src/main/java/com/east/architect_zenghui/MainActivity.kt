@@ -154,7 +154,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, Retrofit2Activity::class.java))
             }
             okhttp_rxjava_retrofit -> { // 35.第三方开源库封装 - OkHttp + RxJava + Retrofit
-                startActivity(Intent(this, Retrofit2Activity::class.java))
+                startActivity(Intent(this, com.east.architect_zenghui.architect_35_okhttp_rxjava_retrofit.simple2.MainActivity::class.java))
             }
             retrofit_optimize -> { // 36.第三方开源库 Retrofit - 自己动手优化网络引擎
                 startActivity(Intent(this, Retrofit2Activity::class.java))

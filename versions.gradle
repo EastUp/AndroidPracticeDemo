@@ -33,7 +33,7 @@ versions.material = "1.0.0"
 versions.navigation = "2.2.0-rc04"
 versions.okhttp_logging_interceptor = "4.2.0"
 versions.paging = "2.1.0"
-versions.retrofit = "2.6.2"
+versions.retrofit = "2.8.1"
 versions.robolectric = "4.2"
 versions.room = "2.2.0"
 versions.rx_android = "2.1.1"
@@ -123,6 +123,7 @@ def retrofit = [:]
 retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
 retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+retrofit.rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit"
 deps.retrofit = retrofit
 
 deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:${versions.okhttp_logging_interceptor}"
