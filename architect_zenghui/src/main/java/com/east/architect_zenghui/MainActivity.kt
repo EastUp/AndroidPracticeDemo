@@ -32,7 +32,7 @@ import com.east.architect_zenghui.architect_30_rxjava2.Rxjava2Activity
 import com.east.architect_zenghui.architect_31_rxjava3.Rxjava3Activity
 import com.east.architect_zenghui.architect_32_rxjava4.Rxjava4Activity
 import com.east.architect_zenghui.architect_33_retrofit1.Retrofit1Activity
-import com.east.architect_zenghui.architect_33_retrofit2.Retrofit2Activity
+import com.east.architect_zenghui.architect_34_retrofit2.Retrofit2Activity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -153,6 +153,31 @@ class MainActivity : AppCompatActivity() {
             retrofit2 -> { // 34.第三方开源库 Retrofit - 自己动手写核心架构部分
                 startActivity(Intent(this, Retrofit2Activity::class.java))
             }
+            okhttp_rxjava_retrofit -> { // 35.第三方开源库封装 - OkHttp + RxJava + Retrofit
+                startActivity(Intent(this, Retrofit2Activity::class.java))
+            }
+            retrofit_optimize -> { // 36.第三方开源库 Retrofit - 自己动手优化网络引擎
+                startActivity(Intent(this, Retrofit2Activity::class.java))
+            }
+            mvp1 -> { // 37.开发模式 MVP - 基础框架搭建分析
+                startActivity(Intent(this, Retrofit2Activity::class.java))
+            }
+            mvp2 -> { // 38.开发模式 MVP - 静态代理和动态扩展
+                startActivity(Intent(this, Retrofit2Activity::class.java))
+            }
+            project_actual_combat1 -> { // 39.项目实战 - 代码架构和运行时架构
+                startActivity(Intent(this, Retrofit2Activity::class.java))
+            }
+            project_actual_combat2 -> { // 40.项目实战 - 系统架构部分的总结和展望
+                startActivity(Intent(this, Retrofit2Activity::class.java))
+            }
+            glide -> { // 41.第三方开源库 Glide - 源码分析（补）
+                startActivity(Intent(this, Retrofit2Activity::class.java))
+            }
+            drouter -> { // 42.Android 多模块多组件开发 - 打造属于自己的路由（补）
+                startActivity(Intent(this, Retrofit2Activity::class.java))
+            }
+            // 43.经验分享 - 深圳社招大厂面试分享（补）
 
 
         }

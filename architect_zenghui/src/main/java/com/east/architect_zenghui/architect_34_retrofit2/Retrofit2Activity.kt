@@ -1,15 +1,15 @@
-package com.east.architect_zenghui.architect_33_retrofit2
+package com.east.architect_zenghui.architect_34_retrofit2
 
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.east.architect_zenghui.R
-import com.east.architect_zenghui.architect_33_retrofit2.retrofit.Call
-import com.east.architect_zenghui.architect_33_retrofit2.simple.RetrofitClient
-import com.east.architect_zenghui.architect_33_retrofit2.retrofit.Callback
-import com.east.architect_zenghui.architect_33_retrofit2.retrofit.Response
-import com.east.architect_zenghui.architect_33_retrofit2.simple.UserInfo
-import com.east.architect_zenghui.architect_33_retrofit2.simple.Result
+import com.east.architect_zenghui.architect_34_retrofit2.retrofit.Call
+import com.east.architect_zenghui.architect_34_retrofit2.simple.RetrofitClient
+import com.east.architect_zenghui.architect_34_retrofit2.retrofit.Callback
+import com.east.architect_zenghui.architect_34_retrofit2.retrofit.Response
+import com.east.architect_zenghui.architect_34_retrofit2.simple.UserInfo
+import com.east.architect_zenghui.architect_34_retrofit2.simple.Result
 
 /**
  * |---------------------------------------------------------------------------------------------------------------|

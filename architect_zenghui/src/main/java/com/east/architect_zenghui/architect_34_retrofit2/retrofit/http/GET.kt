@@ -1,7 +1,4 @@
-package com.east.architect_zenghui.architect_33_retrofit2.retrofit
-
-import com.east.architect_zenghui.architect_33_retrofit2.simple.UserInfo
-
+package com.east.architect_zenghui.architect_34_retrofit2.retrofit.http
 
 /**
  * |---------------------------------------------------------------------------------------------------------------|
@@ -10,6 +7,6 @@ import com.east.architect_zenghui.architect_33_retrofit2.simple.UserInfo
  *  @date: 2020/3/30
  * |---------------------------------------------------------------------------------------------------------------|
  */
-interface Call<T> {
-    fun enqueue(callback: Callback<T>)
-}
+@Target(AnnotationTarget.FUNCTION)
+@Retention(AnnotationRetention.RUNTIME)
+annotation class GET(val value:String)

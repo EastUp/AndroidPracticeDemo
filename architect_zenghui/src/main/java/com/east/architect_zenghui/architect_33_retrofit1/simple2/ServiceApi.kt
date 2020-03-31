@@ -1,7 +1,7 @@
 package com.east.architect_zenghui.architect_33_retrofit1.simple2
 
-import com.east.architect_zenghui.architect_33_retrofit2.simple.Result
-import com.east.architect_zenghui.architect_33_retrofit2.simple.UserInfo
+import com.east.architect_zenghui.architect_34_retrofit2.simple.Result
+import com.east.architect_zenghui.architect_34_retrofit2.simple.UserInfo
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

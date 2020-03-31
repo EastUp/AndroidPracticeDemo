@@ -18,7 +18,7 @@
         android:theme="@style/AppTheme1">
         <activity android:name=".architect_33_retrofit1.simple2.RetrofitDealResultActivity"/>
         <activity android:name=".architect_33_retrofit1.simple1.RetrofitSimpleUseActivity"/>
-        <activity android:name=".architect_33_retrofit2.Retrofit2Activity" />
+        <activity android:name=".architect_34_retrofit2.Retrofit2Activity" />
         <activity android:name=".architect_33_retrofit1.Retrofit1Activity" />
         <activity android:name=".architect_32_rxjava4.rxlogin.rxlogin.RxLoginActivity" />
         <activity android:name=".architect_32_rxjava4.rxpermission.PermissionActivity" />

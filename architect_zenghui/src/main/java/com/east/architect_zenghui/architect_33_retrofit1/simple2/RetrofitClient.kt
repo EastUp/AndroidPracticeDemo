@@ -1,7 +1,7 @@
 package com.east.architect_zenghui.architect_33_retrofit1.simple2
 
 import android.util.Log
-import com.east.architect_zenghui.architect_33_retrofit2.simple.ServiceApi
+import com.east.architect_zenghui.architect_34_retrofit2.simple.ServiceApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

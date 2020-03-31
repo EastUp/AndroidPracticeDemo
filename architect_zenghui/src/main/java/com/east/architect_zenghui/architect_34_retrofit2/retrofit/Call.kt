@@ -1,4 +1,5 @@
-package com.east.architect_zenghui.architect_33_retrofit2.retrofit.http
+package com.east.architect_zenghui.architect_34_retrofit2.retrofit
+
 
 /**
  * |---------------------------------------------------------------------------------------------------------------|
@@ -7,6 +8,6 @@ package com.east.architect_zenghui.architect_33_retrofit2.retrofit.http
  *  @date: 2020/3/30
  * |---------------------------------------------------------------------------------------------------------------|
  */
-@Target(AnnotationTarget.FUNCTION)
-@Retention(AnnotationRetention.RUNTIME)
-annotation class POST(val value:String)
+interface Call<T> {
+    fun enqueue(callback: Callback<T>)
+}

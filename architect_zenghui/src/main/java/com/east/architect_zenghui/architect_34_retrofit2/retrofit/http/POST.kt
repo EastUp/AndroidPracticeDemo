@@ -1,4 +1,4 @@
-package com.east.architect_zenghui.architect_33_retrofit2.retrofit.http
+package com.east.architect_zenghui.architect_34_retrofit2.retrofit.http
 
 /**
  * |---------------------------------------------------------------------------------------------------------------|
@@ -9,4 +9,4 @@ package com.east.architect_zenghui.architect_33_retrofit2.retrofit.http
  */
 @Target(AnnotationTarget.FUNCTION)
 @Retention(AnnotationRetention.RUNTIME)
-annotation class GET(val value:String)
+annotation class POST(val value:String)

@@ -1,6 +1,6 @@
 package com.east.architect_zenghui.architect_33_retrofit1.simple2
 
-import com.east.architect_zenghui.architect_33_retrofit2.simple.BaseResult
+import com.east.architect_zenghui.architect_34_retrofit2.simple.BaseResult
 
 /**
  * |---------------------------------------------------------------------------------------------------------------|

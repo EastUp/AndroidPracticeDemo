@@ -1,9 +1,8 @@
-package com.east.architect_zenghui.architect_33_retrofit2.retrofit
+package com.east.architect_zenghui.architect_34_retrofit2.retrofit
 
 import okhttp3.OkHttpClient
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
-import java.lang.reflect.ParameterizedType
 import java.lang.reflect.Proxy
 import java.util.concurrent.ConcurrentHashMap
 

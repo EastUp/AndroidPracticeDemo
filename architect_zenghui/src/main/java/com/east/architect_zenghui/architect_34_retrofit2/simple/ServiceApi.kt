@@ -1,8 +1,8 @@
-package com.east.architect_zenghui.architect_33_retrofit2.simple
+package com.east.architect_zenghui.architect_34_retrofit2.simple
 
-import com.east.architect_zenghui.architect_33_retrofit2.retrofit.Call
-import com.east.architect_zenghui.architect_33_retrofit2.retrofit.http.GET
-import com.east.architect_zenghui.architect_33_retrofit2.retrofit.http.Query
+import com.east.architect_zenghui.architect_34_retrofit2.retrofit.Call
+import com.east.architect_zenghui.architect_34_retrofit2.retrofit.http.GET
+import com.east.architect_zenghui.architect_34_retrofit2.retrofit.http.Query
 
 
 /**

@@ -1,4 +1,7 @@
-package com.east.architect_zenghui.architect_33_retrofit2.retrofit
+package com.east.architect_zenghui.architect_34_retrofit2.retrofit.http
+
+import java.lang.annotation.Retention
+import java.lang.annotation.RetentionPolicy
 
 /**
  * |---------------------------------------------------------------------------------------------------------------|
@@ -7,4 +10,6 @@ package com.east.architect_zenghui.architect_33_retrofit2.retrofit
  *  @date: 2020/3/30
  * |---------------------------------------------------------------------------------------------------------------|
  */
-class Response<T>(var body :T ?= null)
+@Retention(RetentionPolicy.RUNTIME)
+@Target(AnnotationTarget.VALUE_PARAMETER)
+annotation class Query(val value: String)
