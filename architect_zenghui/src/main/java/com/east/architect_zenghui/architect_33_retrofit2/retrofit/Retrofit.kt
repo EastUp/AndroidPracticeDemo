@@ -41,7 +41,7 @@ class Retrofit(builder:Builder) {
 //                    val genericReturnType = method.genericReturnType
 //                    val parameterizedType = genericReturnType as ParameterizedType
 //                    val clazz1 = parameterizedType.actualTypeArguments[0]
-                    var okHttpCall = OkHttpCall(serviceMethod,args)
+                    var okHttpCall = OkHttpCall<Any>(serviceMethod,args)
                     return okHttpCall
                 }
             }

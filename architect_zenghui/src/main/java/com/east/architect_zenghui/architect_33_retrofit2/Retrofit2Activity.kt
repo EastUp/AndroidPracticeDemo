@@ -9,6 +9,7 @@ import com.east.architect_zenghui.architect_33_retrofit2.simple.RetrofitClient
 import com.east.architect_zenghui.architect_33_retrofit2.retrofit.Callback
 import com.east.architect_zenghui.architect_33_retrofit2.retrofit.Response
 import com.east.architect_zenghui.architect_33_retrofit2.simple.UserInfo
+import com.east.architect_zenghui.architect_33_retrofit2.simple.Result
 
 /**
  * |---------------------------------------------------------------------------------------------------------------|
@@ -35,7 +36,6 @@ class Retrofit2Activity : AppCompatActivity() {
                 override fun onFailure(call: Call<Result<UserInfo>>?, t: Throwable) {
 
                 }
-
             })
     }
 }

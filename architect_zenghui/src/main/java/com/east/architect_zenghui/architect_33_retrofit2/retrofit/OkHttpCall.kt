@@ -1,6 +1,7 @@
 package com.east.architect_zenghui.architect_33_retrofit2.retrofit
 
 import android.util.Log
+import com.east.architect_zenghui.architect_33_retrofit2.simple.UserInfo
 import java.io.IOException
 
 
