@@ -24,6 +24,9 @@ class ServiceMethod(builder: Builder) {
     val parameterHandlers = builder.parameterHandlers
 
 
+    /**
+     * 发起一个请求
+     */
     fun createNewCall(args: Array<out Any>): Call {
         // 还需要一个对象，专门用来添加参数的
         var requestBuilder =
@@ -66,7 +69,6 @@ class ServiceMethod(builder: Builder) {
             }
 
             //解析参数注解
-            val count = parameterAnnotations.size
             for ((index, value) in parameterAnnotations.withIndex()) {
                 val parameter = value[0]
                 // Query 等等
