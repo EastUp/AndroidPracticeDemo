@@ -1,16 +1,26 @@
 ```
     databinding
 ```
-#配置说明
- 	1-
- 	  android{
- 	  		dataBinding {
-        		enabled = true
-    		}
- 	  }
- 	2- 如果有注解@Bindable 则需要在gradle中添加
- 	   apply plugin: 'kotlin-kapt'
-#xml说明
+# 配置说明
+
+```
+android{
+    dataBinding {
+    		enabled = true
+    	}
+}
+```
+
+如果有注解@Bindable 则需要在gradle中添加
+
+```
+apply plugin: 'kotlin-kapt'
+```
+ 	
+# xml说明
+
+<font color=red>注意 不支持中文拼接，需要把@{中文字符}中的中文字符放到values/string.xml中</font>
+
 	<?xml version="1.0" encoding="utf-8"?>
 	<!-- 每个绑定文件都会生成一个绑定类,ViewDataBinding的实例名是根据布
 	局文件名来生成的,将之改为首字母大写的驼峰命名法来命名，并省略布局文件
@@ -65,7 +75,7 @@
 	    </androidx.constraintlayout.widget.ConstraintLayout>
 	</layout>
      
-#单向数据绑定
+# 单向数据绑定
 1. 继承 <font color=#0000ff size=4> Observable </font>  **<font color=#ff0000 size=5>"不推荐"</font>**  
 	BaseObservable提供了notifyChange（）和notifyPropertyChanged（）两个方法，前者会刷新所有的值域，后者则只更新对应BR的旗帜，该BR的生成通过注释@Bindable生成，可以通过BR notify特定属性关联的视图
   
@@ -164,10 +174,10 @@
 		    </androidx.constraintlayout.widget.ConstraintLayout>
 		</layout>
 		
-#双向数据绑定
+# 双向数据绑定
 &emsp;&emsp;双向绑定的意思即为当数据改变时同时使视图刷新，而视图改变时也可以同时改变数据  
 &emsp;&emsp;绑定变量的方式比单向绑定多了一个等号:<font color=#0000ff>``` android:text="@={goods.name}"  ```</font>   
-#事件绑定
+# 事件绑定
 事件处理有两种方式:  
 1. 方法引用 (Method References <font color=#0000ff size=4>所绑定方法的参数必须与事件方法参数一致，同时返回值也必须一致</font>)  
 	&emsp;&emsp;在事件属性的表达式中调用一个方法，这个方法的签名必须和事件回调方法签名一致。当事件回调发生时，就会去转而调用传入的这个方法
@@ -177,7 +187,7 @@
 	&emsp;&emsp;lambda表达式可以根据->分成两部分： 
 ->左边的部分是(view) ，这里是原来listener中void onClick(View v)中的参数，<font color=#ff0000>这个参数必须全部写或者全部不写,  
 调用语法(必须在方法后+括号): @ {（） - > userPresenter.onUserNameClick（userInfo）}</font>  
-#使用类方法
+# 使用类方法
 	object StringUtils {
     fun toUpperCase(str:String):String{
         return str.toUpperCase()
@@ -205,7 +215,7 @@
 
     	</androidx.constraintlayout.widget.ConstraintLayout>
 	</layout>  
-#运算符
+# 运算符
 1. 基础运算符  
 	&emsp;&emsp;DataBinding 支持在布局文件中使用以下运算符、表达式和关键字
 		
@@ -259,7 +269,7 @@
 &emsp;&emsp;DataBinding 也会自动帮助我们避免空指针异常  
 &emsp;&emsp;例如，如果 "@{userInfo.password}" 中 userInfo 为 null 的话，userInfo.password 会被赋值为默认值 null，而不会抛出空指针异常
 
-#include和viewStub
+# include和viewStub
 1. include  
 	include_layout.xml
 	
@@ -362,7 +372,7 @@
 		    }
 		}
 
-#BindingAdapter
+# BindingAdapter
 &emsp;&emsp;这个注解用于支持自定义属性，或者是修改原有属性  
 &emsp;&emsp;需要先定义一个静态方法，为之添加 BindingAdapter 注解  
 静态方法的两个参数可以这样来理解：<font color=#ff0000>第一个是"作用的控件是谁",第二个是"获取这个控件上这个属性的值"</font>
@@ -382,7 +392,7 @@
             view.text = str+"自定义属性password"
         }
     }
-#BindingConversion
+# BindingConversion
  1. BindingConversion比BindingAdapter的优先级要高些  
  2. 此外，BindingConversion也可以用于转换属性值的类型  
     以下把 textColor 的字符串"红色" 转换成了 Int 类型
@@ -485,7 +495,7 @@
 	      }
 	   }  
 
-#List-Set-Map-Array...
+# List-Set-Map-Array...
 	 <?xml version="1.0" encoding="utf-8"?>
 	<layout xmlns:android="http://schemas.android.com/apk/res/android"
 	    xmlns:tools="http://schemas.android.com/tools">
@@ -544,7 +554,7 @@
 	            android:text='@{set.contains("xxx")?"xxx":key}' />
 	    </LinearLayout>
 	</layout>
-#资源引用
+# 资源引用
 
 		<data>
 	        <variable

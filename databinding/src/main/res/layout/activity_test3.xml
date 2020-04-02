@@ -17,7 +17,7 @@
                 android:id="@+id/tv_list"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:text="@{list[0],default=娃哈哈}"
+                android:text="@{list[0],default=@string/wahaha}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
@@ -25,7 +25,7 @@
                 android:id="@+id/tv_map"
                 app:layout_constraintTop_toBottomOf="@id/tv_list"
                 app:layout_constraintLeft_toLeftOf="parent"
-                android:text="@{map[key],default=儿童饮料}"
+                android:text="@{map[key],default=@string/childdrink}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 

@@ -19,15 +19,15 @@ class RetrofitDealResultActivity : AppCompatActivity() {
         setContentView(R.layout.activity_retrofit_simple_use)
 
         RetrofitClient.getServiceApi().userlogin("east","12345")
-            .enqueue(object :HttpCallBack<UserInfo>(){
+            .enqueue(object : HttpCallBack<UserInfo>() {
                 override fun onSuccessed(result: UserInfo) {
                     //成功
-                    Toast.makeText(this@RetrofitDealResultActivity,"成功$result",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@RetrofitDealResultActivity,"成功$result", Toast.LENGTH_SHORT).show()
                 }
 
                 override fun onError(code: String, msg: String) {
                     //失败
-                    Toast.makeText(this@RetrofitDealResultActivity,msg,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@RetrofitDealResultActivity,msg, Toast.LENGTH_SHORT).show()
                 }
 
             })

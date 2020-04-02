@@ -22,15 +22,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile files('libs/open_sdk_r5781.jar')
-    compile files('libs/SocialSDK_QQ_Full.jar')
-    compile files('libs/SocialSDK_WeiXin_Full.jar')
-    compile files('libs/umeng_social_api.jar')
-    compile files('libs/umeng_social_net.jar')
-    compile files('libs/umeng_social_tool.jar')
-    compile files('libs/wechat-sdk-android-with-mta-1.1.6.jar')
+    api files('libs/open_sdk_r5781.jar')
+    api files('libs/SocialSDK_QQ_Full.jar')
+    api files('libs/SocialSDK_WeiXin_Full.jar')
+    api files('libs/umeng_social_api.jar')
+    api files('libs/umeng_social_net.jar')
+    api files('libs/umeng_social_tool.jar')
+    api files('libs/wechat-sdk-android-with-mta-1.1.6.jar')
 }

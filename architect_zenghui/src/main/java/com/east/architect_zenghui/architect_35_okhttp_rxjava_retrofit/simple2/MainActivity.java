@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_test);
 
         // OkHttp +RxJava + Retrofit 这样写代码行不行？ 1 ，2 ，
         RetrofitClient.getServiceApi()
