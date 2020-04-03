@@ -159,11 +159,11 @@ class MainActivity : AppCompatActivity() {
             retrofit_optimize -> { // 36.第三方开源库 Retrofit - 自己动手优化网络引擎
                 startActivity(Intent(this, com.east.architect_zenghui.architect_36_retrofit_optimize.simple5.MainActivity::class.java))
             }
-            mvp1 -> { // 37.开发模式 MVP - 基础框架搭建分析
-                startActivity(Intent(this, Retrofit2Activity::class.java))
+            mvp1 -> { // 37.开发模式 MVP - 基础框架搭建分析  37simple1-simple5的示例代码
+                startActivity(Intent(this, com.east.architect_zenghui.architect_37_mvp1.simple5.MainActivity::class.java))
             }
-            mvp2 -> { // 38.开发模式 MVP - 静态代理和动态扩展
-                startActivity(Intent(this, Retrofit2Activity::class.java))
+            mvp2 -> { // 38.开发模式 MVP - 静态代理和动态扩展 37simple6-simple7的示例代码
+                startActivity(Intent(this, com.east.architect_zenghui.architect_37_mvp1.simple7.MainActivity::class.java))
             }
             project_actual_combat1 -> { // 39.项目实战 - 代码架构和运行时架构
                 startActivity(Intent(this, Retrofit2Activity::class.java))

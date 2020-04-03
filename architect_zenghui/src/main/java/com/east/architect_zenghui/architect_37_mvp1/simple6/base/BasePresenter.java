@@ -1,20 +1,25 @@
-package com.east.architect_zenghui.architect_37_mvp1.simple5.base;
+package com.east.architect_zenghui.architect_37_mvp1.simple6.base;
 
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Proxy;
+import java.lang.reflect.Type;
 
 /**
  * Created by hcDarren on 2018/1/1.
  */
 
-public class BasePresenter<V extends BaseView> {
+public class BasePresenter<V extends BaseView,M extends BaseModel> {
     // 目前两个两个公用方法 ，传递的时候 会有不同的 View ，怎么办？泛型
     private WeakReference<V> mViewReference;
     private V mProxyView;
     // View 一般都是 Activity ,涉及到内存泄漏，但是已经解绑了不会，如果没解绑就会泄漏
     // 最好还是用一下软引用
+
+    // 动态创建的 model 的对象
+    private M mModel;
 
     // View 有一个特点，都是接口
     // GC 回收的算法机制（哪几种）标记清楚法
@@ -33,13 +38,29 @@ public class BasePresenter<V extends BaseView> {
                 return method.invoke(mViewReference.get(),args);
             }
         });
+
+        // 创建我们的 Model ，动态创建？ 获取 Class 通过反射 （Activity实例创建的？class 反射创建的，布局的 View 对象怎么创建的？反射）
+        // 获取 Class 对象
+        Type[] params = ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments();
+        try {
+            // 最好要判断一下类型
+            mModel = (M) ((Class)params[1]).newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
     }
     public void detach(){
         // 不解绑的问题 Activity -> Presenter  ,Presenter 持有了 Activity 应该是会有内存泄漏
         this.mViewReference.clear();
         this.mViewReference = null;
-        //注释，不注释的话，getView获取到的就是空了
-//        this.mProxyView = null;
+        // 注释
+        // this.mProxyView = null;
+    }
+
+    public M getModel() {
+        return mModel;
     }
 
     public V getView() {
