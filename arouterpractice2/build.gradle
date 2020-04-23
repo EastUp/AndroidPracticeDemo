@@ -5,13 +5,13 @@ apply plugin: 'kotlin-kapt'
 
 ext.moudleName = "arouter2"
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     //为避免模块间的资源冲突，设置各模块资源名前缀约束
     resourcePrefix "$moudleName" + "_"
 
     defaultConfig {
         minSdkVersion 15
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
