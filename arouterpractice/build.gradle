@@ -3,13 +3,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 android {
-    compileSdkVersion 29
+    compileSdkVersion versionsSdk.compileSdk
 
 
     defaultConfig {
         applicationId "com.east.arouterpractice"
-        minSdkVersion 15
-        targetSdkVersion 29
+        minSdkVersion versionsSdk.minSdk
+        targetSdkVersion versionsSdk.targetSdk
         versionCode 1
         versionName "1.0"
 
