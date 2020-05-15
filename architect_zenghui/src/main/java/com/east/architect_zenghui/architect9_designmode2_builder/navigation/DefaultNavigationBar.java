@@ -2,7 +2,6 @@ package com.east.architect_zenghui.architect9_designmode2_builder.navigation;
 
 import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
 
 import com.east.architect_zenghui.R;
 
@@ -24,8 +23,8 @@ public class DefaultNavigationBar extends AbsNavigationBar {
      */
     public static class Builder extends AbsNavigationBar.Builder<Builder>{
 
-        public Builder(Context context, ViewGroup parent) {
-            super(context, R.layout.ui_navigation_bar, parent);
+        public Builder(Context context) {
+            super(context, R.layout.ui_navigation_bar, null);
         }
 
         public Builder setLeftText(String text){

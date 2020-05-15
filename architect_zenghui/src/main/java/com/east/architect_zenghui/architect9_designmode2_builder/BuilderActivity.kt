@@ -29,7 +29,7 @@ class BuilderActivity : AppCompatActivity() {
 //            }.create()
 
 
-        DefaultNavigationBar.Builder(this,view_root)
+        DefaultNavigationBar.Builder(this)
             .setLeftText("Back")
             .setLeftClickListener {
                 finish()

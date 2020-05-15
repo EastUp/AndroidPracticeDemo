@@ -1,5 +1,6 @@
 package com.east.architect_zenghui.architect9_designmode2_builder.navigation;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +26,13 @@ public class AbsNavigationBar implements INavigation{
 
     public AbsNavigationBar(Builder build) {
         this.mBuilder = build;
+
+        if(mBuilder.mParent == null){
+            // 获取activity的根布局，View源码
+            ViewGroup activityRoot = ((Activity)(mBuilder.mContext))
+                    .findViewById(android.R.id.content);
+            mBuilder.mParent = (ViewGroup) activityRoot.getChildAt(0);
+        }
         //创建NavigationView
          mNavigationBarView = LayoutInflater.from(mBuilder.mContext).inflate(mBuilder.mLayoutId,mBuilder.mParent,false);
         //添加到Parent中,放在最顶层
