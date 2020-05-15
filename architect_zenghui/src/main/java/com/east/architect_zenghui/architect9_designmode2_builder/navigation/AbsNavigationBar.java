@@ -29,9 +29,10 @@ public class AbsNavigationBar implements INavigation{
 
         if(mBuilder.mParent == null){
             // 获取activity的根布局，View源码
-            ViewGroup activityRoot = ((Activity)(mBuilder.mContext))
-                    .findViewById(android.R.id.content);
-            mBuilder.mParent = (ViewGroup) activityRoot.getChildAt(0);
+            ViewGroup activityRoot = (ViewGroup) ((Activity)(mBuilder.mContext))
+                    .getWindow().getDecorView();  //DecorView是FrameLayout
+            mBuilder.mParent = (ViewGroup) activityRoot.getChildAt(0);  //获取到的是LinearLayout
+            //android.R.id.content获取到的是LinearLayout中的FrameLayout
         }
         //创建NavigationView
          mNavigationBarView = LayoutInflater.from(mBuilder.mContext).inflate(mBuilder.mLayoutId,mBuilder.mParent,false);
