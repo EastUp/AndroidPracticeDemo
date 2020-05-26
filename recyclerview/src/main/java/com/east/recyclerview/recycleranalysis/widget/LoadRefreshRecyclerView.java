@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.Nullable;
-import androidx.core.view.ViewCompat;
 
 /**
  * Created by Darren on 2017/1/3.
@@ -198,7 +197,7 @@ public class LoadRefreshRecyclerView extends RefreshRecyclerView {
      * 判断是不是滚动到了最顶部，这个是从SwipeRefreshLayout里面copy过来的源代码
      */
     public boolean canScrollDown() {
-        return ViewCompat.canScrollVertically(this, 1);
+        return canScrollVertically( 1);
     }
 
     /**

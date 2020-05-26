@@ -20,8 +20,10 @@ import com.east.recyclerview.recycleranalysis.commonAdapterUse.CategoryListAdapt
 import com.east.recyclerview.recycleranalysis.commonAdapterUse.ChannelListResult;
 import com.east.recyclerview.recycleranalysis.library.BannerAdapter;
 import com.east.recyclerview.recycleranalysis.library.BannerView;
+import com.east.recyclerview.recycleranalysis.widget.WrapRecyclerAdapter;
 import com.east.recyclerview.recycleranalysis.widget.WrapRecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -48,6 +50,19 @@ public class HeaderFooterActivity extends AppCompatActivity implements OnItemCli
         // 添加分割线
         mRecyclerView.addItemDecoration(new CategoryItemDecoration(ContextCompat.getDrawable(this, R.drawable.category_list_divider)));
 //        mOkHttpClient = new OkHttpClient();
+
+        List<String> datas = new ArrayList<String>();
+        for (int i= 0; i<20; i++){
+            datas.add(i+"测试数据");
+        }
+
+        ListAdapter adapter = new ListAdapter(this,datas);
+        WrapRecyclerAdapter wrapRecyclerAdapter = new WrapRecyclerAdapter(adapter);
+        mRecyclerView.setAdapter(wrapRecyclerAdapter);
+
+        mRecyclerView.addHeaderView(LayoutInflater.from(this).inflate(R.layout.layout_header_footer,mRecyclerView,false));
+        mRecyclerView.addHeaderView(LayoutInflater.from(this).inflate(R.layout.layout_header_footer,mRecyclerView,false));
+        mRecyclerView.addFooterView(LayoutInflater.from(this).inflate(R.layout.layout_header_footer,mRecyclerView,false));
         requestListData();
     }
 
