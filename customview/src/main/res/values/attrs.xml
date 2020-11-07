@@ -92,4 +92,12 @@
     <attr name="translationYIn" format="float" />
     <attr name="translationYOut" format="float" />
 
+    <!-- 自定义阴影 -->
+    <declare-styleable name="ShadowViewGroup">
+        <attr name="shadowRadius" format="dimension" />
+        <attr name="offsetx" format="dimension" />
+        <attr name="offsety" format="dimension" />
+        <attr name="shadowColor" format="reference|color" />
+    </declare-styleable>
+
 </resources>

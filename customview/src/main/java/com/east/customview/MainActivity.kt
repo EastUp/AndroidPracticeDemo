@@ -26,6 +26,7 @@ import com.east.customview.material_design_1.SimplePracticeActivity
 import com.east.customview.parallax1_kugou_splash.ParallaxKugouActivity
 import com.east.customview.parallax2_yahu_splash.ParallaxYahuActivity
 import com.east.customview.practice_paint.PracticePaintActivity
+import com.east.customview.shadow.ShadowActivity
 import com.east.customview.view_draw_process.ViewDrawProcessActivity
 import com.east.customview.view_touch.ViewTouchActivity
 import com.east.customview.viewgroup_touch.ViewGroupTouchActivity
@@ -92,6 +93,8 @@ class MainActivity : AppCompatActivity() {
 //            ui_romance -> {startActivity(Intent(this,ParallaxYahuActivity::class.java))}
             //炫酷动画_抢红包
             red_bao -> {startActivity(Intent(this,RedPackageActivity::class.java))}
+            // 阴影
+            shadowGroup -> {startActivity(Intent(this, ShadowActivity::class.java))}
         }
     }
 }
