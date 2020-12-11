@@ -1,8 +1,5 @@
 package com.example.administrator.lsn6_demo;
 
-import android.view.View;
-import android.widget.Button;
-
 import java.lang.ref.WeakReference;
 
 public class Singleton {

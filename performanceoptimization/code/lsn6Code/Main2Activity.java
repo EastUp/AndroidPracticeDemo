@@ -1,11 +1,9 @@
 package com.example.administrator.lsn6_demo;
 
 import android.os.AsyncTask;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 
 import java.lang.ref.WeakReference;
 
