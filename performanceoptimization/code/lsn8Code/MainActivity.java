@@ -1,7 +1,7 @@
 package com.example.administrator.lsn_8_demo;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
