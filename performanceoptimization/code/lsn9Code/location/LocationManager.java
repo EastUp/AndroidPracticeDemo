@@ -1,9 +1,7 @@
 package com.dongnao.battery.location;
 
 import android.content.Context;
-import android.os.RemoteException;
 import android.util.Log;
-import android.util.SparseArray;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
