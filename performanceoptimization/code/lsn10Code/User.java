@@ -1,7 +1,5 @@
 package com.example.administrator.lsn_8_demo;
 
-import android.support.annotation.Keep;
-
 // 混淆测试的
 public class User {
     String name;
