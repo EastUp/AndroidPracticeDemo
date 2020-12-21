@@ -1,0 +1,43 @@
+{
+  "stringTable": {
+    "0": "E:/BaiduNetdiskDownload/Lsn_12_Demo/app/.cxx/cmake/release/x86",
+    "1": "--target=i686-none-linux-android16 --gcc-toolchain=D:/AndroidSdk/ndk/21.2.6472646/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/AndroidSdk/ndk/21.2.6472646/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dnative_lib_EXPORTS -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Archive -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Archive/7z -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Archive/BZip2 -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Archive/Common -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Archive/GZip -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Archive/Cab -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Archive/Lzma -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Archive/Tar -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Archive/Zip -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Archive/Split -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Archive/Z -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Compress -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Crypto -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/UI/Console -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/UI/Common -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/Windows -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/Common -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/7zip/Common -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/C -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/myWindows -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP -IE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/lib7zr/CPP/include_windows -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -LE:/BaiduNetdiskDownload/Lsn_12_Demo/app/src/main/cpp/../jniLibs/x86 -O2 -DNDEBUG -fPIC"
+  },
+  "buildFiles": [
+    "E:\\BaiduNetdiskDownload\\Lsn_12_Demo\\app\\src\\main\\cpp\\CMakeLists.txt",
+    "D:\\AndroidSdk\\ndk\\21.2.6472646\\build\\cmake\\android.toolchain.cmake",
+    "D:\\AndroidSdk\\ndk\\21.2.6472646\\build\\cmake\\platforms.cmake"
+  ],
+  "cleanCommands": [
+    "D:\\AndroidSdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\BaiduNetdiskDownload\\Lsn_12_Demo\\app\\.cxx\\cmake\\release\\x86\" clean"
+  ],
+  "buildTargetsCommand": "D:\\AndroidSdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe  -C \"E:\\BaiduNetdiskDownload\\Lsn_12_Demo\\app\\.cxx\\cmake\\release\\x86\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "native-lib-Release-x86": {
+      "buildCommand": "D:\\AndroidSdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"E:\\BaiduNetdiskDownload\\Lsn_12_Demo\\app\\.cxx\\cmake\\release\\x86\" native-lib",
+      "buildType": "release",
+      "toolchain": "536177651",
+      "abi": "x86",
+      "artifactName": "native-lib",
+      "files": [
+        {
+          "src": "E:\\BaiduNetdiskDownload\\Lsn_12_Demo\\app\\src\\main\\cpp\\native-lib.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "E:\\BaiduNetdiskDownload\\Lsn_12_Demo\\app\\build\\intermediates\\cmake\\release\\obj\\x86\\libnative-lib.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {
+    "536177651": {
+      "cppCompilerExecutable": "D:\\AndroidSdk\\ndk\\21.2.6472646\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

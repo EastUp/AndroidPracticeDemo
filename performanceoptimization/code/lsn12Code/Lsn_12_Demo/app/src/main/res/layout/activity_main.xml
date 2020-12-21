@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.dn.lsn_12_demo.MainActivity">
+
+    <Button
+        android:onClick="loadExecute"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="加载可执行文件" />
+
+    <Button
+        android:onClick="packExecute"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="可执行文件打包7z文件" />
+    <Button
+        android:onClick="unpackExecute"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="可执行文件解包7z文件" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:onClick="packShare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="动态库打包7z文件" />
+    <Button
+        android:onClick="unpackShare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="动态库解包7z文件" />
+
+</LinearLayout>
