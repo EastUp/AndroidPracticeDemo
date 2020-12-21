@@ -1,0 +1,18 @@
+syntax = "proto2";
+
+package test;
+
+option java_package = "com.dn.test";
+option java_outer_classname = "DNTestProtos";
+
+message DNTest{
+//wire_type=0, field_number=1
+//Tag  = (field_number << 3) | wire_type
+// TAG=8
+
+    required int32 id1 = 1;
+    //wire_type=0, field_number=2
+    //Tag  = (field_number << 3) | wire_type
+    // TAG=16
+    required int32 id2 = 2;
+}

@@ -3,7 +3,6 @@ package com.dn.lsn_12_demo;
 import android.content.Context;
 import android.os.AsyncTask;
 
-
 import com.dn.lsn_12_demo.command.CommandUtils;
 
 import java.io.BufferedReader;
