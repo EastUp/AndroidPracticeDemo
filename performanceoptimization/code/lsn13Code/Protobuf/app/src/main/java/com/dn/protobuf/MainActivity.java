@@ -3,18 +3,14 @@ package com.dn.protobuf;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.dn.protobuf.struct.JsonTest;
 import com.dn.protobuf.struct.Person;
-import com.dn.test.DNTestProtos;
 import com.example.tutorial.AddressBookProtos;
-import com.example.tutorial.MsgProtos;
 import com.google.protobuf.InvalidProtocolBufferException;
-
-import java.util.Arrays;
 
 /**
  * @author Damon

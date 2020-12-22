@@ -1,10 +1,10 @@
 package com.dn.socketserver;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import com.example.tutorial.MsgProtos.Msg;
 import com.google.protobuf.CodedInputStream;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 /**
  * 

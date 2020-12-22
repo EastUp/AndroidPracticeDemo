@@ -2,12 +2,9 @@ package com.dn.protobuf;
 
 import android.util.Log;
 
-
 import com.example.tutorial.MsgProtos;
 import com.google.protobuf.CodedOutputStream;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;

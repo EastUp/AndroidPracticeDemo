@@ -1,13 +1,9 @@
 package com.dn.protobuf.struct;
 
-import android.location.Address;
 import android.util.Log;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.TypeReference;
 import com.google.gson.Gson;
-
-import java.io.Serializable;
 
 /**
  *
