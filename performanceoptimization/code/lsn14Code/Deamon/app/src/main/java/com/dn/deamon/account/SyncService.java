@@ -9,9 +9,9 @@ import android.content.Intent;
 import android.content.SyncResult;
 import android.os.Bundle;
 import android.os.IBinder;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.DialogTitle;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 public class SyncService extends Service {
     private static final String TAG = "SyncService";

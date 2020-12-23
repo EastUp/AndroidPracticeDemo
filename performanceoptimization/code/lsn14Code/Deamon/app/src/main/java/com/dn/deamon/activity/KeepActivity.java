@@ -2,11 +2,12 @@ package com.dn.deamon.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+
+import androidx.annotation.Nullable;
 
 /**
  * @author Damon
