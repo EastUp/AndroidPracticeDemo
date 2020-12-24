@@ -36,7 +36,7 @@ public class ProxyApplication extends Application {
         File apkFile=new File(getApplicationInfo().sourceDir);  // /data/app/com.example.administrator.lsn_11_demo-iBRiZeJ3ObfOuiHWn3cfGQ==/base.apk
 
         //把apk解压   app_name+"_"+app_version目录中的内容需要boot权限才能用
-        File versionDir = getDir(app_name+"_"+app_version,MODE_PRIVATE);
+        File versionDir = getDir(app_name+"_"+app_version,MODE_PRIVATE); // data/data/包名/
         File appDir=new File(versionDir,"app");
         File dexDir=new File(appDir,"dexDir");
 
