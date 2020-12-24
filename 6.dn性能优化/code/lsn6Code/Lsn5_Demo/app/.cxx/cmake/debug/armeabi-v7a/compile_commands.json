@@ -1,0 +1,7 @@
+[
+{
+  "directory": "E:/BaiduNetdiskDownload/Lsn5_Demo/app/.cxx/cmake/debug/armeabi-v7a",
+  "command": "D:\\AndroidSdk\\ndk\\21.2.6472646\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=armv7-none-linux-androideabi23 --gcc-toolchain=D:/AndroidSdk/ndk/21.2.6472646/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=D:/AndroidSdk/ndk/21.2.6472646/toolchains/llvm/prebuilt/windows-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -march=armv7-a -mthumb -Wformat -Werror=format-security   -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles\\native-lib.dir\\src\\main\\cpp\\native-lib.cpp.o -c E:\\BaiduNetdiskDownload\\Lsn5_Demo\\app\\src\\main\\cpp\\native-lib.cpp",
+  "file": "E:/BaiduNetdiskDownload/Lsn5_Demo/app/src/main/cpp/native-lib.cpp"
+}
+]

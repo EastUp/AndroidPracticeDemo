@@ -1,0 +1,11 @@
+{
+  "ndkDirProperty": "D:\\tools\\android-ndk-r19c-windows-x86_64\\android-ndk-r19c",
+  "sdkFolder": "D:\\AndroidSdk",
+  "sideBySideNdkFolderNames": [
+    "20.0.5594570",
+    "21.0.6113669",
+    "21.1.6352462",
+    "21.2.6472646",
+    "android-ndk-r16b"
+  ]
+}
