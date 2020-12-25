@@ -18,6 +18,7 @@ package dalvik.system;
 
 import android.system.ErrnoException;
 import android.system.StructStat;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -27,10 +28,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.List;
-import java.util.zip.ZipEntry;
+
+import libcore.io.ClassPathURLStreamHandler;
 import libcore.io.IoUtils;
 import libcore.io.Libcore;
-import libcore.io.ClassPathURLStreamHandler;
 
 import static android.system.OsConstants.S_ISDIR;
 

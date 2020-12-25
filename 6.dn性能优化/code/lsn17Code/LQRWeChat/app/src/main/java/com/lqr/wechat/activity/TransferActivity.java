@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.widget.EditText;
 
 import com.lqr.wechat.R;
-import com.lqr.wechat.utils.UIUtils;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
