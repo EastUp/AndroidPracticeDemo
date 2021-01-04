@@ -1,8 +1,5 @@
 package com.dn_alan.myapplication.core;
 
-import android.os.Looper;
-import android.os.MessageQueue;
-
 public class DnLooper {
     static final ThreadLocal<DnLooper> sThreadLocal = new ThreadLocal<DnLooper>();
     final DnMessageQueue mQueue;

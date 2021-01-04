@@ -1,7 +1,5 @@
 package com.dn_alan.myapplication.core;
 
-import android.os.Message;
-
 public class DnHandler {
 
     private DnLooper dnLooper;

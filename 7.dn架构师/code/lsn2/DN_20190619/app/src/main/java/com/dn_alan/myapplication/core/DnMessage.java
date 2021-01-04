@@ -1,7 +1,5 @@
 package com.dn_alan.myapplication.core;
 
-import android.os.Handler;
-
 public class DnMessage {
     //消息标志
     public int what;
