@@ -1,7 +1,5 @@
 package com.east.datastructure33hashmap;
 
-import java.util.Map;
-
 /**
  *  手写 HashMap 一些关键性的代码
  */
