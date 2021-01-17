@@ -1,14 +1,11 @@
 package com.dn_alan.myapplication.aspect;
 
-import android.os.SystemClock;
 import android.util.Log;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-
-import java.util.Random;
 
 @Aspect
 public class UserInfoBehaviorTraceAspect {
