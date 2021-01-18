@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.dn_alan.myapplication.core.DNEventbus;
+import com.dn_alan.myapplication.core.Hermes;
+import com.dn_alan.myapplication.service.HermesService;
+
+import org.greenrobot.eventbus.EventBus;
 
 public class SecondActivity extends AppCompatActivity {
 
@@ -12,6 +16,7 @@ public class SecondActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_second);
+        Hermes.getDefault().connect(this, HermesService.class);
     }
 
     public void send(View view) {

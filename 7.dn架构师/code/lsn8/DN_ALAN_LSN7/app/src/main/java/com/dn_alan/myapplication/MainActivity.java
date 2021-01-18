@@ -1,8 +1,8 @@
 package com.dn_alan.myapplication;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -10,6 +10,8 @@ import android.widget.Toast;
 import com.dn_alan.myapplication.core.DNEventbus;
 import com.dn_alan.myapplication.core.DNSubscribe;
 import com.dn_alan.myapplication.core.DNThreadMode;
+import com.dn_alan.myapplication.core.Hermes;
+import com.dn_alan.myapplication.manager.DnUserManager;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
@@ -19,9 +21,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 //        EventBus.getDefault().register(this);
-        DNEventbus.getDefault().register(this);
+//        DNEventbus.getDefault().register(this);
+//
+//        textView = (TextView) findViewById(R.id.tv);
 
-        textView = (TextView) findViewById(R.id.tv);
+        Hermes.getDefault().init(this);
+        Hermes.getDefault().register(DnUserManager.class);
     }
 
     public void change(View view) {
