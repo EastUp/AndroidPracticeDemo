@@ -2,11 +2,8 @@ package com.dn_alan.myapplication.core;
 
 import android.content.Context;
 
-import com.dn_alan.myapplication.SecondActivity;
 import com.dn_alan.myapplication.manager.DnUserManager;
 import com.dn_alan.myapplication.service.HermesService;
-
-import java.util.logging.Handler;
 
 public class Hermes {
     private Context mContext;

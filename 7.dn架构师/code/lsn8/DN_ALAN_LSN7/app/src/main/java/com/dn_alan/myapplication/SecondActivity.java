@@ -8,8 +8,6 @@ import com.dn_alan.myapplication.core.DNEventbus;
 import com.dn_alan.myapplication.core.Hermes;
 import com.dn_alan.myapplication.service.HermesService;
 
-import org.greenrobot.eventbus.EventBus;
-
 public class SecondActivity extends AppCompatActivity {
 
     @Override

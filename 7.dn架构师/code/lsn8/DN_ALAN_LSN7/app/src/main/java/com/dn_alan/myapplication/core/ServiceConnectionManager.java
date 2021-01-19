@@ -8,7 +8,7 @@ import android.os.IBinder;
 import android.text.TextUtils;
 
 import com.dn_alan.myapplication.MyEventBusService;
-import com.dn_alan.myapplication.service.HermesService; 
+import com.dn_alan.myapplication.service.HermesService;
 
 import java.util.concurrent.ConcurrentHashMap;
 /**

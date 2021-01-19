@@ -2,7 +2,6 @@ package com.dn_alan.myapplication.manager;
 
 import com.dn_alan.myapplication.Friend;
 import com.dn_alan.myapplication.annotion.ClassId;
-import com.dn_alan.myapplication.annotion.MethodId;
 
 @ClassId("com.dn_alan.myapplication.manager.DnUserManager")
 public class DnUserManager {
