@@ -1,6 +1,5 @@
 package com.dn_alan.myapplication.core;
 
-import android.app.admin.DnsEvent;
 import android.os.Handler;
 import android.os.Looper;
 

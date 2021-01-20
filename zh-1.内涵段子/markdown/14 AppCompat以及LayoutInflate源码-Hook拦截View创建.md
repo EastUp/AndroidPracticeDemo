@@ -39,6 +39,8 @@
         subDecor = (ViewGroup) //子Decor  
         inflater.inflate(R.layout.abc_screen_simple, null);
         
+        final ContentFrameLayout contentView = (ContentFrameLayout) subDecor.findViewById(
+                    R.id.action_bar_activity_content);
         final ViewGroup windowContentView = (ViewGroup) mWindow.findViewById(android.R.id.content);
         if (windowContentView != null) {
             //如果以前id为android.R.id.content的ContentParent中有子View就把移除出去添加到AppCompat自己创建的系统布局subDecorView中
@@ -271,6 +273,9 @@ Log.e("TAG", "" + mImageIv);
             }
         }
         ...
+        if (root != null && attachToRoot) {
+            root.addView(temp, params);
+        }        
         if (root == null || !attachToRoot) {
             result = temp;
         }      

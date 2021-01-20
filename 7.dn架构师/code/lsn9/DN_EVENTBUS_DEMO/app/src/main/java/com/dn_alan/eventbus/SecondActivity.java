@@ -8,7 +8,6 @@ import android.widget.Toast;
 import com.dn_alan.eventbus.core.Hermes;
 import com.dn_alan.eventbus.manager.IDownManager;
 import com.dn_alan.eventbus.manager.IUserManager;
-import com.dn_alan.eventbus.manager.UserManager;
 import com.dn_alan.eventbus.service.HermesService;
 
 

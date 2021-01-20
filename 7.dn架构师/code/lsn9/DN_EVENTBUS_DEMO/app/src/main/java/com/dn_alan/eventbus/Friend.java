@@ -1,7 +1,5 @@
 package com.dn_alan.eventbus;
 
-import java.io.Serializable;
-
 /**
  * Created by Administrator on 2018/5/18.
  */

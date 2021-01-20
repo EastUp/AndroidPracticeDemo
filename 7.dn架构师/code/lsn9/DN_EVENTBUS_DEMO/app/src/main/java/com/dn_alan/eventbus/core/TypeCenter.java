@@ -3,7 +3,6 @@ package com.dn_alan.eventbus.core;
 import android.text.TextUtils;
 import android.util.Log;
 
-
 import com.dn_alan.eventbus.bean.RequestBean;
 import com.dn_alan.eventbus.bean.RequestParameter;
 import com.dn_alan.eventbus.util.TypeUtils;

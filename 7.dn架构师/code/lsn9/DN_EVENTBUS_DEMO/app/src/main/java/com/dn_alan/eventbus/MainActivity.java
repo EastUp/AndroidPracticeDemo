@@ -1,20 +1,15 @@
 package com.dn_alan.eventbus;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dn_alan.eventbus.core.DNEventbus;
-import com.dn_alan.eventbus.core.DNSubscribe;
-import com.dn_alan.eventbus.core.DNThreadMode;
 import com.dn_alan.eventbus.core.Hermes;
 import com.dn_alan.eventbus.manager.DownManager;
 import com.dn_alan.eventbus.manager.UserManager;
-
-import org.greenrobot.eventbus.EventBus;
 
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
