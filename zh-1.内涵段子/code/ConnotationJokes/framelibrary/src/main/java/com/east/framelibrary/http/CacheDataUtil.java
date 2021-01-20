@@ -7,7 +7,6 @@ import com.east.baselibrary.utils.MD5Util;
 import com.east.framelibrary.db.DaoSupportFactory;
 import com.east.framelibrary.db.IDaoSupport;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

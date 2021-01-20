@@ -11,7 +11,6 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatViewInflater;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.appcompat.widget.AppCompatAutoCompleteTextView;
 import androidx.appcompat.widget.AppCompatButton;
@@ -27,7 +26,6 @@ import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.AppCompatToggleButton;
-import androidx.appcompat.widget.TintContextWrapper;
 import androidx.collection.ArrayMap;
 import androidx.core.view.ViewCompat;
 
