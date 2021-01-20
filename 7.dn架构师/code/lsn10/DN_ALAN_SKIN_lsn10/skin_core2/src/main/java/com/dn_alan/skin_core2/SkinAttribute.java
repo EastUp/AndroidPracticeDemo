@@ -10,8 +10,15 @@ import com.dn_alan.skin_core2.utils.SkinThemeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * |---------------------------------------------------------------------------------------------------------------|
+ *  @description:  筛选保存所有需要换肤View的属性
+ *  @author: jamin
+ *  @date: 2021/1/20 16:04
+ * |---------------------------------------------------------------------------------------------------------------|
+ */
 public class SkinAttribute {
+    // 筛选哪些属性
     private static final List<String> mAttributes = new ArrayList<>();
 
     static {
@@ -28,14 +35,14 @@ public class SkinAttribute {
     private List<SkinView> skinViews = new ArrayList<>();
 
     public void load(View view, AttributeSet attrs) {
-        List<SkinPair> skinPains = new ArrayList<>();
+        List<SkinPair> skinPairs = new ArrayList<>();
         for (int i = 0; i < attrs.getAttributeCount(); i++) {
             //获取属性名字
             String attributeName = attrs.getAttributeName(i);
             if (mAttributes.contains(attributeName)) {
                 //获取属性对应的值
                 String attributeValue = attrs.getAttributeValue(i);
-                if (attributeValue.startsWith("#")) {
+                if (attributeValue.startsWith("#")) {  // #fff
                     continue;
                 }
 
@@ -49,12 +56,12 @@ public class SkinAttribute {
                 }
                 if (resId != 0) {
                     SkinPair skinPair = new SkinPair(attributeName, resId);
-                    skinPains.add(skinPair);
+                    skinPairs.add(skinPair);
                 }
             }
         }
-        if (!skinPains.isEmpty()) {
-            SkinView skinView = new SkinView(view, skinPains);
+        if (!skinPairs.isEmpty()) {
+            SkinView skinView = new SkinView(view, skinPairs);
             skinView.applySkin();
             skinViews.add(skinView);
         }

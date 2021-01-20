@@ -1,6 +1,5 @@
 package com.dn_alan.skin_core2;
 
-import android.app.Activity;
 import android.app.Application;
 
 public class SkinManager {

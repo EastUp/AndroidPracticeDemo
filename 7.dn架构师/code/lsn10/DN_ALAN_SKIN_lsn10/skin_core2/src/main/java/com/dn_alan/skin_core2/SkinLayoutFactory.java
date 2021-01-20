@@ -6,10 +6,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
-
+/**
+ * |---------------------------------------------------------------------------------------------------------------|
+ *  @description:  拦截xml中View的创建，方便换肤
+ *  @author: jamin
+ *  @date: 2021/1/20 15:50
+ * |---------------------------------------------------------------------------------------------------------------|
+ */
 public class SkinLayoutFactory implements LayoutInflater.Factory2 {
+    // 系统View的全包名前缀
     private static final String[] mClassPrefixlist = {
             "android.widget.",
             "android.view.",
@@ -19,6 +25,7 @@ public class SkinLayoutFactory implements LayoutInflater.Factory2 {
     private static final Class[] mConstructorSignature =
             new Class[]{Context.class, AttributeSet.class};
 
+    // 缓存起Constructor,避免重复多次反射影响性能
     private static final HashMap<String, Constructor<? extends View>> mConstructor =
             new HashMap<String, Constructor<? extends View>>();
 
@@ -38,7 +45,7 @@ public class SkinLayoutFactory implements LayoutInflater.Factory2 {
             view = createView(name, context, attrs);
         }
 
-        //筛选符合属性View
+        // 筛选View中符合换肤的属性
         skinAttribute.load(view, attrs);
 
         return view;
