@@ -1,0 +1,101 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+
+    signingConfigs {
+        joke{
+            storeFile file(STOREFILE)
+            storePassword STOREPASS
+            keyAlias   KEYALIAS
+            keyPassword   KEYPASS
+            v1SigningEnabled true
+            v2SigningEnabled true
+        }
+    }
+
+    compileSdkVersion androidVersion.compileSdk
+    buildToolsVersion androidVersion.buildToolsVersion
+
+    defaultConfig {
+        applicationId "com.east.connotationjokes"
+        minSdkVersion androidVersion.minSdk
+        targetSdkVersion androidVersion.targetSdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+//        externalNativeBuild {
+//            cmake {
+//                cppFlags ""
+//            }
+//        }
+
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.joke
+        }
+    }
+
+    //指定jdk版本
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+
+//    externalNativeBuild {
+//        cmake {
+//            path "src/main/cpp/CMakeLists.txt"
+//            version "3.10.2"
+//        }
+//    }
+
+//    sourceSets {
+//        main {
+//            jni.srcDirs = []//设置禁止gradle生成Android.mk
+//            jniLibs.srcDirs = ['libs']
+//        }
+//    }
+//
+//    task ndkBuild(type: Exec) {//设置新的so的生成目录
+//        commandLine "D:\\AndroidSdk\\ndk\\20.0.5594570\\ndk-build.cmd",
+//                'NDK_PROJECT_PATH=build/intermediates/ndk',
+//                'NDK_LIBS_OUT=libs',
+//                'APP_BUILD_SCRIPT=jni/Android.mk',
+//                'NDK_APPLICATION_MK=jni/Application.mk'
+//    }
+//
+//    tasks.withType(JavaCompile) {
+//        compileTask -> compileTask.dependsOn ndkBuild
+//    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+//    implementation 'org.xutils:xutils:3.3.40'
+    implementation project(':baselibrary')
+    api project(':framelibrary')
+}

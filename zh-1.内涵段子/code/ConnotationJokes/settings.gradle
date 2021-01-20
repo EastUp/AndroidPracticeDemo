@@ -1,0 +1,4 @@
+rootProject.name='ConnotationJokes'
+include ':app'
+include ':baselibrary'
+include ':framelibrary'
