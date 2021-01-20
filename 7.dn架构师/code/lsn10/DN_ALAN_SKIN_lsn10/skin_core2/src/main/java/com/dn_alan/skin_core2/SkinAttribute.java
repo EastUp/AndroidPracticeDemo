@@ -47,7 +47,7 @@ public class SkinAttribute {
                 }
 
                 int resId;
-                if (attributeValue.startsWith("?")) {
+                if (attributeValue.startsWith("?")) { // 系统级的?colorPrimary
                     int attrId = Integer.parseInt(attributeValue.substring(1));
                     resId = SkinThemeUtils.getResId(view.getContext(), new int[]{attrId})[0];
                 } else {
