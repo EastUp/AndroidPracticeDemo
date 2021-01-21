@@ -2,8 +2,6 @@ package com.dn_alan.skin_core2;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Typeface;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;

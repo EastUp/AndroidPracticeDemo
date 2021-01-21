@@ -2,7 +2,6 @@ package com.dn_alan.skin_core2;
 
 import android.app.Activity;
 import android.app.Application;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 

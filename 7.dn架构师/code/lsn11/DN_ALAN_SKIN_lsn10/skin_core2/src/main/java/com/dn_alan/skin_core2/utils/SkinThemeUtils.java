@@ -3,7 +3,6 @@ package com.dn_alan.skin_core2.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Typeface;
 import android.os.Build;
 
 import com.dn_alan.skin_core2.R;

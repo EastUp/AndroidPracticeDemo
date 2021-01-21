@@ -1,6 +1,5 @@
 package com.dn_alan.skin_core2;
 
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.view.ViewCompat;
