@@ -9,6 +9,14 @@ android{
     		enabled = true
     	}
 }
+
+修改为了
+
+buildFeatures{
+    dataBinding = true
+    // for view binding :
+    // viewBinding = true
+}
 ```
 
 如果有注解@Bindable 则需要在gradle中添加
