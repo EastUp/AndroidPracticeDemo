@@ -19,6 +19,9 @@ public class SkinThemeUtils {
     private static int[] STATUSBAR_COLOR_ATTRS = {android.R.attr.statusBarColor, android.R.attr
             .navigationBarColor};
 
+    //  <item name="skinTypeface">@string/typeface</item>
+    // 比如skinTypeFace中要获取它的值 @string/typeface的resid
+    // arrrs[0] 就是skinTypeface的资源值，ints[0]就是@string/typeface的资源值
     public static int[] getResId(Context context, int[] attrs){
         int[] ints = new int[attrs.length];
         TypedArray typedArray = context.obtainStyledAttributes(attrs);
