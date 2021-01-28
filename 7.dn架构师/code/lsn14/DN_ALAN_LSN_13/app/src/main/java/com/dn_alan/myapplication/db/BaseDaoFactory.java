@@ -1,9 +1,6 @@
 package com.dn_alan.myapplication.db;
 
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
-
-import java.io.File;
 
 public class BaseDaoFactory {
     private static final BaseDaoFactory ourInstance = new BaseDaoFactory();
