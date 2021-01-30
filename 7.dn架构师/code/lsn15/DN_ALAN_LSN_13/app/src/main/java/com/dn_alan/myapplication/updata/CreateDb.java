@@ -1,7 +1,5 @@
 package com.dn_alan.myapplication.updata;
 
-import android.icu.util.RangeValueIterator;
-
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 

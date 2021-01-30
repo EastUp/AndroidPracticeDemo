@@ -12,7 +12,6 @@ import com.dn_alan.myapplication.annotation.DbTable;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -308,7 +307,7 @@ public class BaseDao<T> implements IBaseDao<T>{
         Condition condition = new Condition(values);
 
         Cursor query = sqLiteDatabase.query(tableName, null, condition.whereClause,
-                condition.whereArgs, null, orderBy, limitString);
+                condition.whereArgs, null, null, orderBy, limitString);
 
         List<T> result = getResult(query, where);  //游标  --- 》 javabean  --- list<javabaen>
         return result;
