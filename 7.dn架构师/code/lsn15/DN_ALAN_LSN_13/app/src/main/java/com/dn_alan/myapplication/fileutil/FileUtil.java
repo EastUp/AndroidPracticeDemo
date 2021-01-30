@@ -37,6 +37,8 @@ public class FileUtil {
                     fs.write(buffer, 0, byteread);
                 }
                 inStream.close();
+                fs.flush();
+                fs.close();
             }
         } catch (Exception e) {
             e.printStackTrace();

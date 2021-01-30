@@ -270,7 +270,7 @@ public class UpdataManager {
 
             //备份每一个用户的db 文件
             for (User user : userList) {
-                String loginDbDir = parentFile.getAbsolutePath() + "/update" + "/" + user.getId() + "/login.db";
+                String loginDbDir = parentFile.getAbsolutePath() + "/" + user.getId() + "/login.db";
                 String loginCopy = bakFile.getAbsolutePath() + "/" + user.getId() + "/login.db";
                 /**
                  * 原理，把loginDbDir文件中 db文件，拷贝到loginCopy文件中一份
