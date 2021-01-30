@@ -9,7 +9,7 @@
                 password TEXT,
                 loginName TEXT,
                 lastLoginTime,
-                user_id Integer primary key);
+                _id Integer);
             </sql_createTable>
         </createDb>
         <createDb name="login">
@@ -30,6 +30,14 @@
             <!--对备份的表重新命名-->
             <sql_before>alter table tb_img rename to bak_tb_img;</sql_before>
             <sql_after>
+                create table if not exists tb_img(
+                time TEXT,
+                imgPath TEXT,
+                to_user TEXT,
+                sendTime TEXT,
+                shabi TEXT);
+            </sql_after>
+            <sql_after>
                 insert into tb_img(time,
                 imgPath)
                 select time,imgPath
@@ -42,9 +50,19 @@
         <updateDb name="user">
             <sql_before>alter table tb_user rename to bak_tb_user;</sql_before>
             <sql_after>
-                insert into tb_user(name,
-                password)
-                select name,password
+                create table if not exists tb_user(
+                _id TEXT,
+                name TEXT,
+                password TEXT,
+                status Integer,
+                loginName TEXT,
+                lastLoginTime TEXT
+                );
+            </sql_after>
+            <sql_after>
+                insert into tb_user(_id,name,
+                password,status)
+                select _id,name,password,status
                 from bak_tb_user;
             </sql_after>
             <sql_after>

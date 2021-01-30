@@ -40,6 +40,7 @@ public class UpdataManager {
 
     /**
      * 检测当前数据库版本中的数据库表
+     *
      * @param context
      */
     public void checkThisVersionTable(Context context) {
@@ -111,20 +112,20 @@ public class UpdataManager {
         //开启事务， 保证这个代码同事执行多条sql语句
         sqLiteDatabase.beginTransaction();
 
-        for (String sqlCreate : sqlCreates) {
-            sqlCreate.replace("\r\n", "");
-            sqlCreate.replace("\n", "");
-            if (!sqlCreate.trim().equals("")) {
-                try {
+        try {
+            for (String sqlCreate : sqlCreates) {
+                sqlCreate.replace("\r\n", "");
+                sqlCreate.replace("\n", "");
+                if (!sqlCreate.trim().equals("")) {
                     sqLiteDatabase.execSQL(sqlCreate);
-                    //标记数据库事务执行成功
-                    sqLiteDatabase.setTransactionSuccessful();
-                } catch (SQLException e) {
-
-                } finally {
-                    sqLiteDatabase.endTransaction();
                 }
             }
+            //标记数据库事务执行成功
+            sqLiteDatabase.setTransactionSuccessful();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            sqLiteDatabase.endTransaction();
         }
     }
 
@@ -222,8 +223,10 @@ public class UpdataManager {
     }
 
 
-    /** 写入版本信息
-     * @param nerVersion  模拟当前客户端最新数据库的版本
+    /**
+     * 写入版本信息
+     *
+     * @param nerVersion 模拟当前客户端最新数据库的版本
      * @return 保存成功返回true, 否则false
      */
     public boolean saveVersionInfo(String nerVersion) {
@@ -290,7 +293,7 @@ public class UpdataManager {
 
 
                 //第三部：检查新表，创建新表
-                execuCreateVersion(createVersion);
+//                execuCreateVersion(createVersion);
 
                 //第四部：从备份中恢复数据，恢复后删除备份表
                 executeDb(updateDbs, 1);
@@ -301,7 +304,7 @@ public class UpdataManager {
             // 第五步:升级成功，删除备份数据库
             if (userList != null && !userList.isEmpty()) {
                 for (User user1 : userList) {
-                    String logicDbDir = parentFile.getAbsolutePath() + "/update" + "/" + user1.getId() + ".db";
+                    String logicDbDir = bakFile.getAbsolutePath() + "/" + user1.getId() + "/login.db";
                     File file = new File(logicDbDir);
                     if (file.exists()) {
                         file.delete();
@@ -310,7 +313,7 @@ public class UpdataManager {
                 }
             }
 
-            File userFileBak = new File(bakFile.getAbsolutePath() + "user_bak.db");
+            File userFileBak = new File(user_bak);
             if (userFileBak.exists()) {
                 userFileBak.delete();
             }
