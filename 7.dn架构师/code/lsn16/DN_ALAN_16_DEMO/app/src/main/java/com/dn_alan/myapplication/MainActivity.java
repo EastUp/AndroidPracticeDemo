@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-
 import com.dn_alan.base.TestService;
 import com.dn_alan.myapplication.parcelable.TestParcelable;
 import com.dn_alan.router_core.DNRouter;

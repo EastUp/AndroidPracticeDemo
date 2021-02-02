@@ -1,7 +1,6 @@
 package com.dn_alan.myapplication;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -14,7 +13,6 @@ import com.dn_alan.router_core.DNRouter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 
 @Route(path = "/main/test")  //标致
