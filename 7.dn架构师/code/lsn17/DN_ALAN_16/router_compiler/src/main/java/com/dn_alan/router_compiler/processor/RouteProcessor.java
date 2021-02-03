@@ -13,7 +13,6 @@ import com.squareup.javapoet.ParameterSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeName;
 import com.squareup.javapoet.TypeSpec;
-import com.sun.org.apache.xml.internal.serializer.Method;
 
 import java.io.IOException;
 import java.util.ArrayList;

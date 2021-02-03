@@ -1,15 +1,9 @@
 package com.dn_alan.myapplication;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 
-import com.dn_alan.router_annotation.Extra;
 import com.dn_alan.router_annotation.Route;
-
-import java.util.HashMap;
-import java.util.Map;
 
 @Route(path = "/main/test")
 public class MainActivity extends AppCompatActivity {
