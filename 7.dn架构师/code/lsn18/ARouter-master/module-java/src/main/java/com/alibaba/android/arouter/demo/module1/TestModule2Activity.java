@@ -1,7 +1,7 @@
 package com.alibaba.android.arouter.demo.module1;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 

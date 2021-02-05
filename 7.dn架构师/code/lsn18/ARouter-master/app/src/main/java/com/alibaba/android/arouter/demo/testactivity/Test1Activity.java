@@ -1,7 +1,6 @@
 package com.alibaba.android.arouter.demo.testactivity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.demo.R;

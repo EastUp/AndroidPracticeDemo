@@ -6,17 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-
 import com.dn_alan.base.TestService;
 import com.dn_alan.myapplication.parcelable.TestParcelable;
-import com.dn_alan.router_annotation.model.RouteMeta;
 import com.dn_alan.router_core.DNRouter;
-import com.dn_alan.router_core.DNRouter$$Group$$main;
-import com.dn_alan.router_core.DNRouter$$Root$$app;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 

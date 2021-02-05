@@ -7,7 +7,6 @@ import android.util.Log;
 
 import com.alibaba.android.arouter.demo.MainActivity;
 import com.alibaba.android.arouter.demo.MainLooper;
-import com.alibaba.android.arouter.demo.testservice.HelloService;
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.annotation.Interceptor;
 import com.alibaba.android.arouter.facade.callback.InterceptorCallback;

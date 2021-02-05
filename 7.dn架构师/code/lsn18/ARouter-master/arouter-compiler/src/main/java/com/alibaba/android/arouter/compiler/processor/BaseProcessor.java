@@ -2,8 +2,13 @@ package com.alibaba.android.arouter.compiler.processor;
 
 import com.alibaba.android.arouter.compiler.utils.Logger;
 import com.alibaba.android.arouter.compiler.utils.TypeUtils;
+
 import org.apache.commons.collections4.MapUtils;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
@@ -11,9 +16,6 @@ import javax.annotation.processing.ProcessingEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.util.Elements;
 import javax.lang.model.util.Types;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
 
 import static com.alibaba.android.arouter.compiler.utils.Consts.*;
 import static com.alibaba.android.arouter.compiler.utils.Consts.NO_MODULE_NAME_TIPS;

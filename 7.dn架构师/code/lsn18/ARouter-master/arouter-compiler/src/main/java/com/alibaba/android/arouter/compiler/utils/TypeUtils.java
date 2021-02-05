@@ -9,6 +9,7 @@ import javax.lang.model.util.Types;
 
 import static com.alibaba.android.arouter.compiler.utils.Consts.BOOLEAN;
 import static com.alibaba.android.arouter.compiler.utils.Consts.BYTE;
+import static com.alibaba.android.arouter.compiler.utils.Consts.CHAR;
 import static com.alibaba.android.arouter.compiler.utils.Consts.DOUBEL;
 import static com.alibaba.android.arouter.compiler.utils.Consts.FLOAT;
 import static com.alibaba.android.arouter.compiler.utils.Consts.INTEGER;
@@ -17,7 +18,6 @@ import static com.alibaba.android.arouter.compiler.utils.Consts.PARCELABLE;
 import static com.alibaba.android.arouter.compiler.utils.Consts.SERIALIZABLE;
 import static com.alibaba.android.arouter.compiler.utils.Consts.SHORT;
 import static com.alibaba.android.arouter.compiler.utils.Consts.STRING;
-import static com.alibaba.android.arouter.compiler.utils.Consts.CHAR;
 
 /**
  * Utils for type exchange

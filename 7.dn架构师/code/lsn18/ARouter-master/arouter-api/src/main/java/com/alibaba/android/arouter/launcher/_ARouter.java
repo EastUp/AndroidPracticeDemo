@@ -20,7 +20,6 @@ import com.alibaba.android.arouter.exception.NoRouteFoundException;
 import com.alibaba.android.arouter.facade.Postcard;
 import com.alibaba.android.arouter.facade.callback.InterceptorCallback;
 import com.alibaba.android.arouter.facade.callback.NavigationCallback;
-import com.alibaba.android.arouter.facade.service.*;
 import com.alibaba.android.arouter.facade.template.ILogger;
 import com.alibaba.android.arouter.thread.DefaultPoolExecutor;
 import com.alibaba.android.arouter.utils.Consts;
