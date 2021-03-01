@@ -4,7 +4,6 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.util.DisplayMetrics;
 
-
 import com.shu_da_shi.myapplication.glide.cache.ArrayPool;
 import com.shu_da_shi.myapplication.glide.cache.DiskCache;
 import com.shu_da_shi.myapplication.glide.cache.DiskLruCacheWrapper;

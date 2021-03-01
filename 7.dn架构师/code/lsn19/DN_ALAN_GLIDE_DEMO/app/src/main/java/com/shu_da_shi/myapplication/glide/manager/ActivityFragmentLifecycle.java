@@ -1,7 +1,5 @@
 package com.shu_da_shi.myapplication.glide.manager;
 
-import android.support.annotation.NonNull;
-
 import java.util.Collections;
 import java.util.Set;
 import java.util.WeakHashMap;
