@@ -1,10 +1,5 @@
 package com.shu_da_shi.myapplication;
 
-import android.provider.Settings;
-
-import com.shu_da_shi.myapplication.glide.Key;
-import com.shu_da_shi.myapplication.glide.recycle.Resource;
-
 import org.junit.Test;
 
 import java.lang.ref.Reference;

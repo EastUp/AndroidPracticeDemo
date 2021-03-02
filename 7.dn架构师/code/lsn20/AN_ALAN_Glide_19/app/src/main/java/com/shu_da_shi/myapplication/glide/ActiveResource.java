@@ -2,12 +2,10 @@ package com.shu_da_shi.myapplication.glide;
 
 import com.shu_da_shi.myapplication.glide.recycle.Resource;
 
-import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Timer;
 import java.util.concurrent.TimeUnit;
 
 /**

@@ -5,7 +5,6 @@ import android.net.Uri;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class HttpUriFetcher implements DataFetcher<InputStream> {

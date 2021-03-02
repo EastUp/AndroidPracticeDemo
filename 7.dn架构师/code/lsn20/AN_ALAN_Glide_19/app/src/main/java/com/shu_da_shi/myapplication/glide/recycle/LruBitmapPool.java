@@ -5,7 +5,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.util.LruCache;
 
-import java.util.Map;
 import java.util.NavigableMap;
 import java.util.TreeMap;
 

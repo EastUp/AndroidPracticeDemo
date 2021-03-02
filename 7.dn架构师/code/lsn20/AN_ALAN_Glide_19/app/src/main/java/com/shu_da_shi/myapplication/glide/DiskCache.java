@@ -1,7 +1,6 @@
 package com.shu_da_shi.myapplication.glide;
 
 import java.io.File;
-import java.io.Writer;
 
 public interface DiskCache {
 

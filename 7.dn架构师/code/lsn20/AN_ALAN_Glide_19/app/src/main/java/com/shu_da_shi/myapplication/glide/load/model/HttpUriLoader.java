@@ -2,9 +2,7 @@ package com.shu_da_shi.myapplication.glide.load.model;
 
 import android.net.Uri;
 
-import com.shu_da_shi.myapplication.glide.Key;
 import com.shu_da_shi.myapplication.glide.load.Objectkey;
-import com.shu_da_shi.myapplication.glide.load.model.data.DataFetcher;
 import com.shu_da_shi.myapplication.glide.load.model.data.HttpUriFetcher;
 
 import java.io.InputStream;

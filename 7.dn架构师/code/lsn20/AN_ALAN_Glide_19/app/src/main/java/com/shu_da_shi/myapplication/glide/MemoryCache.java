@@ -1,7 +1,5 @@
 package com.shu_da_shi.myapplication.glide;
 
-import android.support.v4.util.LruCache;
-
 import com.shu_da_shi.myapplication.glide.recycle.Resource;
 
 public interface MemoryCache {
