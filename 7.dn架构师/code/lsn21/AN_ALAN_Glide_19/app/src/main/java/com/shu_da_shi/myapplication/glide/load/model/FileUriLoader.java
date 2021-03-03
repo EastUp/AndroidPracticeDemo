@@ -3,7 +3,6 @@ package com.shu_da_shi.myapplication.glide.load.model;
 import android.content.ContentResolver;
 import android.net.Uri;
 
-import com.bumptech.glide.load.model.Model;
 import com.shu_da_shi.myapplication.glide.load.Objectkey;
 import com.shu_da_shi.myapplication.glide.load.model.data.FileUriFetcher;
 

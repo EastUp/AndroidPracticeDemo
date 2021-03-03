@@ -1,13 +1,8 @@
 package com.shu_da_shi.myapplication.glide.load;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Environment;
 
-import com.bumptech.glide.Glide;
-import com.shu_da_shi.myapplication.R;
 import com.shu_da_shi.myapplication.glide.load.model.FileUriLoader;
 import com.shu_da_shi.myapplication.glide.load.model.HttpUriLoader;
 import com.shu_da_shi.myapplication.glide.load.model.ModelLoader;
@@ -15,7 +10,6 @@ import com.shu_da_shi.myapplication.glide.load.model.ModelLoaderRegistry;
 import com.shu_da_shi.myapplication.glide.load.model.StringModelLoader;
 import com.shu_da_shi.myapplication.glide.load.model.data.DataFetcher;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.List;
 

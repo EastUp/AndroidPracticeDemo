@@ -4,7 +4,6 @@ import android.net.Uri;
 
 import java.io.File;
 import java.io.InputStream;
-import java.util.List;
 
 public class StringModelLoader implements ModelLoader<String, InputStream>{
     private final ModelLoader<Uri, InputStream> loader;
