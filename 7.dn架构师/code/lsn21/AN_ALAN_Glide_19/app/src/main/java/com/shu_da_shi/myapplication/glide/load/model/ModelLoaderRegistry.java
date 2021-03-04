@@ -15,6 +15,7 @@ public class ModelLoaderRegistry {
 
     /**
      * 获得 对用 model 与data类型的modelloader
+     *
      * @return
      */
     public <Model, Data> ModelLoader<Model, Data> build(Class<Model> modelClass, Class<Data> dataClass) {
@@ -27,17 +28,22 @@ public class ModelLoaderRegistry {
         }
 
         //找到多个匹配的loader
-        if(loaders.size() > 1){
+        if (loaders.size() > 1) {
             return new MultiModelLoader<>(loaders);
-        } else {
+        } else if (loaders.size() == 1) {
             return loaders.get(0);
         }
+        throw new RuntimeException("No Have:" + modelClass.getName() + " Model Match " +
+                dataClass.getName() + " Data");
     }
 
-    public<Model> List<ModelLoader<Model, ?>> getModelLoaders(Class<Model> modelClass){
+    /**
+     *  获得符合model类型的loader集合
+     */
+    public <Model> List<ModelLoader<Model, ?>> getModelLoaders(Class<Model> modelClass) {
         List<ModelLoader<Model, ?>> loaders = new ArrayList<>();
         for (Entry<?, ?> entry : entries) {
-            if(entry.handles(modelClass)){
+            if (entry.handles(modelClass)) {
                 loaders.add((ModelLoader<Model, ?>) entry.factory.build(this));
             }
         }
