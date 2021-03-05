@@ -2,7 +2,6 @@ package com.shu_da_shi.myapplication.glide;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
 import android.view.Display;
@@ -13,16 +12,7 @@ import android.widget.ImageView;
 
 import com.shu_da_shi.myapplication.glide.request.Request;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.lang.ref.Reference;
 import java.lang.ref.WeakReference;
-import java.nio.ByteBuffer;
-import java.util.Arrays;
-import java.util.IllegalFormatCodePointException;
-import java.util.Random;
 
 
 public class Target {

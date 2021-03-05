@@ -5,12 +5,10 @@ import android.content.ComponentCallbacks2;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-
 
 import com.shu_da_shi.myapplication.glide.cache.ArrayPool;
 import com.shu_da_shi.myapplication.glide.cache.DiskCache;
@@ -27,8 +25,6 @@ import com.shu_da_shi.myapplication.glide.request.RequestOptions;
 
 import java.io.File;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.ThreadPoolExecutor;
 
 public class Glide implements ComponentCallbacks2 {

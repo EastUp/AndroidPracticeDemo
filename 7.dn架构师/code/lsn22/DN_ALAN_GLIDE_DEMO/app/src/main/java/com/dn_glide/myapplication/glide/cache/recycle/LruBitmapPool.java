@@ -4,7 +4,6 @@ import android.content.ComponentCallbacks2;
 import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
 
-
 import java.util.NavigableMap;
 import java.util.TreeMap;
 

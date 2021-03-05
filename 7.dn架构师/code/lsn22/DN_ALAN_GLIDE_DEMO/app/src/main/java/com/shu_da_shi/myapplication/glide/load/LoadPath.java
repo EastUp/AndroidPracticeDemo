@@ -1,13 +1,11 @@
 package com.shu_da_shi.myapplication.glide.load;
 
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 
 import com.shu_da_shi.myapplication.glide.load.codec.ResourceDecoder;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.TreeSet;
 
 public class LoadPath<Data> {
     private final Class<Data> dataClass;

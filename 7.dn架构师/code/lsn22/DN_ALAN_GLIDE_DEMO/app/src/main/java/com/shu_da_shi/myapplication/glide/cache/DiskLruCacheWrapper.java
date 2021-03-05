@@ -1,7 +1,6 @@
 package com.shu_da_shi.myapplication.glide.cache;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.shu_da_shi.myapplication.glide.Utils;

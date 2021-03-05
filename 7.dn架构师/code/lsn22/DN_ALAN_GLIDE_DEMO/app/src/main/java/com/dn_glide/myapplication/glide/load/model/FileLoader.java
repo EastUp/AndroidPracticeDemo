@@ -3,7 +3,6 @@ package com.dn_glide.myapplication.glide.load.model;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 
-
 import java.io.File;
 import java.io.InputStream;
 

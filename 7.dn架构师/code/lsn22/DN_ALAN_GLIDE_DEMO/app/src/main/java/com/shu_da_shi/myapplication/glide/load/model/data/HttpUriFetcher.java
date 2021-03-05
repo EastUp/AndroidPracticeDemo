@@ -2,7 +2,6 @@ package com.shu_da_shi.myapplication.glide.load.model.data;
 
 import android.net.Uri;
 
-import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;

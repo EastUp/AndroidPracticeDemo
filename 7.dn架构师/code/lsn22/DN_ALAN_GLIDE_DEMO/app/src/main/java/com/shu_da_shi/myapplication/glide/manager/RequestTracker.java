@@ -5,7 +5,6 @@ import com.shu_da_shi.myapplication.glide.Utils;
 import com.shu_da_shi.myapplication.glide.request.Request;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;

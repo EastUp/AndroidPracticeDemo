@@ -1,7 +1,5 @@
 package com.shu_da_shi.myapplication.glide;
 
-import android.support.annotation.NonNull;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

@@ -1,7 +1,6 @@
 package com.shu_da_shi.myapplication.glide.recycle;
 
 import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
 
 /**
  * 复用池

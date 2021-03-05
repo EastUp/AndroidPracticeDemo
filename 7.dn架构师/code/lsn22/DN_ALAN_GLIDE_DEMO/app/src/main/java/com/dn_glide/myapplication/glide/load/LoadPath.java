@@ -2,7 +2,6 @@ package com.dn_glide.myapplication.glide.load;
 
 import android.graphics.Bitmap;
 
-
 import com.dn_glide.myapplication.glide.load.codec.ResourceDecoder;
 
 import java.io.IOException;

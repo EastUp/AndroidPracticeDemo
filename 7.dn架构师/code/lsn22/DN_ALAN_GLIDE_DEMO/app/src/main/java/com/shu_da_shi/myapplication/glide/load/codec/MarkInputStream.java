@@ -5,7 +5,6 @@ import com.shu_da_shi.myapplication.glide.cache.ArrayPool;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.security.cert.Certificate;
 
 /**
  * 装饰者模式 和代理非常相似

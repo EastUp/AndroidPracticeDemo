@@ -1,8 +1,6 @@
 package com.shu_da_shi.myapplication.glide.load;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.shu_da_shi.myapplication.glide.Glide;
@@ -12,8 +10,6 @@ import com.shu_da_shi.myapplication.glide.cache.MemoryCache;
 import com.shu_da_shi.myapplication.glide.recycle.Resource;
 import com.shu_da_shi.myapplication.glide.request.ResourceCallback;
 
-import java.nio.ByteBuffer;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
