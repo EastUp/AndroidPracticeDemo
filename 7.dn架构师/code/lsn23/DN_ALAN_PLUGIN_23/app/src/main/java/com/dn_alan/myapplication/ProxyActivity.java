@@ -25,9 +25,7 @@ public class ProxyActivity extends Activity {
         try {
             //TaoMainActivity
             Class<?> aClass = getClassLoader().loadClass(className);
-            Constructor constructor = aClass.getConstructor(new Class[]{});
-            Object in = constructor.newInstance(new Object[]{});
-            payInterfaceActivity = (PayInterfaceActivity) in;
+            payInterfaceActivity  = (PayInterfaceActivity) aClass.newInstance();
             payInterfaceActivity.attach(this);
 
             //如果需要参数，可以使用Bundle
@@ -80,5 +78,17 @@ public class ProxyActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         payInterfaceActivity.onDestroy();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        payInterfaceActivity.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+//        return super.onTouchEvent(event);
+        return payInterfaceActivity.onTouchEvent(event);
     }
 }

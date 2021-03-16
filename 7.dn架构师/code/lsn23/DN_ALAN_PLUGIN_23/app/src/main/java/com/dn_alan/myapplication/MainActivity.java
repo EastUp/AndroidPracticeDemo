@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    /**
+     * 从网络上下载插件apk，最好放到data/data/包名 目录下，这里是从外部存储路径将插件apk拷贝进去的。
+     * @param view
+     */
     public void load(View view) {
         loadPlugin();
     }
@@ -40,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         InputStream is = null;
         FileOutputStream os = null;
         try {
-            Log.i(TAG, "加载插件 " + new File(Environment.getExternalStorageDirectory(), name).getAbsolutePath());
+            Log.i("TAG", "加载插件 " + new File(Environment.getExternalStorageDirectory(), name).getAbsolutePath());
             is = new FileInputStream(new File(Environment.getExternalStorageDirectory(), name));
             os = new FileOutputStream(filePath);
             int len = 0;
