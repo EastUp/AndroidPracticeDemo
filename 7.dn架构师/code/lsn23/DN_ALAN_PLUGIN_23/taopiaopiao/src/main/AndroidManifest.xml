@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!-- PluginManager.getInstance().getPackageInfo().activities[0].name 获取插件apk AndroidManifest.xml中第一个Activity标签的名称 -->
         <activity android:name=".TaoMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

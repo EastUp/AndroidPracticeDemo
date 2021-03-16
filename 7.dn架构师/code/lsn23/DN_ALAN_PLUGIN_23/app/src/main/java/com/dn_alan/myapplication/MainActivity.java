@@ -1,17 +1,13 @@
 package com.dn_alan.myapplication;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
-
-import com.dn_alan.pluginstand.PayInterfaceActivity;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -75,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void click(View view) {
         Intent intent = new Intent(this, ProxyActivity.class);
+        // PluginManager.getInstance().getPackageInfo().activities[0].name 获取插件apk AndroidManifest.xml中第一个Activity标签的名称
         intent.putExtra("className", PluginManager.getInstance().getPackageInfo().activities[0].name);
         startActivity(intent);
     }

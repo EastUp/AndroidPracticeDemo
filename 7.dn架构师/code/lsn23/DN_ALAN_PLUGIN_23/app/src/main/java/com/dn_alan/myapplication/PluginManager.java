@@ -11,6 +11,9 @@ import java.lang.reflect.Method;
 
 import dalvik.system.DexClassLoader;
 
+/**
+ * 加载插件的dexClassLoader、Resources、PackageInfo
+ */
 public class PluginManager {
     
     private static final PluginManager ourInstance = new PluginManager();

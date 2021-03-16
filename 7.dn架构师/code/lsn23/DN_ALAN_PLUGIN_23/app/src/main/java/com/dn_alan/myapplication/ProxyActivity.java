@@ -9,6 +9,9 @@ import com.dn_alan.pluginstand.PayInterfaceActivity;
 
 import java.lang.reflect.Constructor;
 
+/**
+ *  占坑的Activity
+ */
 public class ProxyActivity extends Activity {
     //需要加载插件的全类名
     private String className;

@@ -10,6 +10,7 @@ import com.dn_alan.pluginstand.PayInterfaceActivity;
 public class BaseActivity extends Activity implements PayInterfaceActivity {
     protected Activity that;
 
+    // 所有的 findViewById 和 Context 这些都需要通过坑位的 proxyActivity
     @Override
     public void attach(Activity proxyActivity) {
         this.that = proxyActivity;
