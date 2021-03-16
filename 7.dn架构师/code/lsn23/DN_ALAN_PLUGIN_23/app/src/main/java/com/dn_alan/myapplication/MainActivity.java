@@ -15,8 +15,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import static android.content.ContentValues.TAG;
-
 public class MainActivity extends AppCompatActivity {
 
     @Override

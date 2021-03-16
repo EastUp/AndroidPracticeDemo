@@ -7,8 +7,6 @@ import android.os.Bundle;
 
 import com.dn_alan.pluginstand.PayInterfaceActivity;
 
-import java.lang.reflect.Constructor;
-
 /**
  *  占坑的Activity
  */
