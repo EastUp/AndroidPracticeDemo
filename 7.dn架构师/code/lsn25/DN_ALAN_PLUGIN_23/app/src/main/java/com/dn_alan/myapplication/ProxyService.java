@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 
-import com.dn_alan.pluginstand.PayInterfaceActivity;
 import com.dn_alan.pluginstand.PayInterfaceService;
 
 import java.lang.reflect.Constructor;

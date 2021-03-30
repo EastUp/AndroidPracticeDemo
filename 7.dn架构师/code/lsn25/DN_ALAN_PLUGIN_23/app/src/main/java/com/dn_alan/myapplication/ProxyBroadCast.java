@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.dn_alan.pluginstand.PayInterfaceActivity;
 import com.dn_alan.pluginstand.PayInterfaceBroadcast;
 
 import java.lang.reflect.Constructor;

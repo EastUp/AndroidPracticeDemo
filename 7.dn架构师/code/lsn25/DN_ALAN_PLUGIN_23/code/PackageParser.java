@@ -16,32 +16,6 @@
 
 package android.content.pm;
 
-import static android.content.pm.ActivityInfo.FLAG_ALWAYS_FOCUSABLE;
-import static android.content.pm.ActivityInfo.FLAG_SUPPORTS_PICTURE_IN_PICTURE;
-import static android.content.pm.ActivityInfo.RESIZE_MODE_FORCE_RESIZABLE_LANDSCAPE_ONLY;
-import static android.content.pm.ActivityInfo.RESIZE_MODE_FORCE_RESIZABLE_PORTRAIT_ONLY;
-import static android.content.pm.ActivityInfo.RESIZE_MODE_FORCE_RESIZABLE_PRESERVE_ORIENTATION;
-import static android.content.pm.ActivityInfo.RESIZE_MODE_FORCE_RESIZEABLE;
-import static android.content.pm.ActivityInfo.RESIZE_MODE_RESIZEABLE;
-import static android.content.pm.ActivityInfo.RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION;
-import static android.content.pm.ActivityInfo.RESIZE_MODE_UNRESIZEABLE;
-import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
-import static android.content.pm.ApplicationInfo.FLAG_SUSPENDED;
-import static android.content.pm.ApplicationInfo.PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_UNRESIZEABLE;
-import static android.content.pm.ApplicationInfo.PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE;
-import static android.content.pm.ApplicationInfo.PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_BAD_MANIFEST;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_BAD_PACKAGE_NAME;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_CERTIFICATE_ENCODING;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_MANIFEST_MALFORMED;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_NOT_APK;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_NO_CERTIFICATES;
-import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_UNEXPECTED_EXCEPTION;
-import static android.os.Build.VERSION_CODES.O;
-import static android.os.Trace.TRACE_TAG_PACKAGE_MANAGER;
-import static android.view.WindowManager.LayoutParams.ROTATION_ANIMATION_ROTATE;
-
 import android.annotation.IntRange;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
@@ -50,9 +24,9 @@ import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.split.DefaultSplitAssetLoader;
 import android.content.pm.split.SplitAssetDependencyLoader;
 import android.content.pm.split.SplitAssetLoader;
-import android.content.pm.split.DefaultSplitAssetLoader;
 import android.content.res.AssetManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
@@ -91,8 +65,6 @@ import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.util.ArrayUtils;
 import com.android.internal.util.XmlUtils;
 
-import libcore.io.IoUtils;
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
@@ -121,6 +93,34 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.zip.ZipEntry;
+
+import libcore.io.IoUtils;
+
+import static android.content.pm.ActivityInfo.FLAG_ALWAYS_FOCUSABLE;
+import static android.content.pm.ActivityInfo.FLAG_SUPPORTS_PICTURE_IN_PICTURE;
+import static android.content.pm.ActivityInfo.RESIZE_MODE_FORCE_RESIZABLE_LANDSCAPE_ONLY;
+import static android.content.pm.ActivityInfo.RESIZE_MODE_FORCE_RESIZABLE_PORTRAIT_ONLY;
+import static android.content.pm.ActivityInfo.RESIZE_MODE_FORCE_RESIZABLE_PRESERVE_ORIENTATION;
+import static android.content.pm.ActivityInfo.RESIZE_MODE_FORCE_RESIZEABLE;
+import static android.content.pm.ActivityInfo.RESIZE_MODE_RESIZEABLE;
+import static android.content.pm.ActivityInfo.RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION;
+import static android.content.pm.ActivityInfo.RESIZE_MODE_UNRESIZEABLE;
+import static android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED;
+import static android.content.pm.ApplicationInfo.FLAG_SUSPENDED;
+import static android.content.pm.ApplicationInfo.PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE;
+import static android.content.pm.ApplicationInfo.PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_RESIZEABLE_VIA_SDK_VERSION;
+import static android.content.pm.ApplicationInfo.PRIVATE_FLAG_ACTIVITIES_RESIZE_MODE_UNRESIZEABLE;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_BAD_MANIFEST;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_BAD_PACKAGE_NAME;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_CERTIFICATE_ENCODING;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_MANIFEST_MALFORMED;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_NOT_APK;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_NO_CERTIFICATES;
+import static android.content.pm.PackageManager.INSTALL_PARSE_FAILED_UNEXPECTED_EXCEPTION;
+import static android.os.Build.VERSION_CODES.O;
+import static android.os.Trace.TRACE_TAG_PACKAGE_MANAGER;
+import static android.view.WindowManager.LayoutParams.ROTATION_ANIMATION_ROTATE;
 
 /**
  * Parser for package files (APKs) on disk. This supports apps packaged either

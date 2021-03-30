@@ -1,14 +1,9 @@
 package com.dn_alan.taopiaopiao;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
-
-import com.dn_alan.pluginstand.PayInterfaceActivity;
 
 public class TaoMainActivity extends BaseActivity {
 

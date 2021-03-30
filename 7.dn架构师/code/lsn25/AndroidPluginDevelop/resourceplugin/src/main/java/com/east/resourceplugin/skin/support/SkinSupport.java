@@ -6,7 +6,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-
 import com.east.resourceplugin.skin.SkinManager;
 import com.east.resourceplugin.skin.attr.SkinAttrAndResourceName;
 import com.east.resourceplugin.skin.attr.SkinView;

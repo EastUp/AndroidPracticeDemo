@@ -6,7 +6,6 @@ import android.text.TextUtils;
 
 import androidx.collection.ArrayMap;
 
-
 import com.east.resourceplugin.skin.attr.SkinView;
 import com.east.resourceplugin.skin.callback.JudgeViewAttributeNameListener;
 import com.east.resourceplugin.skin.callback.SkinChangeListener;

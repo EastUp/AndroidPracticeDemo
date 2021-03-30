@@ -56,8 +56,8 @@ import com.android.internal.logging.MetricsLogger;
 import com.android.internal.notification.SystemNotificationChannels;
 import com.android.internal.os.BinderInternal;
 import com.android.internal.os.SamplingProfilerIntegration;
-import com.android.internal.util.EmergencyAffordanceManager;
 import com.android.internal.util.ConcurrentUtils;
+import com.android.internal.util.EmergencyAffordanceManager;
 import com.android.internal.widget.ILockSettings;
 import com.android.server.accessibility.AccessibilityManagerService;
 import com.android.server.am.ActivityManagerService;
@@ -113,8 +113,6 @@ import com.android.server.vr.VrManagerService;
 import com.android.server.webkit.WebViewUpdateService;
 import com.android.server.wm.WindowManagerService;
 
-import dalvik.system.VMRuntime;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
@@ -122,6 +120,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Future;
+
+import dalvik.system.VMRuntime;
 
 import static android.view.Display.DEFAULT_DISPLAY;
 

@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import com.east.resourceplugin.skin.ResourcesManager;
 import com.east.resourceplugin.skin.support.ChangeSkinAttrs;
 

@@ -29,7 +29,6 @@ import androidx.appcompat.widget.AppCompatToggleButton;
 import androidx.collection.ArrayMap;
 import androidx.core.view.ViewCompat;
 
-
 import com.east.resourceplugin.R;
 
 import java.lang.reflect.Constructor;

@@ -16,22 +16,22 @@
 
 package android.content.pm;
 
-import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DEFAULT;
-import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
-import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED_UNTIL_USED;
-import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER;
-import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
-import static android.content.pm.PackageManager.MATCH_DISABLED_COMPONENTS;
-import static android.content.pm.PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
-import static android.content.pm.PackageManager.MATCH_DIRECT_BOOT_AWARE;
-import static android.content.pm.PackageManager.MATCH_DIRECT_BOOT_UNAWARE;
-import static android.content.pm.PackageManager.MATCH_SYSTEM_ONLY;
-
 import android.util.ArraySet;
 
 import com.android.internal.util.ArrayUtils;
 
 import java.util.Arrays;
+
+import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DEFAULT;
+import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED_UNTIL_USED;
+import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER;
+import static android.content.pm.PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
+import static android.content.pm.PackageManager.MATCH_DIRECT_BOOT_AWARE;
+import static android.content.pm.PackageManager.MATCH_DIRECT_BOOT_UNAWARE;
+import static android.content.pm.PackageManager.MATCH_DISABLED_COMPONENTS;
+import static android.content.pm.PackageManager.MATCH_DISABLED_UNTIL_USED_COMPONENTS;
+import static android.content.pm.PackageManager.MATCH_SYSTEM_ONLY;
 
 /**
  * Per-user state information about a package.
