@@ -1,0 +1,12 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "lsn4example.exe (lsn4_example\\lsn4example.exe)",
+      "name": "lsn4example.exe (lsn4_example\\lsn4example.exe)"
+    }
+  ]
+}
