@@ -7,7 +7,7 @@ cmake_minimum_required (VERSION 3.8)
 
 include_directories("C:/Program Files/Java/jdk1.8.0_171/include")
 include_directories("C:/Program Files/Java/jdk1.8.0_171/include/win32")
-#生成一个库  so 动态库
+#生成一个库  so 动态库 window的动态库是 *.dll，linux和安装是*.so
 add_library(lsn7 SHARED lsn7_example.cpp)
 
 
