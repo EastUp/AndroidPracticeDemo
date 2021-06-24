@@ -1,7 +1,12 @@
 package com.dongnao.jnitest;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
+
+import java.lang.ref.WeakReference;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
