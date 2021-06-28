@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 //        passObject(bean,"天之道");
 
 // 3、引用
-        invokeBean2Method2();
+//        invokeBean2Method2();
         invokeBean2Method2();
 
 
