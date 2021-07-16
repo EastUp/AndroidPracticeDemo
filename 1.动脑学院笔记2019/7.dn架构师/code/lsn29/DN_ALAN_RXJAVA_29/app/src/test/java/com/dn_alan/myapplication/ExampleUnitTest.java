@@ -1,7 +1,5 @@
 package com.dn_alan.myapplication;
 
-import android.util.Log;
-
 import org.junit.Test;
 
 import java.util.ArrayList;
