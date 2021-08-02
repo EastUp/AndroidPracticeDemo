@@ -1,0 +1,3 @@
+ninja: Entering directory `/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/.cxx/Debug/4l6c3e1f/arm64-v8a'
+[1/2] Building CXX object CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o
+[2/2] Linking CXX shared library ../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so

@@ -1,0 +1,40 @@
+{
+  "stringTable": {},
+  "buildFiles": [
+    "/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Volumes/MacDataStore/AndroidSdk/cmake/3.10.2.4988404/bin/ninja",
+      "-C",
+      "/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/.cxx/Debug/4l6c3e1f/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Volumes/MacDataStore/AndroidSdk/cmake/3.10.2.4988404/bin/ninja",
+    "-C",
+    "/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/.cxx/Debug/4l6c3e1f/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "native-lib-Debug-x86": {
+      "buildCommandComponents": [
+        "/Volumes/MacDataStore/AndroidSdk/cmake/3.10.2.4988404/bin/ninja",
+        "-C",
+        "/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/.cxx/Debug/4l6c3e1f/x86",
+        "native-lib"
+      ],
+      "buildType": "debug",
+      "abi": "x86",
+      "artifactName": "native-lib",
+      "output": "/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/build/intermediates/cxx/Debug/4l6c3e1f/obj/x86/libnative-lib.so",
+      "runtimeFiles": []
+    }
+  },
+  "toolchains": {},
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}

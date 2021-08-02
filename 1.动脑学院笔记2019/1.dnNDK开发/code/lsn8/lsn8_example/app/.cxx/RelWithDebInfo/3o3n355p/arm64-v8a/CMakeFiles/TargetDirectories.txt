@@ -1,0 +1,3 @@
+/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/.cxx/RelWithDebInfo/3o3n355p/arm64-v8a/CMakeFiles/rebuild_cache.dir
+/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/.cxx/RelWithDebInfo/3o3n355p/arm64-v8a/CMakeFiles/edit_cache.dir
+/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/.cxx/RelWithDebInfo/3o3n355p/arm64-v8a/CMakeFiles/native-lib.dir

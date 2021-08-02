@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/.cxx/RelWithDebInfo/3o3n355p/x86",
+  "command": "/Volumes/MacDataStore/AndroidSdk/ndk/22.0.6917172/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android16 --gcc-toolchain=/Volumes/MacDataStore/AndroidSdk/ndk/22.0.6917172/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Volumes/MacDataStore/AndroidSdk/ndk/22.0.6917172/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security   -O2 -g -DNDEBUG -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o -c /Volumes/MacDataStore/BaiduDownload/lsn8_example/app/src/main/cpp/native-lib.cpp",
+  "file": "/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/src/main/cpp/native-lib.cpp"
+}
+]

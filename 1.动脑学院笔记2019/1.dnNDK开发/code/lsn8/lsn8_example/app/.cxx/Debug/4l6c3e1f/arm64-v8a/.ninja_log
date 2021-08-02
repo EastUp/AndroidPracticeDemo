@@ -1,0 +1,25 @@
+# ninja log v5
+0	673	1627604846	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+674	762	1627604846	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867
+2	684	1627605070	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+684	831	1627605070	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867
+3	556	1627605226	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+556	634	1627605226	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867
+1	789	1627605393	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+789	944	1627605393	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867
+2	757	1627860618	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+758	860	1627860619	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867
+1	474	1627860673	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+474	522	1627860673	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867
+2	961	1627861250	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+962	1091	1627861250	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867
+3	735	1627861607	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+735	906	1627861607	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867
+3	788	1627861616	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+789	864	1627861617	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867
+2	750	1627862474	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+750	929	1627862474	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867
+1	843	1627862582	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+843	1053	1627862582	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867
+2	586	1627862651	CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o	7d6b9a3868bba385
+586	679	1627862651	../../../../build/intermediates/cxx/Debug/4l6c3e1f/obj/arm64-v8a/libnative-lib.so	e5bbc4e0e625a867

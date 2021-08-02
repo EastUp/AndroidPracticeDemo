@@ -1,0 +1,7 @@
+Executable : /Volumes/MacDataStore/AndroidSdk/cmake/3.10.2.4988404/bin/ninja
+arguments : 
+-C
+/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/.cxx/Debug/4l6c3e1f/x86_64
+native-lib
+jvmArgs : 
+

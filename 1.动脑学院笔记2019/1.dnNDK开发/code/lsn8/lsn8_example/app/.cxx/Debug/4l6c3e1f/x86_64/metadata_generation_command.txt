@@ -1,0 +1,23 @@
+                    Executable : /Volumes/MacDataStore/AndroidSdk/cmake/3.10.2.4988404/bin/cmake
+arguments : 
+-H/Volumes/MacDataStore/BaiduDownload/lsn8_example/app
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_SYSTEM_VERSION=16
+-DANDROID_PLATFORM=android-16
+-DANDROID_ABI=x86_64
+-DCMAKE_ANDROID_ARCH_ABI=x86_64
+-DANDROID_NDK=/Volumes/MacDataStore/AndroidSdk/ndk/22.0.6917172
+-DCMAKE_ANDROID_NDK=/Volumes/MacDataStore/AndroidSdk/ndk/22.0.6917172
+-DCMAKE_TOOLCHAIN_FILE=/Volumes/MacDataStore/AndroidSdk/ndk/22.0.6917172/build/cmake/android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=/Volumes/MacDataStore/AndroidSdk/cmake/3.10.2.4988404/bin/ninja
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/build/intermediates/cxx/Debug/4l6c3e1f/obj/x86_64
+-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/build/intermediates/cxx/Debug/4l6c3e1f/obj/x86_64
+-DCMAKE_BUILD_TYPE=Debug
+-B/Volumes/MacDataStore/BaiduDownload/lsn8_example/app/.cxx/Debug/4l6c3e1f/x86_64
+-GNinja
+jvmArgs : 
+
+
+                    Build command args: []
+                    Version: 2
