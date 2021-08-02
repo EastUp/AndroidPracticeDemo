@@ -87,6 +87,8 @@ Java_com_dongnao_lsn8_1example_MainActivity_testThread(JNIEnv *env, jobject inst
     // 等子线程执行完了再删除掉资源
     env->DeleteGlobalRef(context->instance);
     delete(context);
+    pthread_mutex_destroy(&mutex);
+    pthread_cond_destroy(&cond);
 }
 
 
