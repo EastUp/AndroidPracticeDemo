@@ -1,7 +1,6 @@
 package com.dn_alan.myapplication.rxjava.observable;
 
 import com.dn_alan.myapplication.rxjava.Observable;
-import com.dn_alan.myapplication.rxjava.Observer;
 import com.dn_alan.myapplication.rxjava.ObserverbleSource;
 
 //被观察者

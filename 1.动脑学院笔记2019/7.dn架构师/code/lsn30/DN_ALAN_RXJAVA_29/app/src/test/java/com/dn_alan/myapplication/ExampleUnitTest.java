@@ -1,13 +1,11 @@
 package com.dn_alan.myapplication;
 
-import android.util.Log;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

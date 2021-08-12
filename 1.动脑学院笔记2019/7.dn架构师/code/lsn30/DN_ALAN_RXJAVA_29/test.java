@@ -1,7 +1,7 @@
 package com.dn_alan.myapplication;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import io.reactivex.Observable;
