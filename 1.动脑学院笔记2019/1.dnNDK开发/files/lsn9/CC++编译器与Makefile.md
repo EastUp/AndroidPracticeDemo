@@ -142,6 +142,7 @@ nm main
 gcc -shared -o libMain.so -Wl,--whole-archive libMain.a -Wl,--no-whole-archive
 ```
 
+<font color=red size=5>交叉编译指令</font>  
 头文件与库文件指定
 ```shell
 --sysroot=XX
@@ -160,7 +161,8 @@ gcc -shared -o libMain.so -Wl,--whole-archive libMain.a -Wl,--no-whole-archive
 -lxx.so
 	指定需要链接的库名
 
-#pie 位置无关的可执行程序
+#### 交叉编译指令
+#pie 位置无关的可执行程序 
 export CC="/root/android-ndk-r17b/toolchains/arm-linux-androideabi-4.9/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc"
 export CFLAGS="--sysroot=/root/android-ndk-r17b/platforms/android-21/arch-arm -isysroot /root/android-ndk-r17b/sysroot -isystem /root/android-ndk-r17b/sysroot/usr/include/arm-linux-androideabi -pie"	
 $CC $CFLAGS -o main main.c
