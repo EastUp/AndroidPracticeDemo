@@ -1,0 +1,23 @@
+                    Executable : D:\AndroidSdk\cmake\3.10.2.4988404\bin\cmake.exe
+arguments : 
+-HE:\BaiduNetdiskDownload\lsn9_test\app
+-DCMAKE_SYSTEM_NAME=Android
+-DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+-DCMAKE_SYSTEM_VERSION=16
+-DANDROID_PLATFORM=android-16
+-DANDROID_ABI=armeabi-v7a
+-DCMAKE_ANDROID_ARCH_ABI=armeabi-v7a
+-DANDROID_NDK=D:\AndroidSdk\ndk-bundle
+-DCMAKE_ANDROID_NDK=D:\AndroidSdk\ndk-bundle
+-DCMAKE_TOOLCHAIN_FILE=D:\AndroidSdk\ndk-bundle\build\cmake\android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=D:\AndroidSdk\cmake\3.10.2.4988404\bin\ninja.exe
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=E:\BaiduNetdiskDownload\lsn9_test\app\build\intermediates\cxx\Debug\5l5f206y\obj\armeabi-v7a
+-DCMAKE_RUNTIME_OUTPUT_DIRECTORY=E:\BaiduNetdiskDownload\lsn9_test\app\build\intermediates\cxx\Debug\5l5f206y\obj\armeabi-v7a
+-DCMAKE_BUILD_TYPE=Debug
+-BE:\BaiduNetdiskDownload\lsn9_test\app\.cxx\Debug\5l5f206y\armeabi-v7a
+-GNinja
+jvmArgs : 
+
+
+                    Build command args: []
+                    Version: 2

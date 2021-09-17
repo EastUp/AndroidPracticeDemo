@@ -80,10 +80,10 @@
 
 
 
-> `/etc/ld.so.conf`：
+> `/etc/ld.so.conf`：  
 > 	在没有特别指定时，gcc会到系统编译器只会使用/lib和/usr/lib这两个目录下的库文件。如果存在一个so不在这两个目录，在编译时候就会出现找不到的情况。
 >
-> `/etc/ld.so.conf`文件中可以指定而外的编译链接库路径。
+> `/etc/ld.so.conf`文件中可以指定额外的编译链接库路径。
 >
 > 输入：`cat /etc/ld.so.conf`：
 

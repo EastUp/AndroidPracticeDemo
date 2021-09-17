@@ -1,0 +1,75 @@
+import com.android.build.gradle.internal.dsl.CoreExternalNativeCmakeOptions
+import com.android.build.gradle.internal.dsl.NdkBuildOptions
+
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.dongnao.lsn9_example_mk"
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        // 指导我们的 源文件 编译
+        externalNativeBuild{
+            ndkBuild{
+
+                // armeabi-v7a
+                abiFilters "armeabi-v7a"
+
+            }
+        }
+//        externalNativeBuild.ndkBuild(new Action<CoreExternalNativeCmakeOptions>() {
+//            @Override
+//            void execute(CoreExternalNativeCmakeOptions ndkBuildOptions) {
+//                // 你希望编译你的 c/c++ 源文件 编译几种cpu(arm、x86 )
+//                ndkBuildOptions.abiFilters.add("armeabi-v7a")
+//                ndkBuildOptions.abiFilters.add("x86")
+//            }
+//        })
+        //externalNativeBuild.cmake
+
+        // 应该打包几种cpu
+        //比如： 集成了第三方库 ，第三方库中提供了 arm的 提供了 x86的
+        // 可以在此处 指导 只打包 arm
+        // 生成出来的apk 就只会包含 arm的
+        ndk{
+            abiFilters "armeabi-v7a"
+        }
+    }
+    // externalNativeBuild.cmake
+    //配置 native 的编译脚本路径
+//    externalNativeBuild.ndkBuild(new Action<NdkBuildOptions>() {
+//        @Override
+//        void execute(NdkBuildOptions ndkBuildOptions) {
+//            ndkBuildOptions.path = "src/main/cpp/Android.mk"
+//    }
+//    })
+
+    externalNativeBuild{
+        ndkBuild{
+            path   "src/main/cpp/Android.mk"
+        }
+    }
+
+
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:appcompat-v7:28.0.0-rc01'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
