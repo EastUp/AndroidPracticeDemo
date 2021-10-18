@@ -36,7 +36,7 @@ dependencies {
 - [DAOs](https://developer.android.com/training/data-storage/room/accessing-data.html) 访问数据库
 
  详细的结构关系可以看下图：![Figure](https://developer.android.com/images/training/data-storage/room_architecture.png)
- 
+
 ###Entities
 
 [@Entity](https://developer.android.com/reference/android/arch/persistence/room/Entity.html)
@@ -52,7 +52,7 @@ dependencies {
 ####设置表的名字  
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;默认情况下Entity类的名字就是表的名字(不区分大小写)。但是我们也可以通过@Entity的**tableName**属性来自定义表名字。如下代码所示user表对应的实体类。
- 
+
 ```kotlin
 @Entity(tableName = "user")
 class RoomAutoKeyUser {
@@ -180,18 +180,31 @@ class Book {
 ```
 上述代码通过foreignKeys之后Book表中的userId来源于User表中的id。  
   @ForeignKey属性介绍：  
-  
-entity：parent实体类(引用外键的表的实体)。  
-parentColumns：parent外键列(要引用的外键列)。  
-childColumns：child外键列(要关联的列)。  
-onDelete：默认NO_ACTION，当parent里面有删除操作的时候，child表可以做的Action动作有：  
-       1. NO_ACTION：当parent中的key有变化的时候child不做任何动作。  
-       2. RESTRICT：当parent中的key有依赖的时候禁止对parent做动作，做动作就会报错。  
-       3. SET_NULL：当paren中的key有变化的时候child中依赖的key会设置为NULL。  
-       4. SET_DEFAULT：当parent中的key有变化的时候child中依赖的key会设置为默认值。  
-       5. CASCADE：当parent中的key有变化的时候child中依赖的key会跟着变化。   
-onUpdate：默认NO_ACTION，当parent里面有更新操作的时候，child表需要做的动作。Action动作方式和onDelete是一样的。
-deferred：默认值false，在事务完成之前，是否应该推迟外键约束。这个怎么理解，当我们启动一个事务插入很多数据的时候，事务还没完成之前。当parent引起key变化的时候。可以设置deferred为ture。让key立即改变。
+
+1. entity：parent实体类(引用外键的表的实体)。  
+
+2. parentColumns：parent外键列(要引用的外键列)。  
+
+3. childColumns：child外键列(要关联的列)。  
+
+4. onDelete：默认NO_ACTION，当parent里面有删除操作的时候，child表可以做的Action动作有：  
+
+   - NO_ACTION：当parent中的key有变化的时候child不做任何动作。  
+
+   - RESTRICT：当parent中的key有依赖的时候禁止对parent做动作，做动作就会报错。  
+
+   - SET_NULL：当paren中的key有变化的时候child中依赖的key会设置为NULL。  
+
+   - SET_DEFAULT：当parent中的key有变化的时候child中依赖的key会设置为默认值。  
+
+   - CASCADE：当parent中的key有变化的时候child中依赖的key会跟着变化。
+
+5. onUpdate：默认NO_ACTION，当parent里面有更新操作的时候，child表需要做的动作。Action动作方式和onDelete是一样的。
+
+6. deferred：默认值false，在事务完成之前，是否应该推迟外键约束。这个怎么理解，当我们启动一个事务插入很多数据的时候，事务还没完成之前。当parent引起key变化的时候。可以设置deferred为ture。让key立即改变。
+   
+   
+   
 
 <font color=#ff0000> 注：SQLite的处理 @Insert(onConflict = REPLACE) 为一组REMOVE和REPLACE操作，而不是一个单一的UPDATE 操作。这种替换冲突值的方法可能会影响您的外键约束。有关更多详细信息，请参阅该 子句的 [SQLite documentation](https://sqlite.org/lang_conflict.html)ON_CONFLICT。 </font>
 
@@ -1102,7 +1115,7 @@ android {
 **问题:**  
        
 
-  
+
       修改了数据表结构,如果不进行数据库的迁移会报如下错误
 
 
@@ -1112,7 +1125,7 @@ android {
 
       2. Migration didn't properly handle: user(com.east.architecture_components.db.entity.RoomAutoKeyUser).  
        **`代表migration方法内的sql代码写的有问题,通过下面提示进行查找(蓝色部分)`**  
-       
+
        Expected:  
        TableInfo{name='user', columns={uid=Column{name='uid', type='INTEGER', affinity='3', notNull=true, primaryKeyPosition=1, defaultValue='null'}, first_name=Column{name='first_name', type='TEXT', affinity='2', notNull=false, primaryKeyPosition=0, defaultValue='null'}, last_name=Column{name='last_name', type='TEXT', affinity='2', notNull=false, primaryKeyPosition=0, defaultValue='null'}}, foreignKeys=[], <font color=#0000ff>indices=[Index{name='index_user_uid', unique=false, columns=[uid]}]}</font>  
        Found:  
@@ -1132,7 +1145,7 @@ android {
 
 
 
-	   
-	   
-	
+
+​	   
+​	
 
