@@ -1,6 +1,5 @@
 package com.bennyhuo.kotlin.generics.constraints;
 
-import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class JavaConstraints {

@@ -1,7 +1,6 @@
 package com.bennyhuo.kotlin.generics.startprojections;
 
 import java.util.HashMap;
-import java.util.List;
 
 public class JavaRawTypes {
 

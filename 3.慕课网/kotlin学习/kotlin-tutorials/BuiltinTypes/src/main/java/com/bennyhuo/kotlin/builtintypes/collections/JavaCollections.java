@@ -1,7 +1,5 @@
 package com.bennyhuo.kotlin.builtintypes.collections;
 
-import java.util.*;
-
 public class JavaCollections {
     public static void main(String... args) {
 
