@@ -850,10 +850,32 @@ public interface UserDao {
 
        当数据库里面表有变化的时候(不管你是新增了表，还是改变了某个表)有如下几个场景。
 
-- 如果database的版本号不变。app操作数据库表的时候会直接crash掉。(错误的做法)
-- 如果增加database的版本号。但是不提供Migration。app操作数据库表的时候会直接crash掉。（错误的做法）
-- 如果增加database的版本号。同时启用fallbackToDestructiveMigration。这个时候之前的数据会被清空掉。如下- fallbackToDestructiveMigration()设置。(不推荐的做法)
-
+- 如果database的版本号不变。app操作数据库表的时候会直接crash掉。(错误的做法)  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果我们保持数据库版本不变，直接运行我们的App，Room在背后所做的事情如下：
+   1. 第一步：尝试打开数据库
+      1. 比对数据库的identity值：当前的版本的 identity hash与在 room_master_table 中 identity hash比较。但是因为identity hash没有被存储，因此app 将会奔溃：
+         ```
+         java.lang.IllegalStateException: Room cannot verify the data integrity. Looks like you’ve changed schema 
+         but forgot to update the version number. You can simply fix this by increasing the version number.
+         ```
+      2. >如果你修改了数据库的架构，但是没有更新数据库的版本，Room 总会报 IllegalStateException。
+      3. 我们听从它的意见，将版本修改为2：
+         ```
+         @Database(entities = {User.class},version = 2}
+         public abstract class UserDatabase extends RoomDatabase
+         ```
+- 如果增加database的版本号。但是不提供Migration迁移策略。app操作数据库表的时候会直接crash掉。（错误的做法）  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们按照以下步骤再次运行 Room：
+  1. 第一步：更新数据库版本从1（已经安装到设备上了）到2  
+     因为没有迁移策略，所以应用崩溃报 IllegalStateException.❌
+     ```
+     java.lang.IllegalStateException: A migration from 1 to 2 is necessary. 
+     Please provide a Migration in the builder or call fallbackToDestructiveMigration in the builder
+     in which case Room will re-create all of the tables.
+     ```
+  2. >如果你没有提供迁移策略，Room 就会报 IllegalStateException 异常
+- 如果增加database的版本号。但是不提供Migration迁移策略。同时启用fallbackToDestructiveMigration(回退到破坏性迁移)。这个时候之前的数据会被清空掉。如下- fallbackToDestructiveMigration()设置。(不推荐的做法)  
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果你不想提供迁移策略，而且你特别指定了在更新数据库版本时，数据库数据将会被清空，那么调用fallbackToDestructiveMigration可以满足你的要求：
 ``` java
         mAppDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "android_room_dev.db")
                            .allowMainThreadQueries()
@@ -861,8 +883,15 @@ public interface UserDao {
                            .build();
 ```
 
+   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接下来我们再次运行，Room 将会做一下动作：  
+   1. 第一步：尝试从版本1更新到版本2
+      - 因为现在没有迁移策略，而且我们还设定了回退到破坏性迁移，那么所有的数据库表将会被删除掉，新的identity hash 将会被插入。
+   2. 第二步：尝试重新打开数据库
+      1. 因为当前版本的identity hash 和 插入的identity hash是同一个，数据库打开。✅
+      2. 现在打开时，我们的app没有奔溃，但是我们丢失了所有数据。做这种操作时，先看看是不是真要这么操作😄。
 
-- 增加database的版本号，同时提供Migration。这要是Room数据迁移的重点。(最正确的做法)
+
+- 增加database的版本号，同时提供Migration。这要是Room数据迁移的重点。(**最正确的做法**)
 
        所以在数据库有变化的时候，我们任何时候都应该尽量提供Migrating。Migrating让我们可以自己去处理数据库从某个版本过渡到另一个版本的逻辑。我们用一个简单的实例来说明。有这么个情况，数据库开始设计的时候我们就一个user表(数据库版本 1)，第一次变化来了我们需要给user表增加一个age的列(数据库版本 2)，过了一段时间又有变化了我们需要新增加一个book表。三个过程版本1->2->3。
 
