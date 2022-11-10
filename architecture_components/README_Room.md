@@ -39,7 +39,7 @@ dependencies {
 
 ###Entities
 
-[@Entity](https://developer.android.com/reference/android/arch/persistence/room/Entity.html)
+#### 1. [@Entity](https://developer.android.com/reference/android/arch/persistence/room/Entity.html)
 
 @Entity注解包含的属性有：
 
@@ -49,7 +49,7 @@ dependencies {
 - primaryKeys：设置主键。
 - foreignKeys：设置外键。
 
-####设置表的名字  
+##### 1.1设置表的名字  
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;默认情况下Entity类的名字就是表的名字(不区分大小写)。但是我们也可以通过@Entity的**tableName**属性来自定义表名字。如下代码所示user表对应的实体类。
 
@@ -61,91 +61,86 @@ class RoomAutoKeyUser {
  
 ```
 
-####设置列的名字  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;默认情况下Entity类中字段的名字就是表中列的名字。我们也是可以通过**@ColumnInfo**注解来自定义表中列的名字
+##### 1.2设置列的名字  
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;默认情况下Entity类中字段的名字就是表中列的名字。我们也是可以通过@**ColumnInfo**注解来自定义表中列的名字
 
 ``` kotlin
 @Entity(tableName = "user")
 class RoomAutoKeyUser {
    	...
-
     @ColumnInfo( name = "first_name")
     var firstName : String? = null
-    
     ...
 }
 ```
 
-####设置主键  
+##### 1.3设置主键  
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;每个Entity都需要至少一个字段设置为主键。即使这个Entity只有一个字段也需要设置为主键。Entity设置主键的方式有两种:
  	
 + 通过@Entity的primaryKeys属性来设置主键(primaryKeys是数组可以设置单个主键，也可以设置复合主键)。
 
 ```kotlin
-	@Entity(primaryKeys = {"firstName",
-	                       "lastName"})
-	public class User {
-	
-	    public String firstName;
-	    public String lastName;
-	}
+@Entity(primaryKeys = {"firstName",
+                       "lastName"})
+public class User {
+    public String firstName;
+    public String lastName;
+}
 ```
 + 用@PrimaryKey注解来设置主键。(如果希望主键自增.可以设置`autoGnerate`属性)
 
 ```kotlin
-	@Entity(tableName = "user")
-	class RoomAutoKeyUser {
-	
-	    @PrimaryKey(autoGenerate = true)
-	    @NonNull
-	    var uid:Int ?= null
-	    
-	    ...
-	}
+@Entity(tableName = "user")
+class RoomAutoKeyUser {
+    @PrimaryKey(autoGenerate = true)
+    @NonNull
+    var uid:Int ?= null
+    ...
+}
 ```
 
-####设置索引  
+##### 1.4设置索引  
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;数据库索引用于提高数据库表的数据访问速度的。数据库里面的索引有单列索引和组合索引。Room里面可以通过@Entity的indices属性来给表格添加索引。  
 
 ``` java
-	@Entity(indices = {@Index("firstName"),
-	        @Index(value = {"last_name", "address"})})
-	public class User {
-	    @PrimaryKey
-	    public int id;
-	
-	    public String firstName;
-	    public String address;
-	
-	    @ColumnInfo(name = "last_name")
-	    public String lastName;
-	
-	    @Ignore
-	    Bitmap picture;
-	}
+@Entity(indices = {@Index("firstName"),
+        @Index(value = {"last_name", "address"})})
+public class User {
+    @PrimaryKey
+    public int id;
+
+    public String firstName;
+    public String address;
+
+    @ColumnInfo(name = "last_name")
+    public String lastName;
+
+    @Ignore
+    Bitmap picture;
+}
 ```
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;索引也是分两种的唯一索引和非唯一索引。唯一索引就想主键一样重复会报错的。可以通过的@Index的unique数学来设置是否唯一索引。
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;索引也是分两种的唯一索引和非唯一索引。唯一索引就想主键一样重复会报错的。可以通过的@Index的unique属性来设置是否唯一索引。
 
 ``` java
-	@Entity(indices = {@Index(value = {"first_name", "last_name"},
-	        unique = true)})
-	public class User {
-	    @PrimaryKey
-	    public int id;
-	
-	    @ColumnInfo(name = "first_name")
-	    public String firstName;
-	
-	    @ColumnInfo(name = "last_name")
-	    public String lastName;
-	
-	    @Ignore
-	    Bitmap picture;
-	}
+@Entity(indices = {@Index(value = {"first_name", "last_name"},
+        unique = true)})
+public class User {
+    @PrimaryKey
+    public int id;
+
+    @ColumnInfo(name = "first_name")
+    public String firstName;
+
+    @ColumnInfo(name = "last_name")
+    public String lastName;
+
+    @Ignore
+    Bitmap picture;
+}
 ```
-####设置外键
+##### 1.5设置外键
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;因为SQLite是关系形数据库，表和表之间是有关系的。这也就是我们数据库中常说的外键约束(FOREIGN KEY约束)。Room里面可以通过@Entity的foreignKeys属性来设置外键。我们用一个具体的例子来说明。  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;正常情况下，数据库里面的外键约束。子表外键于父表。当父表中某条记录子表有依赖的时候父表这条记录是不能删除的，删除会报错。一般大型的项目很少会采用外键的形式。一般都会通过程序依赖业务逻辑来保证的。
 
@@ -159,15 +154,17 @@ class RoomAutoKeyUser {
  * /**
  * |---------------------------------------------------------------------------------------------------------------|
  *  @description: 外键依赖RoomAutoKeyUser表,RoomAutoUser是父表,Book是字表
- *  @author: East
- *  @date: 2019-08-06
  * |---------------------------------------------------------------------------------------------------------------|
  */
-@Entity(tableName = "book",foreignKeys = arrayOf(ForeignKey(entity = RoomAutoKeyUser::class,
-                                                            parentColumns = arrayOf("uid"),
-                                                            childColumns = arrayOf("user_id"),
-                                                            onUpdate = ForeignKey.CASCADE, //父表更新时,字表跟着更新
-                                                            onDelete = ForeignKey.RESTRICT)))//当parent中的key有依赖的时候禁止对parent做动作，做动作就会报错。
+@Entity(tableName = "book"
+        ,foreignKeys = arrayOf(ForeignKey(
+                        entity = RoomAutoKeyUser::class,
+                        parentColumns = arrayOf("uid"),
+                        childColumns = arrayOf("user_id"),
+                        //父表更新时,字表跟着更新
+                        onUpdate = ForeignKey.CASCADE, 
+                        //当parent中的key有依赖的时候禁止对parent做动作，做动作就会报错。
+                        onDelete = ForeignKey.RESTRICT)))
 class Book {
     @PrimaryKey(autoGenerate = true)
     var bookId :Int = 0
@@ -202,36 +199,8 @@ class Book {
 5. onUpdate：默认NO_ACTION，当parent里面有更新操作的时候，child表需要做的动作。Action动作方式和onDelete是一样的。
 
 6. deferred：默认值false，在事务完成之前，是否应该推迟外键约束。这个怎么理解，当我们启动一个事务插入很多数据的时候，事务还没完成之前。当parent引起key变化的时候。可以设置deferred为ture。让key立即改变。
-   
-   
-   
 
 <font color=#ff0000> 注：SQLite的处理 @Insert(onConflict = REPLACE) 为一组REMOVE和REPLACE操作，而不是一个单一的UPDATE 操作。这种替换冲突值的方法可能会影响您的外键约束。有关更多详细信息，请参阅该 子句的 [SQLite documentation](https://sqlite.org/lang_conflict.html)ON_CONFLICT。 </font>
-
-
-**`创建嵌套对象`**  
-&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;有些情况下，你会需要将多个对象组合成一个对象。对象和对象之间是有嵌套关系的。Room中你就可以使用@Embedded注解来表示嵌入。然后，您可以像查看其他单个列一样查询嵌入字段。比如有一个这样的例子，User表包含的列有：id, firstName, street, state, city, and post_code。这个时候我们的嵌套关系可以用如下代码来表示。
-
-``` kotlin
-data class Address(
-    val street: String?,
-    val state: String?,
-    val city: String?,
-    @ColumnInfo(name = "post_code") val postCode: Int
-)
-
-@Entity
-data class User(
-    @PrimaryKey val id: Int,
-    val firstName: String?,
-    @Embedded val address: Address?
-)
-```
-
-   @Embedded注解属性：  
-
-prefix：如果实体具有多个相同类型的嵌入字段，则可以通过设置前缀属性来保持每个列的唯一性。然后Room会将提供的值添加到嵌入对象中每个列名的开头。
-
 
 **`定义多对多关系`**  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;您经常要在关系数据库中建模另一种关系：两个实体之间的多对多关系，其中每个实体可以链接到另一个实体的零个或多个实例。例如，考虑一个音乐流媒体应用程序，用户可以将他们喜欢的歌曲组织成播放列表。每个播放列表可以具有任意数量的歌曲，并且每首歌曲可以包括在任意数量的播放列表中。
@@ -306,8 +275,30 @@ interface PlaylistSongJoinDao {
 }
 ```
 
+#### 2.Embedded注解创建嵌套对象
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;有些情况下，你会需要将多个对象组合成一个对象。对象和对象之间是有嵌套关系的。Room中你就可以使用@Embedded注解来表示嵌入。然后，您可以像查看其他单个列一样查询嵌入字段。比如有一个这样的例子，User表包含的列有：id, firstName, street, state, city, and post_code。这个时候我们的嵌套关系可以用如下代码来表示。
 
-####获取关联的Entity
+``` kotlin
+data class Address(
+    val street: String?,
+    val state: String?,
+    val city: String?,
+    @ColumnInfo(name = "post_code") val postCode: Int
+)
+
+@Entity
+data class User(
+    @PrimaryKey val id: Int,
+    val firstName: String?,
+    @Embedded val address: Address?
+)
+```
+
+@Embedded注解属性：
+
+prefix：如果实体具有多个相同类型的嵌入字段，则可以通过设置前缀属性来保持每个列的唯一性。然后Room会将提供的值添加到嵌入对象中每个列名的开头。
+
+#### 3. Relation注解 获取关联的Entity 
 Entity之间可能也有一对多之间的关系。比如一个User有多个Pet，通过一次查询获取多个关联的Pet。
 
 ``` java
@@ -427,7 +418,6 @@ public interface UserDao {
 public interface UserDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     int updateUsers(User... users);
-
 }
 ```
 
@@ -464,10 +454,8 @@ public interface UserDao {
 ``` java
 @Dao
 public interface UserDao {
-
     @Query("SELECT * FROM user")
     User[] loadAllUsers();
-
 }
 ```
 
@@ -479,10 +467,8 @@ public interface UserDao {
 ``` java
 @Dao
 public interface UserDao {
-
     @Query("SELECT * FROM user WHERE firstName == :name")
     User[] loadAllUsersByFirstName(String name);
-
 }
 ```
 
@@ -491,13 +477,11 @@ public interface UserDao {
 ``` java
 @Dao
 public interface UserDao {
-
     @Query("SELECT * FROM user WHERE age BETWEEN :minAge AND :maxAge")
     User[] loadAllUsersBetweenAges(int minAge, int maxAge);
 
     @Query("SELECT * FROM user WHERE firstName LIKE :search " + "OR lastName LIKE :search")
     List<User> findUserWithName(String search);
-
 }
 ```
 
@@ -541,10 +525,8 @@ public class NameTuple {
 
 @Dao
 public interface UserDao {
-
     @Query("SELECT firstName, lastName FROM user")
     List<NameTuple> loadFullName();
-
 }
 ```
 
@@ -554,10 +536,8 @@ public interface UserDao {
 ``` java
 @Dao
 public interface UserDao {
-
     @Query("SELECT firstName, lastName FROM user WHERE region IN (:regions)")
     public List<NameTuple> loadUsersFromRegions(List<String> regions);
-
 }
 ```
 
@@ -567,10 +547,8 @@ public interface UserDao {
 ``` java
 @Dao
 public interface UserDao {
-
     @Query("SELECT firstName, lastName FROM user WHERE region IN (:regions)")
     LiveData<List<NameTuple>> loadUsersFromRegionsSync(List<String> regions);
-
 }
 ```
 
@@ -583,10 +561,8 @@ public interface UserDao {
 ``` java
 @Dao
 public interface UserDao {
-
     @Query("SELECT * from user")
     Flowable<List<User>> loadUser();
-
 }
 ```
 
@@ -611,10 +587,8 @@ mAppDatabase.userDao()
 ``` java
 @Dao
 public interface UserDao {
-
     @Query("SELECT * FROM user WHERE age > :minAge LIMIT 5")
     Cursor loadRawUsersOlderThan(int minAge);
-
 }
 ```
 
@@ -653,11 +627,22 @@ public interface MyDao {
        public String petName;
    }
 }
+
+
+class AlbumWithSongs extends Album {
+    @Relation(parentColumn = "albumId", entityColumn = "songId")
+    public List<Song> songs;
+}
+@Dao
+public interface AlbumDao {
+    @Transaction  @Query("SELECT * FROM album")
+    public List<AlbumWithSongs> loadAll();
+}
 ```
 
 ### 三、Database(数据库)
 
-       @Database注解可以用来创建数据库的持有者。该注解定义了实体列表，该类的内容定义了数据库中的DAO列表。这也是访问底层连接的主要入口点。注解类应该是抽象的并且扩展自RoomDatabase。
+       @Database注解可以用来创建数据库的持有者。该注解定义了实体列表，该类的内容定义了数据库中的DAO列表。这也是访问底层连接的主要入口点。注解类应该是抽象的并且继承自RoomDatabase。
 
        Database对应的对象(RoomDatabase)必须添加@Database注解，@Database包含的属性：
 
@@ -852,6 +837,7 @@ public interface UserDao {
 
 - 如果database的版本号不变。app操作数据库表的时候会直接crash掉。(错误的做法)  
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果我们保持数据库版本不变，直接运行我们的App，Room在背后所做的事情如下：
+  
    1. 第一步：尝试打开数据库
       1. 比对数据库的identity值：当前的版本的 identity hash与在 room_master_table 中 identity hash比较。但是因为identity hash没有被存储，因此app 将会奔溃：
          ```
@@ -866,6 +852,7 @@ public interface UserDao {
          ```
 - 如果增加database的版本号。但是不提供Migration迁移策略。app操作数据库表的时候会直接crash掉。（错误的做法）  
   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们按照以下步骤再次运行 Room：
+  
   1. 第一步：更新数据库版本从1（已经安装到设备上了）到2  
      因为没有迁移策略，所以应用崩溃报 IllegalStateException.❌
      ```

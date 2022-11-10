@@ -16,7 +16,6 @@ import java.util.*
 class RoomAutoKeyUser {
 
     @PrimaryKey(autoGenerate = true)
-    @NonNull
     var uid:Int ?= null
 
     @ColumnInfo( name = "first_name")
