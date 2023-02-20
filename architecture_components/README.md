@@ -123,7 +123,7 @@ Lifecycle使用两个主要的枚举来跟踪他所关联组件的生命周期�
 	}
 ```
 
-###观察LiveData中的数据
+### 观察LiveData中的数据
 
 ```java
 	public class NameActivity extends AppCompatActivity {
@@ -154,12 +154,12 @@ Lifecycle使用两个主要的枚举来跟踪他所关联组件的生命周期�
 }
 ```
 
-###更新LiveData对象
+### 更新LiveData对象
 ------------------------
 &emsp;&emsp;&emsp;&emsp;需要更新LiveData对象的话,则需要调用MutableLiveData的**setValue()**方法或**postValue**方法  
 &emsp;&emsp;&emsp;&emsp;**setValue()**方法和**postValue**方法区别在于**setValue**只能在**MainThread**中调用  
 
-###转换LiveData中的值（Transform LiveData）
+### 转换LiveData中的值（Transform LiveData）
 ------------------------
 [Transformations](https://developer.android.com/reference/android/arch/lifecycle/Transformations.html)来提供转换的功能。  
 两个方法:   
@@ -236,7 +236,7 @@ Lifecycle使用两个主要的枚举来跟踪他所关联组件的生命周期�
 	    }
 	}
 
-###合并多个LiveData中的数据
+### 合并多个LiveData中的数据
 ------------------------
 [MediatorLiveData](https://developer.android.com/reference/android/arch/lifecycle/MediatorLiveData.html)是LiveData的子类，可以通过MediatorLiveData合并多个LiveData来源的数据。同样任意一个来源的LiveData数据发生变化，MediatorLiveData都会通知观察他的对象。说的有点抽象，举个例子。比如UI接收来自本地数据库和网络数据，并更新相应的UI。可以把下面两个LiveData加入到MeidatorLiveData中：  
 
@@ -340,7 +340,7 @@ class ViewModelActivity : AppCompatActivity() {
 ViewModel只有在Activity finish或者Fragment detach之后才会销毁。下面这张图显示了详细的生命周期：  
 ![ViewModel's life](https://developer.android.google.cn/images/topic/libraries/architecture/viewmodel-lifecycle.png)
 
-###在Fragments间分享数据
+### 在Fragments间分享数据
 ******  
 
 ```kotlin
@@ -368,12 +368,12 @@ class Test1Fragment : Fragment() {
 - Fragment不需要处理除SharedViewModel以外其他的代码。这两个Fragment不需要知道对方是否存在。
 - Fragment的生命周期不会相互影响
 
-#Room
+# Room
 - 如果您的应用程序在单个进程中运行，则在实例化AppDatabase 对象时应遵循单例设计模式。  
 - 每个实例都相当昂贵，您很少需要在单个进程中访问多个实例。 RoomDatabase  
 - 通常，在整个APP中，只需要一个Room database实例。
 
-###依赖
+### 依赖
 ```
 dependencies {
     def room_version = "2.2.0-alpha01" // 2.1.0 for latest stable version
@@ -394,7 +394,7 @@ dependencies {
     testImplementation "androidx.room:room-testing:$room_version"
 }
 ```
-###Room包含以下三个重要组成部分：
+### Room包含以下三个重要组成部分：
 
 - [Database](https://developer.android.com/reference/android/arch/persistence/room/Database.html) 创建数据库。
 
@@ -404,7 +404,7 @@ dependencies {
 
  详细的结构关系可以看下图：![Figure](https://developer.android.com/images/training/data-storage/room_architecture.png)
  
-###Entities
+### Entities
 
 [@Entity](https://developer.android.com/reference/android/arch/persistence/room/Entity.html)
 
@@ -416,7 +416,7 @@ dependencies {
 - primaryKeys：设置主键。
 - foreignKeys：设置外键。
 
-####设置表的名字  
+#### 设置表的名字  
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;默认情况下Entity类的名字就是表的名字(不区分大小写)。但是我们也可以通过@Entity的**tableName**属性来自定义表名字。如下代码所示user表对应的实体类。
  
@@ -428,7 +428,7 @@ class RoomAutoKeyUser {
  
 ```
 
-####设置列的名字  
+#### 设置列的名字  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;默认情况下Entity类中字段的名字就是表中列的名字。我们也是可以通过**@ColumnInfo**注解来自定义表中列的名字
 
 ``` kotlin
@@ -443,7 +443,7 @@ class RoomAutoKeyUser {
 }
 ```
 
-####设置主键  
+#### 设置主键  
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;每个Entity都需要至少一个字段设置为主键。即使这个Entity只有一个字段也需要设置为主键。Entity设置主键的方式有两种:
  	
@@ -472,7 +472,7 @@ class RoomAutoKeyUser {
 	}
 ```
 
-####设置索引  
+#### 设置索引  
 
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;数据库索引用于提高数据库表的数据访问速度的。数据库里面的索引有单列索引和组合索引。Room里面可以通过@Entity的indices属性来给表格添加索引。  
 
@@ -512,7 +512,7 @@ class RoomAutoKeyUser {
 	    Bitmap picture;
 	}
 ```
-####设置外键
+#### 设置外键
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;因为SQLite是关系形数据库，表和表之间是有关系的。这也就是我们数据库中常说的外键约束(FOREIGN KEY约束)。Room里面可以通过@Entity的foreignKeys属性来设置外键。我们用一个具体的例子来说明。  
 &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;正常情况下，数据库里面的外键约束。子表外键于父表。当父表中某条记录子表有依赖的时候父表这条记录是不能删除的，删除会报错。一般大型的项目很少会采用外键的形式。一般都会通过程序依赖业务逻辑来保证的。
 
@@ -658,7 +658,7 @@ interface PlaylistSongJoinDao {
 ```
 
 
-####获取关联的Entity
+#### 获取关联的Entity
 Entity之间可能也有一对多之间的关系。比如一个User有多个Pet，通过一次查询获取多个关联的Pet。
 
 ``` java
@@ -731,7 +731,7 @@ data class UserDetail(
 )
 ```
 
-####将视图与数据库关联
+#### 将视图与数据库关联
 要将此视图作为应用程序数据库的一部分,在应用程序的@Database注释中包含views，请包含该 属性 ：
 
 ``` kotlin
@@ -742,12 +742,12 @@ abstract class AppDatabase : RoomDatabase() {
 }
 ```
 
-###2.Data Access Objects（DAOs）
+### 2.Data Access Objects（DAOs）
 DAOs是数据库访问的抽象层。  
 `Dao`可以是一个接口也可以是一个抽象类。如果是抽象类，那么它可以接受一个`RoomDatabase`作为构造器的唯一参数。  
 Room不允许在主线程中防伪数据库，除非在builder里面调用`allowMainThreadQueries()` 。因为访问数据库是耗时的，可能阻塞主线程，引起UI卡顿。
 
-####2.1 Insert
+#### 2.1 Insert
 使用 @Insert注解的方法，Room将会生成插入的代码。
 
 @Insert注解可以设置一个属性：
@@ -769,7 +769,7 @@ public interface UserDao {
 }
 ```
 
-####2.2、Update(更新)  
+#### 2.2、Update(更新)  
        当DAO里面的某个方法添加了@Update注解。Room会把对应的参数信息更新到数据库里面去(会根据参数里面的primary key做更新操作)。  
        @Update和@Insert一样也是可以设置onConflict来表明冲突的时候的解决办法。  
 
@@ -800,7 +800,7 @@ public interface UserDao {
 
 @Delete对应的方法也是可以设置int返回值来表示删除了多少行。
 
-####2.4、Query(查询)  
+#### 2.4、Query(查询)  
        @Query注解是DAO类中使用的主要注释。它允许您对数据库执行读/写操作。@Query在编译的时候会验证准确性，所以如果查询出现问题在编译的时候就会报错。  
        Room还会验证查询的返回值，如果返回对象中的字段名称与查询响应中的相应列名称不匹配的时候，Room会通过以下两种方式之一提醒您：  
 
@@ -1005,6 +1005,24 @@ public interface MyDao {
    }
 }
 ```
+
+####  @RawQuery
+例如：我有一个示例用例，要求所有提供的条件都为真。条件由用户提供，因此直到运行时才知道。  
+`SELECT * FROM FOO WHERE [CONDITION 1] AND [CONDITION 2]...AND [CONDITION N]`
+
+您必须使用原始查询：
+```java
+@Dao
+ interface RawDao {
+     @RawQuery
+     User getFoo(SupportSQLiteQuery query);
+ }
+
+ SimpleSQLiteQuery query = new SimpleSQLiteQuery("SELECT * FROM Foo WHERE [CONDITION 1] AND [CONDITION 2]...AND [CONDITION N]");
+ Foo foo = rawDao.getFoo(query);
+```
+
+
 
 ### 三、Database(数据库)
 
