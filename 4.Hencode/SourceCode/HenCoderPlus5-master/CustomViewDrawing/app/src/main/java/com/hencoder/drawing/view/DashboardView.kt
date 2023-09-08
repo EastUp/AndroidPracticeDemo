@@ -50,5 +50,6 @@ class DashboardView(context: Context?, attrs: AttributeSet?) :
   }
 
   private fun markToRadians(mark: Int) =
+    // 角度转弧度（Math.cos需要的是弧度值）
     Math.toRadians((90 + OPEN_ANGLE / 2f + (360 - OPEN_ANGLE) / 20f * mark).toDouble())
 }
